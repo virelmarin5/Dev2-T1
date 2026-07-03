@@ -28,7 +28,6 @@ public class playerController : MonoBehaviour
     void Update()
     {
         movement();
-        sprint();
     }
 
     void movement()
@@ -39,19 +38,13 @@ public class playerController : MonoBehaviour
             jumpCount = 0;
         }
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
-        controller.Move(moveDir * speed * Time.deltaTime);
-    }
+        int  currSpeed = Input.GetButton("Sprint") ? speed * sprintMod : speed;
+        controller.Move(moveDir * currSpeed * Time.deltaTime);
 
-    void sprint()
-    {
-        if (Input.GetButtonDown("Sprint"))
-        {
-            speed *= sprintMod;
-        }
-        else if (Input.GetButtonUp("Sprint"))
-        {
-            speed /= sprintMod;
-        }
+        jump();
+
+        controller.Move(playerVel * Time.deltaTime);
+        playerVel.y -= gravity * Time.deltaTime;
     }
 
     void jump()
