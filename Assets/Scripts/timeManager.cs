@@ -3,8 +3,9 @@ using UnityEngine;
 public class timeManager : MonoBehaviour
 {
 
+    public static timeManager instance;
+
     [SerializeField] float defaultTimeScale;
-    [SerializeField] float minTimeScale;
     [SerializeField] float currentTimeScale;
 
     [SerializeField] bool update;
@@ -23,5 +24,10 @@ public class timeManager : MonoBehaviour
             Time.timeScale = currentTimeScale;
             update = false;
         }
+    }
+
+    public void setTimeScale(float newTimeScale)
+    {
+        currentTimeScale = newTimeScale;
     }
 }
