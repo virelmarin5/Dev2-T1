@@ -13,7 +13,9 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
     [SerializeField] int gravity;
 
     [SerializeField] gunStatsHandler currGun;
-    [SerializeField] GameObject gunModel;
+    [SerializeField] GameObject gunHoldPos;
+
+    float shootTimer;
 
     int jumpCount;
     int HPOriginal;
@@ -49,6 +51,14 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
 
         controller.Move(playerVel * Time.deltaTime);
         playerVel.y -= gravity * Time.deltaTime;
+
+        shootTimer += Time.deltaTime;
+
+        if (Input.GetButtonDown("Fire1") && currGun != null && shootTimer > currGun.shootRate)
+            shoot();
+
+        if(currGun != null)
+            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * currGun.shootDist, Color.red);
     }
 
     void jump()
@@ -70,7 +80,16 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
         }
     }
 
-    public void getGunStats(gunStatsHandler gun)
+    void shoot()
+    {
+        shootTimer = 0;
+
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, currGun.shootDist))
+            Debug.Log(hit.collider.name);
+    }
+
+    public void gunStatsHandler(gunStatsHandler gun)
     {
         // Replace the current gun with the newly picked up one
         currGun = gun;
@@ -79,10 +98,10 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
 
     void changeGun()
     {
-        if (gunModel == null) return;
+        if (gunHoldPos == null) return;
 
         // 1. Destroy whatever gun the player is currently holding
-        foreach (Transform child in gunModel.transform)
+        foreach (Transform child in gunHoldPos.transform)
         {
             Destroy(child.gameObject);
         }
@@ -91,7 +110,7 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
         if (currGun == null || currGun.gunModel == null) return;
 
         // 3. Spawn the entire modular weapon prefab as a child of our gun holder
-        GameObject newWeapon = Instantiate(currGun.gunModel, gunModel.transform);
+        GameObject newWeapon = Instantiate(currGun.gunModel, gunHoldPos.transform);
 
         // 4. Reset its transform so it snaps perfectly to the player's hands
         newWeapon.transform.localPosition = Vector3.zero;
@@ -102,11 +121,5 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
         // So the player doesn't accidentally trigger a pickup on the gun they are holding
         if (newWeapon.TryGetComponent<Collider>(out Collider col)) col.enabled = false;
         if (newWeapon.TryGetComponent<pickGun>(out pickGun script)) script.enabled = false;
-
-        // Also disable colliders hidden inside children if there are any
-        foreach (Collider childCol in newWeapon.GetComponentsInChildren<Collider>())
-        {
-            childCol.enabled = false;
-        }
     }
 }

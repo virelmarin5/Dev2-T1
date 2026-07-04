@@ -11,7 +11,7 @@ public class pickGun : MonoBehaviour
         if (pic != null)
         {
             gun.ammoCur = gun.ammoMax;
-            pic.getGunStats(gun);
+            pic.gunStatsHandler(gun);
             Destroy(gameObject);
         }
     }
