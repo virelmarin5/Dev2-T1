@@ -1,64 +1,146 @@
 using UnityEngine;
-using System;
 
-public class HeartbeatManager : MonoBehaviour
+public class heartbeatManager : MonoBehaviour
 {
-    [Header("Heartbeat Settings")]
+    public static heartbeatManager instance;
 
-    [SerializeField]
-    private float restingBPM = 60f;
-
-    [SerializeField]
-    private float maxBPM = 180f;
-
-    [SerializeField]
-    private float currentBPM;
-
+    [Header("BPM Settings")]
+    [SerializeField] private int restingBPM = 60;
+    [SerializeField] private int maxBPM = 180;
+    [SerializeField] private int currentBPM;
 
     [Header("Stress Settings")]
+    [SerializeField] private float currentStress = 0f;
+    [SerializeField] private float maxStress = 100f;
+    [SerializeField] private float stressDecayRate = 5f;
 
-    [SerializeField]
-    private float currentStress = 0f;
+    [Header("Stress Change Values")]
+    [SerializeField] private float shootStress = 2f;
+    [SerializeField] private float damageStress = 25f;
+    [SerializeField] private float nearMissStress = 10f;
+    [SerializeField] private float killStressReduction = 10f;
+    [SerializeField] private float waveStressReduction = 25f;
 
-    [SerializeField]
-    private float maxStress = 100f;
+    private bool hasLost;
 
-    [SerializeField]
-    private float stressDecayRate = 5f;
+    void Awake()
+    {
+        // Allows other scripts to call heartbeatManager.instance
+        instance = this;
+    }
 
+    void Start()
+    {
+        // Runtime value only. Designer values above are not overwritten.
+        currentBPM = restingBPM;
+    }
 
-    [Header("Stress Values")]
+    void Update()
+    {
+        if (hasLost)
+        {
+            return;
+        }
 
-    [SerializeField]
-    private float damageStress = 25f;
+        decayStress();
+        updateBPM();
+        checkLoseCondition();
+    }
 
-    [SerializeField]
-    private float shootingStress = 3f;
+    void decayStress()
+    {
+        // Stress slowly goes down over time if the player is not being pressured.
+        currentStress -= stressDecayRate * Time.deltaTime;
+        currentStress = Mathf.Clamp(currentStress, 0f, maxStress);
+    }
 
-    [SerializeField]
-    private float nearMissStress = 10f;
+    void updateBPM()
+    {
+        // Turns current stress into a BPM value.
+        float stressPercent = currentStress / maxStress;
+        currentBPM = Mathf.RoundToInt(Mathf.Lerp(restingBPM, maxBPM, stressPercent));
 
-    [SerializeField]
-    private float killStressReduction = 8f;
+        // Sends the current BPM to the game manager UI.
+        if (gameManager.instance != null)
+        {
+            gameManager.instance.updateHeartRate(currentBPM);
+        }
+    }
 
-    [SerializeField]
-    private float waveCompleteStressReduction = 25f;
+    void checkLoseCondition()
+    {
+        // Player loses when their BPM gets too high.
+        if (currentBPM >= maxBPM)
+        {
+            hasLost = true;
 
+            if (gameManager.instance != null)
+            {
+                gameManager.instance.stateLose();
+            }
+        }
+    }
 
-    // Other scripts can subscribe to heartbeat updates.
-    public event Action<float, float> OnHeartbeatChanged;
-    public float GetCurrentBPM()
+    public void addStress(float amount)
+    {
+        // Raises stress from combat events.
+        currentStress += amount;
+        currentStress = Mathf.Clamp(currentStress, 0f, maxStress);
+    }
+
+    public void reduceStress(float amount)
+    {
+        // Lowers stress from successful actions.
+        currentStress -= amount;
+        currentStress = Mathf.Clamp(currentStress, 0f, maxStress);
+    }
+
+    public void playerShot()
+    {
+        // Call from gunController when the player shoots.
+        addStress(shootStress);
+    }
+
+    public void playerDamaged()
+    {
+        // Call when the player gets hit.
+        // This replaces normal HP damage.
+        addStress(damageStress);
+    }
+
+    public void nearMiss()
+    {
+        // Optional: call when a bullet barely misses the player.
+        addStress(nearMissStress);
+    }
+
+    public void enemyKilled()
+    {
+        // Call when an enemy dies.
+        reduceStress(killStressReduction);
+    }
+
+    public void waveCompleted()
+    {
+        // Call when a wave ends.
+        reduceStress(waveStressReduction);
+    }
+
+    public void resetHeartbeat()
+    {
+        // Use when restarting the level.
+        hasLost = false;
+        currentStress = 0f;
+        currentBPM = restingBPM;
+    }
+
+    public int getCurrentBPM()
     {
         return currentBPM;
     }
 
-    public float GetStressPercent()
+    public float getStressPercent()
     {
         return currentStress / maxStress;
-    }
-
-    public float GetCurrentStress()
-    {
-        return currentStress;
     }
 }

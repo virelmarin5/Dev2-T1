@@ -62,4 +62,15 @@ public class playerController : MonoBehaviour
             jumpCount++;
         }
     }
+
+    //Added by Devin C, dies if heart rate and stress is too high
+    public void takeDamage(int amount)
+    {
+        Debug.Log("Player was hit. Stress increased instead of HP damage.");
+
+        if (heartbeatManager.instance != null)
+        {
+            heartbeatManager.instance.playerDamaged();
+        }
+    }
 }
