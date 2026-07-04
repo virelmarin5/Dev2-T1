@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
 
-    [Header("Movement Settings")]
+    [SerializeField] int HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed;
@@ -12,15 +12,22 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int gravity;
 
     int jumpCount;
+    int HPOriginal;
 
     Vector3 moveDir;
     Vector3 playerVel;
+     
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        HPOriginal = HP;
+    }
+
+    // Update is called once per frame
     void Update()
     {
         movement();
-        sprint();
-        jump();
     }
 
     void movement()
@@ -30,16 +37,9 @@ public class playerController : MonoBehaviour, IDamage
             playerVel.y = 0;
             jumpCount = 0;
         }
-
-        moveDir = Input.GetAxis("Horizontal") * transform.right +
-                  Input.GetAxis("Vertical") * transform.forward;
-
-        controller.Move(moveDir * speed * Time.deltaTime);
-
-        // Applies gravity to the CharacterController.
-        playerVel.y -= gravity * Time.deltaTime;
-        controller.Move(playerVel * Time.deltaTime);
-    }
+        moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+        int  currSpeed = Input.GetButton("Sprint") ? speed * sprintMod : speed;
+        controller.Move(moveDir * currSpeed * Time.deltaTime);
 
         jump();
 
@@ -54,17 +54,5 @@ public class playerController : MonoBehaviour, IDamage
             playerVel.y = jumpSpeed;
             jumpCount++;
         }
-    }
-
-    public void takeDamage(int amount)
-    {
-        // Player does not lose HP in this version.
-        // Getting hit increases stress/BPM instead.
-        if (heartbeatManager.instance != null)
-        {
-            heartbeatManager.instance.playerDamaged();
-        }
-
-        Debug.Log("Player was hit. Stress increased.");
     }
 }
