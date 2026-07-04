@@ -25,7 +25,6 @@
   <Project Path="Unity.AppUI.Redux.csproj" />
   <Project Path="Unity.AI.MCP.Editor.csproj" />
   <Project Path="Unity.Burst.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.InferenceEngine.Editor.Visualizer.csproj" />
   <Project Path="Unity.VisualScripting.Flow.Editor.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
@@ -46,6 +45,7 @@
   <Project Path="Unity.AI.Generators.Sdk.csproj" />
   <Project Path="Unity.Burst.CodeGen.csproj" />
   <Project Path="Unity.Postprocessing.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.VisualScripting.Flow.csproj" />
   <Project Path="Unity.AI.Toolkit.Accounts.csproj" />
   <Project Path="Unity.PerformanceTesting.csproj" />
