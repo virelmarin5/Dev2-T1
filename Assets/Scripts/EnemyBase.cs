@@ -35,8 +35,19 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         if (model != null)
             colorOrig = model.material.color;
 
+        // Try gameManager first, then fall back to FindWithTag
         if (gameManager.instance != null && gameManager.instance.player != null)
+        {
             playerTransform = gameManager.instance.player.transform;
+        }
+        else
+        {
+            GameObject playerObj = GameObject.FindWithTag("Player");
+            if (playerObj != null)
+                playerTransform = playerObj.transform;
+        }
+
+        Debug.Log("playerTransform set to: " + playerTransform);
     }
 
     protected virtual void Update()
