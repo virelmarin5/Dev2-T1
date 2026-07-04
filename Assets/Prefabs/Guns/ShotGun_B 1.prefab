@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 6882341131368043272}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.045, z: 0.705}
+  m_LocalPosition: {x: 0, y: 0.045, z: 0.701}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63,15 +63,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 61da122e6165f764d946f878f5ef9185, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.58
+      value: -15.219
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61da122e6165f764d946f878f5ef9185, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.07
+      value: 11.77763
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61da122e6165f764d946f878f5ef9185, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.34
+      value: -20.28489
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61da122e6165f764d946f878f5ef9185, type: 3}
       propertyPath: m_LocalRotation.w
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94a2d95cec670d046aac230ea7bb3a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pickGun
-  gun: {fileID: 11400000, guid: 106e9f72708924440b28926cefa02255, type: 2}
+  gun: {fileID: 11400000, guid: 1794fcad3c141094fa930ad92c9df88c, type: 2}
 --- !u!135 &2905954083850033418
 SphereCollider:
   m_ObjectHideFlags: 0
