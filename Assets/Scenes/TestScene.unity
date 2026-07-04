@@ -1114,6 +1114,18 @@ PrefabInstance:
       value: Free_RoomA
       objectReference: {fileID: 0}
     - target: {fileID: 4127565821731316, guid: 1e4f0d9e7dbf221419b0bd0e1286aa16, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127565821731316, guid: 1e4f0d9e7dbf221419b0bd0e1286aa16, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127565821731316, guid: 1e4f0d9e7dbf221419b0bd0e1286aa16, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127565821731316, guid: 1e4f0d9e7dbf221419b0bd0e1286aa16, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1688,8 +1700,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::playerController
   controller: {fileID: 1166394294}
   HP: 5
-  speed: 15
-  sprintMod: 3
+  speed: 3
+  sprintMod: 2
   jumpSpeed: 12
   jumpMax: 2
   gravity: 35
@@ -1701,8 +1713,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166394293}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -14, y: 11, z: -19}
+  m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
+  m_LocalPosition: {x: -15.596, y: 11, z: -21.998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2424,6 +2436,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 675411346}
   - {fileID: 1604268014}
-  - {fileID: 1166394299}
   - {fileID: 4064796119732702782}
   - {fileID: 1041264627}
+  - {fileID: 1166394299}
