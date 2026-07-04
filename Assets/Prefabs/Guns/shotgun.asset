@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: shotgun
   m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
   gunModel: {fileID: 8670443747169871531, guid: 8dd42cfce9fbf934e97313e180757b63, type: 3}
-  shootDamage: 1
+  shootDamage: 3
   shootDist: 5
   shootRate: 1
   ammoCur: 5

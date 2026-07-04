@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
   gunModel: {fileID: 2134975572369156316, guid: 2bf3ae9b880b61840b2b47cc7964bd13, type: 3}
   shootDamage: 1
-  shootDist: 21
+  shootDist: 15
   shootRate: 0.1
   ammoCur: 5
   ammoMax: 5

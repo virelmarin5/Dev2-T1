@@ -86,7 +86,11 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
 
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, currGun.shootDist))
-            Debug.Log(hit.collider.name);
+        {
+            IDamage dmg = hit.transform.GetComponent<IDamage>();
+            if (dmg != null)
+                dmg.takeDamage(currGun.shootDamage);
+        }
     }
 
     public void gunStatsHandler(gunStatsHandler gun)
