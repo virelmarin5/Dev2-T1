@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
 
@@ -53,6 +54,16 @@ public class playerController : MonoBehaviour
         {
             playerVel.y = jumpSpeed;
             jumpCount++;
+        }
+    }
+
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+
+        if (HP <= 0)
+        {
+            // dead
         }
     }
 }
