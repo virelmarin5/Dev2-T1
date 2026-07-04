@@ -18,42 +18,42 @@ public class BasicEnemy : EnemyBase
         if (model != null)
             colorOrig = model.material.color;
 
-        Debug.Log("EnemyBase Start running");
-        Debug.Log("gameManager.instance: " + gameManager.instance);
+
 
         if (gameManager.instance != null)
         {
-            Debug.Log("gameManager.instance.player: " + gameManager.instance.player);
+
             if (gameManager.instance.player != null)
                 playerTransform = gameManager.instance.player.transform;
         }
 
-        Debug.Log("playerTransform set to: " + playerTransform);
-    }
 
+    }
     protected override void UpdateBehavior()
     {
         if (agent == null || !agent.isActiveAndEnabled)
             return;
 
-        // --- FOLLOW PLAYER ---
-        // Try to find the nearest NavMesh point to the player (increased to 50f)
-        if (NavMesh.SamplePosition(playerTransform.position, out NavMeshHit hit, 50f, NavMesh.AllAreas))
-        {
-            agent.SetDestination(hit.position);
+        float dist = Vector3.Distance(transform.position, playerTransform.position);
+        float stopDistance = 3.5f; // how far back you want it to stop
 
-            // DEBUG: draw line to where the agent is trying to go
-            Debug.DrawLine(transform.position, hit.position, Color.green);
-            Debug.Log("Dest: " + hit.position + " | PathStatus: " + agent.pathStatus + " | HasPath: " + agent.hasPath + " | Remaining: " + agent.remainingDistance);
+        if (dist <= stopDistance)
+        {
+            agent.isStopped = true;
+            agent.ResetPath();
+
+            // Still face the player
+            FaceTarget();
         }
         else
         {
-            Debug.LogError("Player is NOT on the NavMesh! Player pos: " + playerTransform.position);
+            agent.isStopped = false;
+            if (NavMesh.SamplePosition(playerTransform.position, out NavMeshHit hit, 50f, NavMesh.AllAreas))
+                agent.SetDestination(hit.position);
         }
 
-        // --- MELEE ATTACK ---
-        float distSqr = (playerTransform.position - transform.position).sqrMagnitude;
-        if (distSqr <= attackRange * attackRange)
+        // Melee attack when in attack range (separate from stop distance)
+        if (dist <= attackRange)
         {
             attackTimer += Time.deltaTime;
             if (attackTimer >= attackRate)
@@ -74,7 +74,7 @@ public class BasicEnemy : EnemyBase
 
     protected override void Update()
     {
-        Debug.Log("EnemyBase Update running. isDead: " + isDead + " | playerTransform: " + playerTransform);
+
 
         if (isDead || playerTransform == null)
         {
