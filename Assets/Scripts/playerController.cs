@@ -15,6 +15,16 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
     [SerializeField] gunStatsHandler currGun;
     [SerializeField] GameObject gunHoldPos;
 
+    [SerializeField] AudioSource audPlayer;
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+    [SerializeField] AudioClip[] audHurt;
+    [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip[] audSteps;
+    [Range(0, 1)][SerializeField] float audStepsVol;
+
+    Transform gunBarrel;
+
     float shootTimer;
 
     int jumpCount;
@@ -58,7 +68,7 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
             shoot();
 
         if(currGun != null)
-            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * currGun.shootDist, Color.red);
+            Debug.DrawRay(gunBarrel.transform.position, gunBarrel.transform.forward * currGun.shootDist, Color.red);
     }
 
     void jump()
@@ -84,8 +94,20 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
     {
         shootTimer = 0;
 
+        currGun.ammoCur--;
+
+        if (currGun.ammoCur <= 0)
+        {
+            audPlayer.PlayOneShot(currGun.magDumpSound, currGun.magDumpSoundVol);
+            return;
+        }
+
+        Instantiate(currGun.bullet, gunBarrel.position, gunBarrel.rotation);
+
+        audPlayer.PlayOneShot(currGun.shootSound, currGun.shootSoundVol);
+
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, currGun.shootDist))
+        if (Physics.Raycast(gunBarrel.transform.position, gunBarrel.transform.forward, out hit, currGun.shootDist))
         {
             IDamage dmg = hit.transform.GetComponent<IDamage>();
             if (dmg != null)
@@ -120,6 +142,8 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
         newWeapon.transform.localPosition = Vector3.zero;
         newWeapon.transform.localRotation = Quaternion.identity;
         newWeapon.transform.localScale = Vector3.one;
+
+        gunBarrel = newWeapon.transform.Find("Muzzle");
 
         // 5.Turn off colliders and trigger scripts on the held version
         // So the player doesn't accidentally trigger a pickup on the gun they are holding
