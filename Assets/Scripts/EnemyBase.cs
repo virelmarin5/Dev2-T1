@@ -37,8 +37,6 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
         if (gameManager.instance != null && gameManager.instance.player != null)
             playerTransform = gameManager.instance.player.transform;
-
-        gameManager.instance?.updateGameGoal(1);
     }
 
     protected virtual void Update()
@@ -70,7 +68,6 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     protected virtual void Die()
     {
         isDead = true;
-        gameManager.instance?.updateGameGoal(-1);
         NotifyWaveManager();
         OnDeath();
         Destroy(gameObject);
@@ -78,10 +75,14 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
     protected virtual void NotifyWaveManager()
     {
-        // Example: WaveManager.Instance?.OnEnemyDied(this);
+        // Hook this up to your WaveManager, e.g.:
+        // WaveManager.Instance?.OnEnemyDied(this);
     }
 
-    protected virtual void OnDeath() { }
+    protected virtual void OnDeath()
+    {
+        // Override in subclass for particles, audio, etc.
+    }
 
     protected virtual IEnumerator FlashRed()
     {
