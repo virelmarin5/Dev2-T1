@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: AR_A
   m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
   gunModel: {fileID: 2134975572369156316, guid: 2bf3ae9b880b61840b2b47cc7964bd13, type: 3}
+  bullet: {fileID: 6785665511576398920, guid: bacd048df770cf842a08b0e32a576112, type: 3}
   shootDamage: 1
   shootDist: 15
   shootRate: 0.1
-  ammoCur: 5
+  ammoCur: -22
   ammoMax: 5
-  hitEffect: {fileID: 5584602140419805224, guid: 25246989ef8fb1e49a5425378d295c10, type: 3}
-  magDumpSound: []
-  magDumpSoundVol: 0
-  shootSound: []
-  shootSoundVol: 0
+  magDumpSound: {fileID: 8300000, guid: dc83a2314fcc87e4fb1e4cbf062f6220, type: 3}
+  magDumpSoundVol: 0.3
+  shootSound: {fileID: 8300000, guid: eb14dd355801c574fb7cc4560bd941b7, type: 3}
+  shootSoundVol: 0.3
+  reloadSound: []
+  reloadSoundVol: 0

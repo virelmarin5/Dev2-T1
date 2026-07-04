@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c174fbcdeba43c4090681a37aff5cb5, type: 3}
   m_Name: shotgun
   m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
-  gunModel: {fileID: 8670443747169871531, guid: 8dd42cfce9fbf934e97313e180757b63, type: 3}
+  gunModel: {fileID: 5546625469732807105, guid: 7ff0b4de9b1b07542a6817ef6e61cb03, type: 3}
+  barrelChildName: Muzzle
+  bullet: {fileID: 6785665511576398920, guid: bacd048df770cf842a08b0e32a576112, type: 3}
   shootDamage: 3
   shootDist: 5
   shootRate: 1
   ammoCur: 5
   ammoMax: 5
-  hitEffect: {fileID: 0}
   magDumpSound: []
   magDumpSoundVol: 0
   shootSound: []
   shootSoundVol: 0
+  reloadSound: []
+  reloadSoundVol: 0
