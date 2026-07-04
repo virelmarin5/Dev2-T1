@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c174fbcdeba43c4090681a37aff5cb5, type: 3}
-  m_Name: AR_A
+  m_Name: AR_A 1
   m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
   gunModel: {fileID: 2134975572369156316, guid: 2bf3ae9b880b61840b2b47cc7964bd13, type: 3}
   bullet: {fileID: 6785665511576398920, guid: bacd048df770cf842a08b0e32a576112, type: 3}

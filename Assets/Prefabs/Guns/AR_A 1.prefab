@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 8237685414865167866}
   - component: {fileID: 2018192039238516908}
   m_Layer: 0
-  m_Name: AR_A
+  m_Name: AR_A 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
