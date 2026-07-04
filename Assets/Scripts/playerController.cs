@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
 
-    [SerializeField] int HP;
+    [Header("Movement Settings")]
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed;
@@ -12,23 +12,15 @@ public class playerController : MonoBehaviour
     [SerializeField] int gravity;
 
     int jumpCount;
-    int HPOriginal;
 
     Vector3 moveDir;
     Vector3 playerVel;
-     
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        HPOriginal = HP;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         movement();
         sprint();
+        jump();
     }
 
     void movement()
@@ -38,8 +30,15 @@ public class playerController : MonoBehaviour
             playerVel.y = 0;
             jumpCount = 0;
         }
-        moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+
+        moveDir = Input.GetAxis("Horizontal") * transform.right +
+                  Input.GetAxis("Vertical") * transform.forward;
+
         controller.Move(moveDir * speed * Time.deltaTime);
+
+        // Applies gravity to the CharacterController.
+        playerVel.y -= gravity * Time.deltaTime;
+        controller.Move(playerVel * Time.deltaTime);
     }
 
     void sprint()
@@ -63,14 +62,15 @@ public class playerController : MonoBehaviour
         }
     }
 
-    //Added by Devin C, dies if heart rate and stress is too high
     public void takeDamage(int amount)
     {
-        Debug.Log("Player was hit. Stress increased instead of HP damage.");
-
+        // Player does not lose HP in this version.
+        // Getting hit increases stress/BPM instead.
         if (heartbeatManager.instance != null)
         {
             heartbeatManager.instance.playerDamaged();
         }
+
+        Debug.Log("Player was hit. Stress increased.");
     }
 }
