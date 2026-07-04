@@ -5,7 +5,7 @@ public class timeManager : MonoBehaviour
 
     public static timeManager instance;
 
-    [SerializeField] float defaultTimeScale;
+    [SerializeField] public float defaultTimeScale;
     [SerializeField] float currentTimeScale;
 
     [SerializeField] bool update;
@@ -29,5 +29,11 @@ public class timeManager : MonoBehaviour
     public void setTimeScale(float newTimeScale)
     {
         currentTimeScale = newTimeScale;
+        update = true;
+    }
+
+    public float getTimeScale()
+    {
+        return Time.timeScale;
     }
 }

@@ -22,7 +22,7 @@ public class gameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        timeScaleOrig = Time.timeScale;
+        timeScaleOrig = timeManager.instance.defaultTimeScale;
         player = GameObject.FindWithTag("Player");
 
         playerScript = player.GetComponent<playerController>();
@@ -49,6 +49,7 @@ public class gameManager : MonoBehaviour
     // Pause the game
     public void statePause()
     {
+        timeScaleOrig = timeManager.instance.getTimeScale();
         isPaused = true;
         Time.timeScale = 0;
         Cursor.visible = true;
