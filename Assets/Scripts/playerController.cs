@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IPickGun
 {
     [SerializeField] CharacterController controller;
 
@@ -11,6 +11,9 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
+
+    [SerializeField] gunStatsHandler currGun;
+    [SerializeField] GameObject gunModel;
 
     int jumpCount;
     int HPOriginal;
@@ -64,6 +67,46 @@ public class playerController : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             // dead
+        }
+    }
+
+    public void getGunStats(gunStatsHandler gun)
+    {
+        // Replace the current gun with the newly picked up one
+        currGun = gun;
+        changeGun();
+    }
+
+    void changeGun()
+    {
+        if (gunModel == null) return;
+
+        // 1. Destroy whatever gun the player is currently holding
+        foreach (Transform child in gunModel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // 2. If we just dropped/cleared the weapon slot, stop here
+        if (currGun == null || currGun.gunModel == null) return;
+
+        // 3. Spawn the entire modular weapon prefab as a child of our gun holder
+        GameObject newWeapon = Instantiate(currGun.gunModel, gunModel.transform);
+
+        // 4. Reset its transform so it snaps perfectly to the player's hands
+        newWeapon.transform.localPosition = Vector3.zero;
+        newWeapon.transform.localRotation = Quaternion.identity;
+        newWeapon.transform.localScale = Vector3.one;
+
+        // 5.Turn off colliders and trigger scripts on the held version
+        // So the player doesn't accidentally trigger a pickup on the gun they are holding
+        if (newWeapon.TryGetComponent<Collider>(out Collider col)) col.enabled = false;
+        if (newWeapon.TryGetComponent<pickGun>(out pickGun script)) script.enabled = false;
+
+        // Also disable colliders hidden inside children if there are any
+        foreach (Collider childCol in newWeapon.GetComponentsInChildren<Collider>())
+        {
+            childCol.enabled = false;
         }
     }
 }
