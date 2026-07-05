@@ -150,4 +150,22 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
         if (newWeapon.TryGetComponent<Collider>(out Collider col)) col.enabled = false;
         if (newWeapon.TryGetComponent<pickGun>(out pickGun script)) script.enabled = false;
     }
+
+    public float getSpeedPercent()
+    {
+        // Returns a value between 0 and 1 representing how fast the player is moving relative to their max speed.
+        Vector3 hor = new Vector3(moveDir.x,0, moveDir.z);
+        float horPercent = Mathf.Clamp01(hor.magnitude);
+
+        // If the player is in the air, we also consider their vertical speed relative to jump speed.
+        float vertPercent = 0;
+        if (!controller.isGrounded)
+        {
+            vertPercent = Mathf.Clamp01(Mathf.Abs(playerVel.y) / jumpSpeed);
+        }
+
+        // Return the greater of the two percentages to represent overall movement intensity.
+        return Mathf.Max(horPercent, vertPercent);
+    }
+
 }
