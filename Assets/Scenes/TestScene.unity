@@ -618,7 +618,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1667845079}
     m_Modifications:
     - target: {fileID: 301679721278299747, guid: 7964d0a02e708004483b752834885f69, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   jumpSpeed: 10
   jumpMax: 1
   gravity: 35
-  currGun: {fileID: 11400000, guid: e8a1f1f0258dae84b8e973dca9b4e191, type: 2}
+  currGun: {fileID: 0}
   gunHoldPos: {fileID: 2101903150}
   audPlayer: {fileID: 0}
   audJump: []
@@ -2674,6 +2674,7 @@ MonoBehaviour:
   menuActive: {fileID: 0}
   menuPause: {fileID: 1357222445}
   menuLose: {fileID: 806335131}
+  timeManager: {fileID: 1667845080}
   isPaused: 0
   player: {fileID: 1166394293}
   playerScript: {fileID: 1166394298}
@@ -2689,7 +2690,8 @@ Transform:
   m_LocalPosition: {x: -5.68495, y: 11.08782, z: -6.33192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1734269242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1667845080
@@ -2724,6 +2726,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e3a068161237641af0bce813648f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::buttonFunctions
+--- !u!224 &1734269242 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8819493970705541610, guid: 7964d0a02e708004483b752834885f69, type: 3}
+  m_PrefabInstance: {fileID: 391295676}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1800262312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 664652709444551372, guid: 6c8048cf7ced2274fb5617e126e8254a, type: 3}
@@ -3374,5 +3381,4 @@ SceneRoots:
   - {fileID: 2044563703}
   - {fileID: 148875867}
   - {fileID: 968739727}
-  - {fileID: 391295676}
   - {fileID: 136533542}

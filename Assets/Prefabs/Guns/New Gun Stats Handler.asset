@@ -16,8 +16,8 @@ MonoBehaviour:
   bullet: {fileID: 6785665511576398920, guid: bacd048df770cf842a08b0e32a576112, type: 3}
   shootDamage: 1
   shootDist: 141
-  shootRate: 1.483
-  ammoCur: 2
+  shootRate: 0.1
+  ammoCur: -8
   ammoMax: 2
   magDumpSound: {fileID: 0}
   magDumpSoundVol: 0
