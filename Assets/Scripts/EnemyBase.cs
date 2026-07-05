@@ -6,7 +6,7 @@ using System.Collections;
 public abstract class EnemyBase : MonoBehaviour, IDamage
 {
     [Header("Health")]
-    [SerializeField] protected int maxHP = 10;
+    [SerializeField] protected int maxHP = 2;
     protected int currentHP;
 
     [Header("Movement")]
@@ -14,6 +14,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
     [Header("Visuals")]
     [SerializeField] protected Renderer model;
+    [SerializeField] protected Material flashMaterial;
     protected Color colorOrig;
 
     protected NavMeshAgent agent;
@@ -46,8 +47,6 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
             if (playerObj != null)
                 playerTransform = playerObj.transform;
         }
-
-        Debug.Log("playerTransform set to: " + playerTransform);
     }
 
     protected virtual void Update()
@@ -65,6 +64,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         if (isDead) return;
 
         currentHP -= amount;
+        Debug.Log("Took damage: " + amount + " | HP: " + currentHP + " | model: " + model);
 
         if (currentHP <= 0)
         {
@@ -72,7 +72,12 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         }
         else if (model != null)
         {
-            StartCoroutine(FlashRed());
+            Debug.Log("Starting FlashBlack coroutine");
+            StartCoroutine(FlashBlack());
+        }
+        else
+        {
+            Debug.LogWarning("No model assigned — cannot flash black!");
         }
     }
 
@@ -95,11 +100,20 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         // Override in subclass for particles, audio, etc.
     }
 
-    protected virtual IEnumerator FlashRed()
+    protected virtual IEnumerator FlashBlack()
     {
-        model.material.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        model.material.color = colorOrig;
+        if (model == null || flashMaterial == null) yield break;
+
+        Material[] originalMats = model.materials;
+        int count = originalMats.Length;
+        Material[] flashMats = new Material[count];
+
+        for (int i = 0; i < count; i++)
+            flashMats[i] = flashMaterial;
+
+        model.materials = flashMats;
+        yield return new WaitForSeconds(0.15f);
+        model.materials = originalMats;
     }
 
     protected virtual void FaceTarget()
