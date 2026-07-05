@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuLose;
+    [SerializeField] timeManager timeManager;
 
     public bool isPaused;
     public GameObject player;
@@ -17,12 +18,12 @@ public class gameManager : MonoBehaviour
 
     float timeScaleOrig;
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         instance = this;
-        timeScaleOrig = timeManager.instance.defaultTimeScale;
+        //timeScaleOrig = Time.timeScale;
+        timeScaleOrig = timeManager.defaultTimeScale;
         player = GameObject.FindWithTag("Player");
 
         playerScript = player.GetComponent<playerController>();
@@ -49,7 +50,7 @@ public class gameManager : MonoBehaviour
     // Pause the game
     public void statePause()
     {
-        timeScaleOrig = timeManager.instance.getTimeScale();
+        timeScaleOrig = timeManager.getTimeScale();
         isPaused = true;
         Time.timeScale = 0;
         Cursor.visible = true;
@@ -68,7 +69,7 @@ public class gameManager : MonoBehaviour
     }
 
     // Update the heart rate and check for lose condition
-    public void updateHeartrate(int bpm)
+    public void updateHeartRate(int bpm)
     {
         if (bpm >= 200)
         {

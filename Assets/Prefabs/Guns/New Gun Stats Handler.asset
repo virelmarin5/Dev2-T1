@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d822f7a4fbe68094582ceeceb4202d83, type: 3}
-  m_Name: Shotgun_E
+  m_Script: {fileID: 11500000, guid: 5c174fbcdeba43c4090681a37aff5cb5, type: 3}
+  m_Name: New Gun Stats Handler
   m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
   gunModel: {fileID: 8717583648762425340, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
   bullet: {fileID: 6785665511576398920, guid: bacd048df770cf842a08b0e32a576112, type: 3}
   shootDamage: 1
-  shootDist: 5
+  shootDist: 141
   shootRate: 0.1
-  ammoCur: 28
-  ammoMax: 36
+  ammoCur: -8
+  ammoMax: 2
   magDumpSound: {fileID: 0}
   magDumpSoundVol: 0
   shootSound: {fileID: 0}

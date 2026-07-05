@@ -13,7 +13,7 @@ public class gunStatsHandler : ScriptableObject
     [Range(0.1f, 2)] public float shootRate;
 
     public int ammoCur;
-    [Range(5, 50)] public int ammoMax;
+    [Range(2, 50)] public int ammoMax;
 
     public AudioClip magDumpSound;
     [Range(0, 1)] public float magDumpSoundVol;
