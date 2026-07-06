@@ -271,6 +271,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1902338030661358969, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8515816587434212115, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.363763
@@ -281,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8515816587434212115, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.844742
+      value: -19.841
       objectReference: {fileID: 0}
     - target: {fileID: 8515816587434212115, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -315,10 +319,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotGun_E
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1902338030661358969, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8717583648762425340, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1684350808}
   m_SourcePrefab: {fileID: 100100000, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
 --- !u!1001 &148875867
 PrefabInstance:
@@ -1644,6 +1652,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4185166290256006, guid: 1e4f0d9e7dbf221419b0bd0e1286aa16, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.409
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2652,6 +2664,8 @@ GameObject:
   - component: {fileID: 1667845079}
   - component: {fileID: 1667845078}
   - component: {fileID: 1667845080}
+  - component: {fileID: 1667845081}
+  - component: {fileID: 1667845082}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2707,10 +2721,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::timeManager
   minTimeScale: 0.1
-  maxTimeScale: 10
-  moveMaxTimeScale: 0
+  maxTimeScale: 3.5
+  moveMaxTimeScale: 1.3
   timeScaleSmoothing: 1
   bpmInfluence: 1
+--- !u!114 &1667845081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667845077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52b5e83b85708345a2f81eb37ae815e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::heartbeatManager
+  restingBPM: 20
+  maxBPM: 200
+  currentBPM: 0
+  currentStress: 0
+  maxStress: 200
+  stressDecayRate: 15
+  shootStress: 5
+  damageStress: 75
+  nearMissStress: 10
+  killStressReduction: 20
+  waveStressReduction: 35
+--- !u!114 &1667845082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667845077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b942d49b7f30649b6fb299653bc060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::waveManager
+  currentWave: 0
+  maxWaves: 0
+  startingEnemies: 0
+  enemiesAddedPerWave: 0
+  timeBetweenWaves: 0
+  timeBetweenSpawns: 0
+  enemyPrefabs: []
+  spawnPoints: []
+  enemiesAlive: 0
+  waveInProgress: 0
+--- !u!1 &1684350804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8717583648762425340, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
+  m_PrefabInstance: {fileID: 136533542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1684350808
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684350804}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 1.45
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.03, z: 0.25}
 --- !u!1 &1734269233 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7407818332421335580, guid: 7964d0a02e708004483b752834885f69, type: 3}
@@ -2930,7 +3017,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -2940,7 +3027,7 @@ MonoBehaviour:
   m_TileSize: 256
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
-  m_MinRegionArea: 0.09
+  m_MinRegionArea: 0
   m_NavMeshData: {fileID: 23800000, guid: 631fe014643a0b94590a008530e131fa, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1918033540
