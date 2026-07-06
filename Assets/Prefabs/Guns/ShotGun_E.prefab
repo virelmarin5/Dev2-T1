@@ -550,7 +550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8515816587434212115}
   - component: {fileID: 1050039228289076912}
-  - component: {fileID: 1902338030661358969}
+  - component: {fileID: 6241004292846943707}
   m_Layer: 0
   m_Name: ShotGun_E
   m_TagString: Untagged
@@ -593,8 +593,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pickGun
   gun: {fileID: 11400000, guid: e8a1f1f0258dae84b8e973dca9b4e191, type: 2}
---- !u!135 &1902338030661358969
-SphereCollider:
+--- !u!136 &6241004292846943707
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -611,9 +611,11 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 1.45
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.03, z: 0.25}
 --- !u!1001 &1503884051333249716
 PrefabInstance:
   m_ObjectHideFlags: 0
