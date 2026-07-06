@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: AR
   m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
   gunModel: {fileID: 3758765654845558415, guid: 696a8b8b3b36a8440afcaa6684733645, type: 3}
+  weaponType: 0
   bullet: {fileID: 6785665511576398920, guid: bacd048df770cf842a08b0e32a576112, type: 3}
   shootDamage: 1
   shootDist: 5
   shootRate: 0.1
-  ammoCur: 25
+  pelletCount: 1
+  spreadAngle: 0
+  ammoCur: 19
   ammoMax: 30
   magDumpSound: {fileID: 0}
   magDumpSoundVol: 0

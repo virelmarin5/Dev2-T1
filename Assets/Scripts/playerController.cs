@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class playerController : MonoBehaviour, IDamage, IPickGun
 {
@@ -14,6 +15,7 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
 
     [SerializeField] gunStatsHandler currGun;
     [SerializeField] GameObject gunHoldPos;
+    [SerializeField] GameObject shotgun;
 
     [SerializeField] AudioSource audPlayer;
     [SerializeField] AudioClip[] audJump;
@@ -94,28 +96,36 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
     {
         shootTimer = 0;
 
-        currGun.ammoCur--;
-
-        if (currGun.ammoCur <= 0)
+        //Check for melee weapon
+        if (currGun.weaponType != gunStatsHandler.WeaponType.Melee)
         {
-            audPlayer.PlayOneShot(currGun.magDumpSound, currGun.magDumpSoundVol);
-            return;
+            if (currGun.ammoCur <= 0)
+            {
+                audPlayer.PlayOneShot(currGun.magDumpSound, currGun.magDumpSoundVol);
+                return;
+            }
+            currGun.ammoCur--;
         }
 
-        Instantiate(currGun.bullet, gunBarrel.position, gunBarrel.rotation);
-
-        audPlayer.PlayOneShot(currGun.shootSound, currGun.shootSoundVol);
-
-        RaycastHit hit;
-        if (Physics.Raycast(gunBarrel.transform.position, gunBarrel.transform.forward, out hit, currGun.shootDist))
+        switch (currGun.weaponType)
         {
-            IDamage dmg = hit.transform.GetComponent<IDamage>();
-            if (dmg != null)
-                dmg.takeDamage(currGun.shootDamage);
+            case gunStatsHandler.WeaponType.Gun:
+                ShootBullet();
+                break;
+            case gunStatsHandler.WeaponType.Shotgun:
+                ShootShotgun();
+                break;
+            case gunStatsHandler.WeaponType.Melee:
+                SwingKitana();
+                break;
+            case gunStatsHandler.WeaponType.Throwable:
+                ThrowKunai();
+                break;
+                
         }
     }
 
-    public void gunStatsHandler(gunStatsHandler gun)
+    public void gunSwitcher(gunStatsHandler gun)
     {
         // Replace the current gun with the newly picked up one
         currGun = gun;
@@ -168,4 +178,39 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
         return Mathf.Max(horPercent, vertPercent);
     }
 
+    Vector3 GetSpreadDirection(Vector3 forward, float angle)
+    {
+        float randomX = Random.Range(-angle, angle);
+        float randomY = Random.Range(-angle, angle);
+
+        Quaternion rotation = Quaternion.Euler(randomX, randomY, 0);
+        return rotation * forward;
+    }
+
+    void ShootBullet()
+    {
+        Instantiate(currGun.bullet, gunBarrel.position, gunBarrel.rotation);
+    }
+    void ShootShotgun()
+    {
+        for (int i = 0; i < currGun.pelletCount; i++)
+        {
+            Vector3 dir = GetSpreadDirection(gunBarrel.forward, currGun.spreadAngle);
+            Instantiate(currGun.bullet, gunBarrel.position, Quaternion.LookRotation(dir));
+        }
+    }
+    void SwingKitana()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(gunBarrel.transform.position, gunBarrel.transform.forward, out hit, currGun.shootDist))
+        {
+            IDamage dmg = hit.transform.GetComponent<IDamage>();
+            if (dmg != null)
+                dmg.takeDamage(currGun.shootDamage);
+        }
+    }
+    void ThrowKunai()
+    {
+        Instantiate(currGun.bullet, gunBarrel.position, gunBarrel.rotation);
+    }
 }

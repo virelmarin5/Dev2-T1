@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
   gunModel: {fileID: 1332418370441800410, guid: 597740afc43e3b14cb36ca8d35973e94, type: 3}
+  weaponType: 0
   bullet: {fileID: 6785665511576398920, guid: bacd048df770cf842a08b0e32a576112, type: 3}
   shootDamage: 1
   shootDist: 5
   shootRate: 0.1
+  pelletCount: 1
+  spreadAngle: 0
   ammoCur: -2
   ammoMax: 7
   magDumpSound: {fileID: 0}
