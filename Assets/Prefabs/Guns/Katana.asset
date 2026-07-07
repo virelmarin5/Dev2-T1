@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c174fbcdeba43c4090681a37aff5cb5, type: 3}
-  m_Name: Kitana
+  m_Name: Katana
   m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
   gunModel: {fileID: 2487111184960852009, guid: aac39ade7406a0343a7dd7fac8f3b785, type: 3}
   weaponType: 2
