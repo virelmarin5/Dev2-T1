@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class BasicEnemy : EnemyBase
 {
     [Header("Melee Attack")]
-    [SerializeField] private float attackRange = 2f;
+    [SerializeField] private float attackRange = 4f;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackRate = 1f;
     [SerializeField] private float stoppingDistance = 1.5f;
