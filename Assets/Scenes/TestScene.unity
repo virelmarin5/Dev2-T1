@@ -675,6 +675,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: quit
       objectReference: {fileID: 0}
+    - target: {fileID: 1724744111986075778, guid: 7964d0a02e708004483b752834885f69, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 2732987362252320230, guid: 7964d0a02e708004483b752834885f69, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -691,13 +695,29 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: resume
       objectReference: {fileID: 0}
+    - target: {fileID: 5378992384292451344, guid: 7964d0a02e708004483b752834885f69, type: 3}
+      propertyPath: m_Name
+      value: currentKills
+      objectReference: {fileID: 0}
     - target: {fileID: 6289217790293158761, guid: 7964d0a02e708004483b752834885f69, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7069867174789211653, guid: 7964d0a02e708004483b752834885f69, type: 3}
+      propertyPath: m_fontSize
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 7069867174789211653, guid: 7964d0a02e708004483b752834885f69, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 7407818332421335580, guid: 7964d0a02e708004483b752834885f69, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8046041240769010481, guid: 7964d0a02e708004483b752834885f69, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8819493970705541610, guid: 7964d0a02e708004483b752834885f69, type: 3}
       propertyPath: m_Pivot.x
@@ -780,7 +800,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4041108038039328821, guid: 7964d0a02e708004483b752834885f69, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8819493970705541610, guid: 7964d0a02e708004483b752834885f69, type: 3}
       insertIndex: -1
@@ -3018,6 +3039,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8046041240769010481, guid: 7964d0a02e708004483b752834885f69, type: 3}
   m_PrefabInstance: {fileID: 391295676}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1376280838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7069867174789211653, guid: 7964d0a02e708004483b752834885f69, type: 3}
+  m_PrefabInstance: {fileID: 391295676}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1436737229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3368,6 +3400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::killScoreUI
   killCounter: {fileID: 535566886}
   waveCounter: {fileID: 2132669923}
+  pauseKills: {fileID: 1376280838}
 --- !u!1 &1786538950 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3768806858257858169, guid: 6c8048cf7ced2274fb5617e126e8254a, type: 3}
