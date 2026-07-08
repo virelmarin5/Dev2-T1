@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 5647700884096718631}
   - component: {fileID: 2814497438177708749}
   - component: {fileID: 7083418051938216941}
-  m_Layer: 0
+  - component: {fileID: 1084014894418794584}
+  m_Layer: 6
   m_Name: Bullet_Pistol_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +72,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6152012165266093810}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -247,9 +248,32 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!136 &1084014894418794584
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6152012165266093810}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.012499999
+  m_Height: 0.05
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.006}
 --- !u!1 &8849644791493623283
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +285,7 @@ GameObject:
   - component: {fileID: 3650473788905792028}
   - component: {fileID: 8653671056117806058}
   - component: {fileID: 2937224812861430432}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet_Pistol_A_Part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
