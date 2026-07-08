@@ -17,7 +17,7 @@ MonoBehaviour:
   shootDamage: 1
   shootDist: 141
   shootRate: 0.1
-  ammoCur: -8
+  ammoCur: 1
   ammoMax: 2
   magDumpSound: {fileID: 0}
   magDumpSoundVol: 0
