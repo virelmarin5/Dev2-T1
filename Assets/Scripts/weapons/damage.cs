@@ -7,11 +7,11 @@ public class damage : MonoBehaviour
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
 
-    [SerializeField] int damageAmount;
-    [SerializeField] float damageRate;
-    [SerializeField] int bulletSpeed;
-    [SerializeField] int bulletDestroyTime;
-    [SerializeField] float throwableLifetime = 5f;
+    [Range(1, 10)][SerializeField] int damageAmount;
+    [Range(.1f, 10)][SerializeField] float damageRate;
+    [Range(10, 80)][SerializeField] int bulletSpeed;
+    [Range(.1f, 20)][SerializeField] int bulletDestroyTime;
+    [Range(.1f, 20)][SerializeField] float throwableLifetime = 5f;
     [SerializeField] ParticleSystem hitEffect;
 
     bool isDamaging;

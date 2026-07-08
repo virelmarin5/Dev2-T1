@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2472196639992590706}
   - component: {fileID: -1008867343321482605}
   m_Layer: 9
-  m_Name: Bullet_Pistol_A
+  m_Name: Bullet_Pistol
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,8 +247,8 @@ MonoBehaviour:
   rb: {fileID: -2472196639992590706}
   damageAmount: 1
   damageRate: 0
-  bulletSpeed: 0
-  bulletDestroyTime: 0
+  bulletSpeed: 45
+  bulletDestroyTime: 4
   throwableLifetime: 5
   hitEffect: {fileID: 0}
 --- !u!1 &8849644791493623283

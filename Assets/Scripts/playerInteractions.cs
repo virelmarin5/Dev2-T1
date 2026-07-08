@@ -4,7 +4,7 @@ public class playerInteraction : MonoBehaviour
 {
     [Header("Raycast Settings")]
     [SerializeField] private LayerMask interactableLayer;
-    [SerializeField] private float maxDistance = 3f;
+    [Range(1f, 5)][SerializeField] private float maxDistance = 2f;
 
     private void Update()
     {
@@ -13,7 +13,11 @@ public class playerInteraction : MonoBehaviour
             weaponManager.instance.attack();
         }
 
-        // 3. Handle Raycast Interaction
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            weaponManager.instance.throwCurrentWeapon();
+        }
+
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hit;
 
@@ -25,12 +29,8 @@ public class playerInteraction : MonoBehaviour
             {
                 // Attempt to grab the pickWeapon component from the target directly
                 if (hitObject.TryGetComponent<pickWeapon>(out var weaponPickup))
-                {
                     if (TryGetComponent<IPickWeapon>(out var picker))
-                    {
                         weaponPickup.interact(picker);
-                    }
-                }
             }
         }
     }

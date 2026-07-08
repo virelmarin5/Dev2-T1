@@ -4,8 +4,8 @@ using UnityEngine;
 public class meleeStats : weaponStats
 {
     [Header("Damage")]
-    [Range(1, 10)] public int attackDamage;
-    [Range(5, 50)] public int attackDist;
+    [Range(1, 10)][SerializeField] public int attackDamage;
+    [Range(5, 10)][SerializeField] public int attackDist;
 
     [Header("Audio")]
     public AudioClip swingSound;
