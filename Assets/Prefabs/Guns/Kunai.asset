@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c174fbcdeba43c4090681a37aff5cb5, type: 3}
-  m_Name: Shotgun
+  m_Name: Kunai
   m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
-  gunModel: {fileID: 8717583648762425340, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
-  weaponType: 1
-  bullet: {fileID: 5732129580995377324, guid: 1cd4eb58d12b33f4293b30bb028d54a2, type: 3}
-  shootDamage: 1
-  shootDist: 141
-  shootRate: 0.1
-  pelletCount: 20
-  spreadAngle: 10
-  ammoCur: 46
-  ammoMax: 50
+  gunModel: {fileID: 1838565329862472463, guid: 0ec93dd7caa6bd04ab684823f0976004, type: 3}
+  weaponType: 0
+  bullet: {fileID: 4097660117758756336, guid: 6575a8d0825dda84ab568d86108dd552, type: 3}
+  shootDamage: 10
+  shootDist: 50
+  shootRate: 0.3
+  pelletCount: 1
+  spreadAngle: 0
+  ammoCur: 0
+  ammoMax: 3
   magDumpSound: {fileID: 0}
   magDumpSoundVol: 0
   shootSound: {fileID: 0}

@@ -5,12 +5,19 @@ using UnityEngine;
 public class gunStatsHandler : ScriptableObject
 {
     public GameObject gunModel;
+    public enum WeaponType { Gun, Shotgun, Melee, Throwable };
+    public WeaponType weaponType;
 
     [SerializeField] public Transform bullet;
+    
 
     [Range(1, 10)] public int shootDamage;
     [Range(5, 1000)] public int shootDist;
     [Range(0.1f, 2)] public float shootRate;
+    [Range(1, 20)] public int pelletCount;
+    [Range(0f, 20f)] public float spreadAngle;
+    
+
 
     public int ammoCur;
     [Range(2, 50)] public int ammoMax;

@@ -16,14 +16,10 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
 
-    float timeScaleOrig;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         instance = this;
-        //timeScaleOrig = Time.timeScale;
-        timeScaleOrig = timeManager.defaultTimeScale;
         player = GameObject.FindWithTag("Player");
 
         playerScript = player.GetComponent<playerController>();
@@ -50,9 +46,8 @@ public class gameManager : MonoBehaviour
     // Pause the game
     public void statePause()
     {
-        timeScaleOrig = timeManager.getTimeScale();
         isPaused = true;
-        Time.timeScale = 0;
+        timeManager.pauseTime();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -61,20 +56,17 @@ public class gameManager : MonoBehaviour
     public void stateUnpause()
     {
         isPaused = false;
-        Time.timeScale = timeScaleOrig;
+        timeManager.unpauseTime();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
     }
 
-    // Update the heart rate and check for lose condition
+    // Update the heart rate in UI only, moving it to just heartBeatManager
     public void updateHeartRate(int bpm)
     {
-        if (bpm >= 200)
-        {
-            stateLose();
-        }
+        // Update the heart rate in the UI (not implemented here)
     }
 
     // Handle the lose state

@@ -1,4 +1,4 @@
 public interface IPickGun
 {
-    public void gunStatsHandler(gunStatsHandler gun) {}
+    public void gunSwitcher(gunStatsHandler gun) {}
 }

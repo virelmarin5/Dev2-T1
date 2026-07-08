@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    [SerializeField] float bulletSpeed;
+    [SerializeField]public float bulletSpeed;
     [SerializeField] float lifetime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,7 +15,7 @@ public class bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //makes bullet move forward
+       
         transform.position += transform.forward * bulletSpeed * Time.deltaTime;
     }
 }

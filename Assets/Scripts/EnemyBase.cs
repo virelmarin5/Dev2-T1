@@ -6,7 +6,7 @@ using System.Collections;
 public abstract class EnemyBase : MonoBehaviour, IDamage
 {
     [Header("Health")]
-    [SerializeField] protected int maxHP = 2;
+    [SerializeField] protected int maxHP = 10;
     protected int currentHP;
 
     [Header("Movement")]
