@@ -15,9 +15,9 @@ MonoBehaviour:
   weaponModel: {fileID: 5206027675997213250, guid: eba6cb08ef6755948b7eeea05d75f594, type: 3}
   attackRate: 0.1
   throwForce: 30
-  gunType: 0
-  bullet: {fileID: 6785665511576398920, guid: 9f60870aab0840a468a2f978f22e7c2b, type: 3}
+  gunType: 1
+  bullet: {fileID: 6785665511576398920, guid: d7a56a45ac2dccc428d4ccc0215f14bd, type: 3}
   pelletCount: 2
   spreadAngle: 0.2
-  shootSound: {fileID: 0}
-  shootSoundVol: 0
+  shootSound: {fileID: 8300000, guid: eb14dd355801c574fb7cc4560bd941b7, type: 3}
+  shootSoundVol: 1

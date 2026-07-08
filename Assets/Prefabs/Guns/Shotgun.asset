@@ -17,11 +17,7 @@ MonoBehaviour:
   throwForce: 30
   gunType: 2
   bullet: {fileID: 6785665511576398920, guid: 9f60870aab0840a468a2f978f22e7c2b, type: 3}
-  magazineSize: 8
-  totalMagazines: 3
-  ammoCur: 0
-  ammoMax: 0
   pelletCount: 2
   spreadAngle: 0.8
-  shootSound: {fileID: 0}
-  shootSoundVol: 0
+  shootSound: {fileID: 8300000, guid: 47868e1f8b04e6f4593caf710f8a4054, type: 3}
+  shootSoundVol: 1

@@ -18,12 +18,11 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     [SerializeField] float pushbackFriction = 5f;
 
     [Header("Audio Settings")]    
-    [SerializeField] AudioSource audPlayer;
-    [SerializeField] AudioClip[] audJump;
+    [SerializeField] AudioClip audJump;
     [Range(0, 1)][SerializeField] float audJumpVol;
-    [SerializeField] AudioClip[] audHurt;
+    [SerializeField] AudioClip audHurt;
     [Range(0, 1)][SerializeField] float audHurtVol;
-    [SerializeField] AudioClip[] audSteps;
+    [SerializeField] AudioClip audSteps;
     [Range(0, 1)][SerializeField] float audStepsVol;
 
     int jumpCount;
@@ -58,6 +57,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         }
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
         int  currSpeed = Input.GetButton("Sprint") ? speed * sprintMod : speed;
+        audioManager.instance.playSFX(audSteps, audStepsVol);
         controller.Move(moveDir * currSpeed * Time.deltaTime);
 
         jump();
@@ -73,6 +73,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     {
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
+            audioManager.instance.playSFX(audJump, audJumpVol);
             playerVel.y = jumpSpeed;
             jumpCount++;
         }
@@ -80,6 +81,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 
     public void takeDamage(int amount)
     {
+        audioManager.instance.playSFX(audHurt, audHurtVol);
         HP -= amount;
 
         if (HP <= 0)

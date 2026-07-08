@@ -6,6 +6,12 @@ public class playerInteraction : MonoBehaviour
     [SerializeField] private LayerMask interactableLayer;
     [Range(1f, 5)][SerializeField] private float maxDistance = 2f;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip equip;
+    [Range(0, 1)][SerializeField] float equipVol;
+    [SerializeField] AudioClip throwSFX;
+    [Range(0, 1)][SerializeField] float throwSFXVol;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -15,6 +21,7 @@ public class playerInteraction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
+            audioManager.instance.playSFX(throwSFX, throwSFXVol);
             weaponManager.instance.throwCurrentWeapon();
         }
 
@@ -30,7 +37,10 @@ public class playerInteraction : MonoBehaviour
                 // Attempt to grab the pickWeapon component from the target directly
                 if (hitObject.TryGetComponent<pickWeapon>(out var weaponPickup))
                     if (TryGetComponent<IPickWeapon>(out var picker))
+                    {
+                        audioManager.instance.playSFX(equip, equipVol);
                         weaponPickup.interact(picker);
+                    }
             }
         }
     }

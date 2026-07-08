@@ -42,8 +42,12 @@ public class weaponManager : MonoBehaviour
             Destroy(spawnedWeaponModel);
         }
 
+        activeWeapon = newWeapon;
         // Spawn model directly to target
         spawnedWeaponModel = Instantiate(newWeapon.weaponModel, weaponHoldPos.transform, false);
+
+        spawnedWeaponModel.transform.localPosition = Vector3.zero;
+        spawnedWeaponModel.transform.localRotation = Quaternion.identity;
 
         if (spawnedWeaponModel.TryGetComponent<Collider>(out var col)) col.enabled = false;
 

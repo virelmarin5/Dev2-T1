@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7083418051938216941}
   - component: {fileID: -4556469719132000074}
   m_Layer: 9
-  m_Name: Bullet_Pistol
+  m_Name: Bullet_AssaultRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,11 +52,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::damage
   type: 0
   rb: {fileID: 7083418051938216941}
-  damageAmount: 1
+  damageAmount: 2
   damageRate: 0.1
-  bulletSpeed: 45
-  bulletDestroyTime: 3
-  throwableLifetime: 5
+  bulletSpeed: 60
+  bulletDestroyTime: 4
+  throwableLifetime: 0.1
   hitEffect: {fileID: 970440554703164915, guid: 8d2e6d44cc5f25f469ad05556e0d50ca, type: 3}
 --- !u!33 &7603304608557851629
 MeshFilter:
