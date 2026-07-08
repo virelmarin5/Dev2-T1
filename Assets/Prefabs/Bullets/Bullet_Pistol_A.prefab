@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6785665511576398920}
-  - component: {fileID: -2351728406301250248}
   - component: {fileID: 7603304608557851629}
   - component: {fileID: 5647700884096718631}
   - component: {fileID: 2814497438177708749}
   - component: {fileID: -2472196639992590706}
-  m_Layer: 0
+  - component: {fileID: -1008867343321482605}
+  m_Layer: 9
   m_Name: Bullet_Pistol_A
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -37,20 +37,6 @@ Transform:
   - {fileID: 3650473788905792028}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2351728406301250248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6152012165266093810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4171de157f6f78941841bf5b7d3628e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::bullet
-  bulletSpeed: 3
-  lifetime: 5
 --- !u!33 &7603304608557851629
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -245,6 +231,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1008867343321482605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6152012165266093810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ff2f9e2b40a9844b285415edfbfd90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::damage
+  type: 0
+  rb: {fileID: -2472196639992590706}
+  damageAmount: 1
+  damageRate: 0
+  bulletSpeed: 0
+  bulletDestroyTime: 0
+  throwableLifetime: 5
+  hitEffect: {fileID: 0}
 --- !u!1 &8849644791493623283
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +262,7 @@ GameObject:
   - component: {fileID: 3650473788905792028}
   - component: {fileID: 8653671056117806058}
   - component: {fileID: 2937224812861430432}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet_Pistol_A_Part
   m_TagString: Untagged
   m_Icon: {fileID: 0}

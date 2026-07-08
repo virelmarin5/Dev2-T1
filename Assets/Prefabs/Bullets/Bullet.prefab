@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2336958174357376635}
   - component: {fileID: 8015349672693337488}
   - component: {fileID: 3714383914055521249}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -74,6 +74,7 @@ MonoBehaviour:
   damageRate: 0
   bulletSpeed: 25
   bulletDestroyTime: 3
+  throwableLifetime: 5
   hitEffect: {fileID: 0}
 --- !u!54 &8015349672693337488
 Rigidbody:

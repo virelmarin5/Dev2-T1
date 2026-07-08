@@ -47,7 +47,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -62,10 +62,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5051246774543896856}
+  - component: {fileID: 990381130218873160}
   - component: {fileID: 8193870405434990269}
   - component: {fileID: 6220191202861984375}
   - component: {fileID: 2056851106010840028}
-  - component: {fileID: 990381130218873160}
   m_Layer: 8
   m_Name: M1918Bar
   m_TagString: Untagged
@@ -89,6 +89,19 @@ Transform:
   - {fileID: 3720649872072836793}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &990381130218873160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571641588984482722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfa744229b8a6b4abdf76f3a04dc336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::pickWeapon
+  weapon: {fileID: 11400000, guid: 6961488233b7cd546a41fd28e71e3530, type: 2}
 --- !u!33 &8193870405434990269
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -169,16 +182,3 @@ CapsuleCollider:
   m_Height: 3.2
   m_Direction: 2
   m_Center: {x: -0.018376306, y: -0.11330216, z: 0.16474873}
---- !u!114 &990381130218873160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5571641588984482722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dfa744229b8a6b4abdf76f3a04dc336, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::pickWeapon
-  weapon: {fileID: 11400000, guid: 6961488233b7cd546a41fd28e71e3530, type: 2}

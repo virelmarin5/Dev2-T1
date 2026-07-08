@@ -3,7 +3,7 @@ using System.Collections;
 
 public class damage : MonoBehaviour
 {
-    enum damageType { bullet, stationary, DOT }
+    enum damageType { bullet, stationary, DOT, throwable}
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
 
@@ -11,6 +11,7 @@ public class damage : MonoBehaviour
     [SerializeField] float damageRate;
     [SerializeField] int bulletSpeed;
     [SerializeField] int bulletDestroyTime;
+    [SerializeField] float throwableLifetime = 5f;
     [SerializeField] ParticleSystem hitEffect;
 
     bool isDamaging;
@@ -43,7 +44,14 @@ public class damage : MonoBehaviour
                 Instantiate(hitEffect, transform.position, Quaternion.identity);
             }
 
-            Destroy(gameObject);
+            if (type == damageType.bullet)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject, throwableLifetime);
+            }
         }
     }
 
