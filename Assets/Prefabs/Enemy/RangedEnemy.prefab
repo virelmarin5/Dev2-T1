@@ -279,7 +279,7 @@ MonoBehaviour:
   faceTargetSpeed: 8
   model: {fileID: 3262802430056639548}
   flashMaterial: {fileID: 2100000, guid: 76ac4f5b15e2272408d01f4606bff9c7, type: 2}
-  bullet: {fileID: 6152012165266093810, guid: bacd048df770cf842a08b0e32a576112, type: 3}
+  bullet: {fileID: 6152012165266093810, guid: d7a56a45ac2dccc428d4ccc0215f14bd, type: 3}
   gunPivot: {fileID: 7980070263694380636}
   shootPos: {fileID: 7070603407456855050}
   shootRate: 0.5

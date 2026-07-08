@@ -9,19 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c174fbcdeba43c4090681a37aff5cb5, type: 3}
-  m_Name: New Gun Stats Handler
-  m_EditorClassIdentifier: Assembly-CSharp::gunStatsHandler
-  gunModel: {fileID: 8717583648762425340, guid: 4a9b23c4cf0345b449148b7c6384abd5, type: 3}
-  bullet: {fileID: 6785665511576398920, guid: bacd048df770cf842a08b0e32a576112, type: 3}
-  shootDamage: 1
-  shootDist: 141
-  shootRate: 0.1
-  ammoCur: 1
-  ammoMax: 2
-  magDumpSound: {fileID: 0}
-  magDumpSoundVol: 0
-  shootSound: {fileID: 0}
-  shootSoundVol: 0
-  reloadSound: []
-  reloadSoundVol: 0
+  m_Script: {fileID: 11500000, guid: a4636424b6eb53a499a9a76a72d3ba85, type: 3}
+  m_Name: AR
+  m_EditorClassIdentifier: Assembly-CSharp::gunStats
+  weaponModel: {fileID: 5206027675997213250, guid: eba6cb08ef6755948b7eeea05d75f594, type: 3}
+  attackRate: 0.1
+  throwForce: 30
+  gunType: 1
+  bullet: {fileID: 6785665511576398920, guid: d7a56a45ac2dccc428d4ccc0215f14bd, type: 3}
+  pelletCount: 2
+  spreadAngle: 0.2
+  shootSound: {fileID: 8300000, guid: eb14dd355801c574fb7cc4560bd941b7, type: 3}
+  shootSoundVol: 1
