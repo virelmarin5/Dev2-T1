@@ -23,6 +23,10 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
     [SerializeField] AudioClip[] audSteps;
     [Range(0, 1)][SerializeField] float audStepsVol;
 
+
+    [SerializeField] float pushbackForce = 5f;
+    [SerializeField] float pushbackFriction = 5f;
+
     Transform gunBarrel;
 
     float shootTimer;
@@ -45,7 +49,11 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
     {
         movement();
     }
-
+    public void PushBack(Vector3 direction)
+    {
+        // CharacterController can be moved directly
+        playerVel += direction * pushbackForce;
+    }
     void movement()
     {
         if (controller.isGrounded)
@@ -60,6 +68,9 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
         jump();
 
         controller.Move(playerVel * Time.deltaTime);
+
+        playerVel.x = Mathf.MoveTowards(playerVel.x, 0, pushbackFriction * Time.deltaTime);
+        playerVel.z = Mathf.MoveTowards(playerVel.z, 0, pushbackFriction * Time.deltaTime);
         playerVel.y -= gravity * Time.deltaTime;
 
         shootTimer += Time.deltaTime;

@@ -1,21 +1,59 @@
 using UnityEngine;
 
-public class bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    [SerializeField] float bulletSpeed;
-    [SerializeField] float lifetime;
+    [SerializeField] private float speed = 50f;
+    [SerializeField] private float lifetime = 3f;
+    [SerializeField] private int damage = 10;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Vector3 moveDirection;
+    private bool isDeflected = false;
+    private float timer;
+
     void Start()
     {
-        //destroy bullet after "lifetime" seconds
-        Destroy(gameObject, lifetime);
+        moveDirection = transform.forward;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //makes bullet move forward
-        transform.position += transform.forward * bulletSpeed * Time.deltaTime;
+        timer += Time.deltaTime;
+        if (timer >= lifetime)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // Move bullet
+        transform.position += moveDirection * speed * Time.deltaTime;
+    }
+
+    /// <summary>
+    /// Call this when the bullet is deflected by a shield
+    /// </summary>
+    public void Deflect(Vector3 newDirection)
+    {
+        moveDirection = newDirection;
+        transform.rotation = Quaternion.LookRotation(newDirection);
+        isDeflected = true;
+
+        // Optional: change bullet color to show deflection
+        // Or change layer so it can now damage enemies
+        gameObject.layer = LayerMask.NameToLayer("DeflectedBullet");
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // Don't hit the shooter
+        if (other.CompareTag("Enemy") && !isDeflected) return;
+
+        IDamage dmg = other.GetComponent<IDamage>();
+        if (dmg != null)
+        {
+            dmg.takeDamage(damage);
+        }
+
+        // Destroy on impact
+        Destroy(gameObject);
     }
 }
