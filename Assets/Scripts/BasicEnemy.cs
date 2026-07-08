@@ -10,6 +10,7 @@ public class BasicEnemy : EnemyBase
     [SerializeField] private float stoppingDistance = 1.5f;
 
     private float attackTimer;
+    private killChainManager killChain;
 
     protected override  void  Start()
     {
@@ -70,7 +71,7 @@ public class BasicEnemy : EnemyBase
         damageable?.takeDamage(attackDamage);
     }
 
-    protected override void OnDeath() { }
+    protected override void OnDeath() { FindAnyObjectByType<killChainManager>().RegisterKill(); }
 
     protected override void Update()
     {
