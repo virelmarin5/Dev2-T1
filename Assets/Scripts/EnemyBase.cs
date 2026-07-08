@@ -93,11 +93,13 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     {
         // Hook this up to your WaveManager, e.g.:
         // WaveManager.Instance?.OnEnemyDied(this);
+        waveManager.instance.enemyKilled();
     }
 
     protected virtual void OnDeath()
     {
         // Override in subclass for particles, audio, etc.
+        
     }
 
     protected virtual IEnumerator FlashBlack()
