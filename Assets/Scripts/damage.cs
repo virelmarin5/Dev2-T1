@@ -47,6 +47,8 @@ public class damage : MonoBehaviour
         }
     }
 
+
+    // DOT damage, we do not use it right now
     private void OnTriggerStay(Collider other)
     {
         if (other.isTrigger)
@@ -59,6 +61,7 @@ public class damage : MonoBehaviour
         }
     }
 
+    // Coroutine to handle damage over time, we do not use it right now
     IEnumerator damageOther(IDamage d)
     {
         isDamaging = true;

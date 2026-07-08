@@ -6,7 +6,7 @@ using System.Collections;
 public abstract class EnemyBase : MonoBehaviour, IDamage
 {
     [Header("Health")]
-    [SerializeField] protected int maxHP = 2;
+    [SerializeField] protected int maxHP = 10;
     protected int currentHP;
 
     [Header("Movement")]
@@ -93,11 +93,13 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     {
         // Hook this up to your WaveManager, e.g.:
         // WaveManager.Instance?.OnEnemyDied(this);
+        waveManager.instance.enemyKilled();
     }
 
     protected virtual void OnDeath()
     {
         // Override in subclass for particles, audio, etc.
+        
     }
 
     protected virtual IEnumerator FlashBlack()
