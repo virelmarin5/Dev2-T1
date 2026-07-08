@@ -22,6 +22,8 @@ public class killScoreUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI killCounter;
     [SerializeField] TextMeshProUGUI waveCounter;
     [SerializeField] TextMeshProUGUI pauseKills;
+    [SerializeField] TextMeshProUGUI gameOverKills;
+
 
     int currentKill;
     int currentScore;
@@ -61,6 +63,8 @@ public class killScoreUI : MonoBehaviour
         killCounter.text = "Kills: " + currentKill;
         pauseKills.text = "Kills: " + currentKill;
         waveCounter.text = "Wave: " + currentWave;
+        gameOverKills.text = "Final Kills: " + currentKill;
+
 
     }
 
