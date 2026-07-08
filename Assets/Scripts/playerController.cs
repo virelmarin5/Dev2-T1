@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -34,7 +35,8 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
 
     Vector3 moveDir;
     Vector3 playerVel;
-     
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -85,11 +87,20 @@ public class playerController : MonoBehaviour, IDamage, IPickGun
     public void takeDamage(int amount)
     {
         HP -= amount;
-
+        StartCoroutine(damageFlashUI());
         if (HP <= 0)
         {
             // dead
         }
+    }
+
+    IEnumerator damageFlashUI()
+    {
+        gameManager.instance.damageFlashUI.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.damageFlashUI.SetActive(false);
+       
+
     }
 
     void shoot()

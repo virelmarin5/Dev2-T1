@@ -12,6 +12,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] timeManager timeManager;
 
+    [Header("Screen Flash")]
+    public GameObject damageFlashUI; //Mark Fittante
+
     public bool isPaused;
     public GameObject player;
     public playerController playerScript;
