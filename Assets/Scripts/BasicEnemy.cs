@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,8 +9,13 @@ public class BasicEnemy : EnemyBase
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackRate = 1f;
     [SerializeField] private float stoppingDistance = 1.5f;
+    [SerializeField] GameObject weapon;
+    [SerializeField] Transform handPos;
 
+    private Quaternion katanaOrigRot;
+    private Transform katanaTransform;
     private float attackTimer;
+    private killChainManager killChain;
 
     protected override  void  Start()
     {
@@ -17,6 +23,13 @@ public class BasicEnemy : EnemyBase
 
         if (model != null)
             colorOrig = model.material.color;
+
+        GameObject weaponInstance = Instantiate(weapon, handPos);
+        weaponInstance.transform.localPosition = Vector3.zero;
+        weaponInstance.transform.localRotation = Quaternion.identity;
+
+        katanaTransform = weaponInstance.transform;
+        katanaOrigRot = katanaTransform.localRotation;
 
 
 
@@ -66,11 +79,12 @@ public class BasicEnemy : EnemyBase
 
     private void MeleeAttack()
     {
+        StartCoroutine(KatanaSwing());
         IDamage damageable = playerTransform.GetComponent<IDamage>();
         damageable?.takeDamage(attackDamage);
     }
 
-    protected override void OnDeath() { }
+    protected override void OnDeath() { FindAnyObjectByType<killChainManager>().RegisterKill(); }
 
     protected override void Update()
     {
@@ -85,5 +99,29 @@ public class BasicEnemy : EnemyBase
         playerDir = playerTransform.position - transform.position;
         FaceTarget();
         UpdateBehavior();
+    }
+
+    private IEnumerator KatanaSwing()
+    {
+        float duration = 0.1f;
+        float t = 0f;
+
+        Quaternion startRot = katanaOrigRot;
+        Quaternion endRot = katanaOrigRot * Quaternion.Euler(60f, 0f, 0f);
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            katanaTransform.localRotation = Quaternion.Lerp(startRot, endRot, t);
+            yield return null;
+        }
+
+        t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            katanaTransform.localRotation = Quaternion.Lerp(endRot, startRot, t);
+            yield return null;
+        }
     }
 }
