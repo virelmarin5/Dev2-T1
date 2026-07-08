@@ -162,11 +162,7 @@ public class heavyEnemy : EnemyBase
 
     // --- Death Override ---
 
-    protected override void OnDeath()
-    {
-        // Optional: shield drops, special death animation, particles
-        base.OnDeath();
-    }
+
 
     // --- Gizmos ---
 

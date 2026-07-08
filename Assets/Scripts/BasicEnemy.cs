@@ -84,7 +84,6 @@ public class BasicEnemy : EnemyBase
         damageable?.takeDamage(attackDamage);
     }
 
-    protected override void OnDeath() { FindAnyObjectByType<killChainManager>().RegisterKill(); }
 
     protected override void Update()
     {

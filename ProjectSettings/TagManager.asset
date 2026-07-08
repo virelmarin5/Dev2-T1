@@ -9,11 +9,13 @@ TagManager:
   - Handgun
   - AR
   - Bullet
+  - Shield
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Shield
   - Water
   - UI
   - Bullet

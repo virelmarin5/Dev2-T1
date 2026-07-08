@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 5261133990583353142}
   m_Layer: 0
   m_Name: RangedEnemy2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
   maxHP: 10
+  currentHP: 0
   faceTargetSpeed: 8
   model: {fileID: 3262802430056639548}
   flashMaterial: {fileID: 2100000, guid: 76ac4f5b15e2272408d01f4606bff9c7, type: 2}

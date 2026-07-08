@@ -1,8 +1,9 @@
 using UnityEngine;
-
+using TMPro;
 public class killChainManager : MonoBehaviour
 {
     [SerializeField] float chainTimeLimit = 3f;
+    [SerializeField] TextMeshProUGUI killChainCountUI;
 
     int killChainCount = 0;
     float killChainTimer = 0f;
@@ -11,6 +12,7 @@ public class killChainManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        killChainCountUI.text = "Killstreak: " + killChainCount;
         //only counts down if a chain is active
         if (killChainCount > 0)
         {
@@ -21,6 +23,7 @@ public class killChainManager : MonoBehaviour
                 ResetChain();
             }
         }
+
     }
 
     public void RegisterKill()

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3196185094836547733}
   m_Layer: 0
   m_Name: HeavyEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::heavyEnemy
   maxHP: 10
+  currentHP: 0
   faceTargetSpeed: 8
   model: {fileID: 5951394811543710336}
   flashMaterial: {fileID: 2100000, guid: 76ac4f5b15e2272408d01f4606bff9c7, type: 2}
@@ -213,6 +214,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 696908821628646986, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1345163317746289366, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5270187310177661260, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}
       propertyPath: m_Name
       value: Shield01_CheesePoliceBlue
@@ -220,28 +229,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5270187310177661260, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 4052300905710773242}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}
---- !u!1 &1414729538572220572 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5270187310177661260, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}
-  m_PrefabInstance: {fileID: 6521588751178680784}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4052300905710773242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414729538572220572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 663af1582d8dcca46b0f12f2b6c2ec69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShieldCollider
 --- !u!65 &5200439875552609030 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 1345163317746289366, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}

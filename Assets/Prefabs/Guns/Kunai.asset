@@ -20,8 +20,8 @@ MonoBehaviour:
   shootRate: 0.3
   pelletCount: 1
   spreadAngle: 0
-  ammoCur: 0
-  ammoMax: 3
+  ammoCur: 43
+  ammoMax: 50
   magDumpSound: {fileID: 0}
   magDumpSoundVol: 0
   shootSound: {fileID: 0}

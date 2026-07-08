@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4097660117758756336}
   - component: {fileID: 2975551096679564009}
   - component: {fileID: 8540789732029092115}
+  - component: {fileID: 659914139088891106}
+  - component: {fileID: 5743788114292685672}
   m_Layer: 0
   m_Name: KunaiProjectile
   m_TagString: Untagged
@@ -47,8 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4171de157f6f78941841bf5b7d3628e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::bullet
-  bulletSpeed: 5
+  speed: 50
   lifetime: 5
+  damage: 10
 --- !u!114 &8540789732029092115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +65,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pickGun
   gun: {fileID: 11400000, guid: ef7a53a17b68b474aa996e4a59d58c49, type: 2}
+--- !u!114 &659914139088891106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838565329862472463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ff2f9e2b40a9844b285415edfbfd90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::damage
+  type: 0
+  rb: {fileID: 5743788114292685672}
+  damageAmount: 10
+  damageRate: 0
+  bulletSpeed: 5
+  bulletDestroyTime: 3
+  hitEffect: {fileID: 0}
+--- !u!54 &5743788114292685672
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838565329862472463}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 2
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &2649408852515224312
 GameObject:
   m_ObjectHideFlags: 0

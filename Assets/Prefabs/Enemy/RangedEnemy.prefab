@@ -159,10 +159,9 @@ GameObject:
   - component: {fileID: 1602554364477588958}
   - component: {fileID: 5261133990583353142}
   - component: {fileID: 7931631704010347091}
-  - component: {fileID: 7906663402320664953}
   m_Layer: 0
   m_Name: RangedEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
   maxHP: 10
+  currentHP: 0
   faceTargetSpeed: 8
   model: {fileID: 3262802430056639548}
   flashMaterial: {fileID: 2100000, guid: 76ac4f5b15e2272408d01f4606bff9c7, type: 2}
@@ -327,27 +327,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7906663402320664953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521726833427132236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17fee492a531fe0428864f65b515dd0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
-  maxHP: 10
-  faceTargetSpeed: 8
-  model: {fileID: 3262802430056639548}
-  flashMaterial: {fileID: 2100000, guid: 76ac4f5b15e2272408d01f4606bff9c7, type: 2}
-  bullet: {fileID: 6152012165266093810, guid: bacd048df770cf842a08b0e32a576112, type: 3}
-  gunPivot: {fileID: 0}
-  shootPos: {fileID: 0}
-  shootRate: 0
-  gunRotateSpeed: 0
 --- !u!1001 &8248015331052967789
 PrefabInstance:
   m_ObjectHideFlags: 0

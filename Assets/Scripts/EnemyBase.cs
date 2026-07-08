@@ -7,7 +7,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 {
     [Header("Health")]
     [SerializeField] protected int maxHP = 10;
-    protected int currentHP;
+    [SerializeField] protected int currentHP;
 
     [Header("Movement")]
     [SerializeField] protected float faceTargetSpeed = 8f;
@@ -96,10 +96,10 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         waveManager.instance.enemyKilled();
     }
 
-    protected virtual void OnDeath()
+    protected void OnDeath()
     {
         // Override in subclass for particles, audio, etc.
-        
+        FindAnyObjectByType<killChainManager>().RegisterKill();
     }
 
     protected virtual IEnumerator FlashBlack()
