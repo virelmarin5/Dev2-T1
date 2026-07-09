@@ -3,25 +3,21 @@
  * Author: Devin Childs
  *
  * Description:
- * Controls enemy wave spawning and difficulty progression.
- * Each wave increases the total number of enemies by a percentage.
- * Enemy types are chosen by percentage so most enemies are ranged,
- * some are basic melee enemies, and the fewest are heavy enemies.
+ * Controls the game's wave progression system.
+ * Responsible for spawning enemies, increasing difficulty,
+ * tracking remaining enemies, and determining when the
+ * player has completed all waves.
  *
  * Responsibilities:
  * - Start new waves
- * - Spawn enemies at spawn points
- * - Increase enemy count by percentage each wave
- * - Spawn weighted enemy types
- * - Track enemies alive
- * - Notify HeartbeatManager when enemies die or waves end
+ * - Spawn enemies
+ * - Increase enemy count each wave
+ * - Track enemies remaining
+ * - Notify HeartbeatManager when a wave ends
  * - Notify GameManager when all waves are completed
  *
  * Interacts With:
  * - EnemyBase
- * - BasicEnemy
- * - RangedEnemy
- * - heavyEnemy
  * - heartbeatManager
  * - gameManager
  *
@@ -39,47 +35,23 @@ public class waveManager : MonoBehaviour
     [Header("Wave Settings")]
     [SerializeField] private int currentWave;
     [SerializeField] private int maxWaves;
-    [SerializeField] private int startingEnemies;
 
-    [Tooltip("Example: 25 means each wave has 25% more enemies than the last.")]
-    [SerializeField] private float enemyIncreasePercent;
+    [SerializeField] private int startingEnemies;
+    [SerializeField] private int enemiesAddedPerWave;
 
     [SerializeField] private float timeBetweenWaves;
     [SerializeField] private float timeBetweenSpawns;
 
-    [Header("Enemy Prefabs")]
-    [SerializeField] private GameObject basicEnemyPrefab;
-    [SerializeField] private GameObject rangedEnemyPrefab;
-    [SerializeField] private GameObject heavyEnemyPrefab;
-
-    [Header("Enemy Spawn Percentages")]
-    [Tooltip("Largest percent. Example: 60")]
-    [SerializeField] private float rangedEnemyPercent;
-
-    [Tooltip("Middle percent. Example: 30")]
-    [SerializeField] private float basicEnemyPercent;
-
-    [Tooltip("Lowest percent. Example: 10")]
-    [SerializeField] private float heavyEnemyPercent;
-
-    [Header("Spawn Points")]
+    [Header("Enemy References")]
+    [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private Transform[] spawnPoints;
 
     [Header("Runtime")]
     [SerializeField] private int enemiesAlive;
-    [SerializeField] private int enemiesSpawnedThisWave;
     [SerializeField] private bool waveInProgress;
-
-    private bool isSpawning;
 
     void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         instance = this;
     }
 
@@ -94,6 +66,7 @@ public class waveManager : MonoBehaviour
 
         currentWave++;
 
+        // Player has survived every wave.
         if (currentWave > maxWaves)
         {
             playerWins();
@@ -101,111 +74,48 @@ public class waveManager : MonoBehaviour
         }
 
         waveInProgress = true;
-        isSpawning = true;
-        enemiesSpawnedThisWave = 0;
 
-        int enemiesToSpawn = getEnemyCountForWave();
+        int enemiesToSpawn = startingEnemies +
+                             ((currentWave - 1) * enemiesAddedPerWave);
 
         enemiesAlive = enemiesToSpawn;
 
-        Debug.Log("Wave " + currentWave + " started. Enemies: " + enemiesToSpawn);
+        Debug.Log("Wave " + currentWave + " Started");
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             spawnEnemy();
-            enemiesSpawnedThisWave++;
 
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
-
-        isSpawning = false;
     }
 
     void spawnEnemy()
     {
-        if (spawnPoints == null || spawnPoints.Length == 0)
-        {
-            Debug.LogWarning("WaveManager has no spawn points assigned.");
+        if (enemyPrefabs.Length == 0 || spawnPoints.Length == 0)
             return;
-        }
 
-        GameObject enemyToSpawn = chooseEnemyPrefab();
+        GameObject enemy =
+            enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
-        if (enemyToSpawn == null)
-        {
-            Debug.LogWarning("WaveManager is missing an enemy prefab.");
-            return;
-        }
+        Transform spawn =
+            spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        Transform chosenSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)];
-
-        Instantiate(enemyToSpawn, chosenSpawn.position, chosenSpawn.rotation);
+        Instantiate(enemy, spawn.position, spawn.rotation);
     }
 
-    GameObject chooseEnemyPrefab()
-    {
-        float totalPercent = rangedEnemyPercent + basicEnemyPercent + heavyEnemyPercent;
-
-        if (totalPercent <= 0)
-        {
-            Debug.LogWarning("Enemy spawn percentages are not set.");
-            return null;
-        }
-
-        float randomValue = Random.Range(0, totalPercent);
-
-        if (randomValue < rangedEnemyPercent)
-        {
-            return rangedEnemyPrefab;
-        }
-
-        randomValue -= rangedEnemyPercent;
-
-        if (randomValue < basicEnemyPercent)
-        {
-            return basicEnemyPrefab;
-        }
-
-        return heavyEnemyPrefab;
-    }
-
-    int getEnemyCountForWave()
-    {
-        /*
-         * Example with:
-         * startingEnemies = 5
-         * enemyIncreasePercent = 25
-         *
-         * Wave 1 = 5
-         * Wave 2 = 7
-         * Wave 3 = 8
-         * Wave 4 = 10
-         */
-
-        float increaseMultiplier = 1 + (enemyIncreasePercent / 100f);
-
-        float enemyCount = startingEnemies * Mathf.Pow(increaseMultiplier, currentWave - 1);
-
-        return Mathf.CeilToInt(enemyCount);
-    }
-
+    // Called by an enemy when it dies.
     public void enemyKilled()
     {
         enemiesAlive--;
 
-        if (enemiesAlive < 0)
-        {
-            enemiesAlive = 0;
-        }
-
+        // Reduce player stress after each kill.
         if (heartbeatManager.instance != null)
         {
             heartbeatManager.instance.enemyKilled();
         }
 
-        Debug.Log("Enemy killed. Enemies alive: " + enemiesAlive);
-
-        if (!isSpawning && enemiesAlive <= 0)
+        if (enemiesAlive <= 0)
         {
             completeWave();
         }
@@ -213,15 +123,11 @@ public class waveManager : MonoBehaviour
 
     void completeWave()
     {
-        if (!waveInProgress)
-        {
-            return;
-        }
-
         waveInProgress = false;
 
-        Debug.Log("Wave " + currentWave + " completed.");
+        Debug.Log("Wave " + currentWave + " Complete");
 
+        // Completing a wave calms the player down.
         if (heartbeatManager.instance != null)
         {
             heartbeatManager.instance.waveCompleted();
@@ -232,14 +138,18 @@ public class waveManager : MonoBehaviour
 
     void playerWins()
     {
-        Debug.Log("All waves completed. Player wins.");
+        Debug.Log("Player Wins!");
 
         if (gameManager.instance != null)
         {
-            // Add this once your gameManager has a win menu.
+            // Uncomment once implemented.
             // gameManager.instance.stateWin();
         }
     }
+
+    //=========================
+    // Getters
+    //=========================
 
     public int getCurrentWave()
     {
