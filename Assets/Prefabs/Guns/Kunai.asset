@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4636424b6eb53a499a9a76a72d3ba85, type: 3}
   m_Name: Kunai
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  weaponModel: {fileID: 0}
+  weaponModel: {fileID: 1838565329862472463, guid: 3a25a65e33ae85f4f8ef8f1659fe79e4, type: 3}
   attackRate: 0.1
   throwForce: 25
   gunType: 0
-  bullet: {fileID: 0}
+  bullet: {fileID: 4840384255211066881, guid: e2815fde45934d24781b12168eb66311, type: 3}
   pelletCount: 2
   spreadAngle: 0.2
   shootSound: {fileID: 0}
