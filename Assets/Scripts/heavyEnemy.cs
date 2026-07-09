@@ -8,7 +8,7 @@ public class heavyEnemy : EnemyBase
     [SerializeField] private Collider shieldCollider;       // The shield's collider (trigger or normal)
     [SerializeField] private Transform shieldTransform;      // Reference to shield for angle checks
     [SerializeField] private float shieldDeflectionAngle = 75f; // Degrees from forward to deflect
-    [SerializeField] private float deflectionForce = 15f;   // Optional: force for physics-based deflection
+    //[SerializeField] private float deflectionForce = 15f;   // Optional: force for physics-based deflection
 
     [Header("Melee")]
     [SerializeField] private float meleeRange = 2f;
@@ -21,7 +21,7 @@ public class heavyEnemy : EnemyBase
     [SerializeField] private float attackRange = 2f;
 
     private float meleeTimer;
-    private bool isAttacking;
+    private bool isAttacking = false;
 
     // --- Setup ---
 

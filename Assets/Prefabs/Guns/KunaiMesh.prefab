@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 7214697768525405241}
   - component: {fileID: 5693382308248316429}
   - component: {fileID: 9163869997438464957}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: KunaiProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
