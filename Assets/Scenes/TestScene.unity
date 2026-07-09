@@ -246,6 +246,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1414729538572220572, guid: 05521e55a36e58144bf91c84bcfd74b3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1500894268778947015, guid: 05521e55a36e58144bf91c84bcfd74b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.47
@@ -289,6 +293,14 @@ PrefabInstance:
     - target: {fileID: 3308089694441390307, guid: 05521e55a36e58144bf91c84bcfd74b3, type: 3}
       propertyPath: m_Name
       value: HeavyEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308089694441390307, guid: 05521e55a36e58144bf91c84bcfd74b3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333294982344094353, guid: 05521e55a36e58144bf91c84bcfd74b3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
