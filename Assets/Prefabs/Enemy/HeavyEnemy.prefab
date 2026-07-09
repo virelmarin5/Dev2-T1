@@ -214,14 +214,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 696908821628646986, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345163317746289366, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5270187310177661260, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}
       propertyPath: m_Name
       value: Shield01_CheesePoliceBlue

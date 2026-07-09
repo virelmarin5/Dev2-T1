@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4097660117758756336}
   - component: {fileID: 2975551096679564009}
-  - component: {fileID: 8540789732029092115}
+  - component: {fileID: 1036670932547231184}
   - component: {fileID: 659914139088891106}
   - component: {fileID: 5743788114292685672}
   m_Layer: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   speed: 50
   lifetime: 5
   damage: 10
---- !u!114 &8540789732029092115
+--- !u!114 &1036670932547231184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,10 +61,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838565329862472463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a2d95cec670d046aac230ea7bb3a27, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dfa744229b8a6b4abdf76f3a04dc336, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::pickGun
-  gun: {fileID: 11400000, guid: ef7a53a17b68b474aa996e4a59d58c49, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::pickWeapon
+  weapon: {fileID: 0}
 --- !u!114 &659914139088891106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,9 +80,10 @@ MonoBehaviour:
   type: 0
   rb: {fileID: 5743788114292685672}
   damageAmount: 10
-  damageRate: 0
-  bulletSpeed: 5
+  damageRate: 0.1
+  bulletSpeed: 10
   bulletDestroyTime: 3
+  throwableLifetime: 5
   hitEffect: {fileID: 0}
 --- !u!54 &5743788114292685672
 Rigidbody:
