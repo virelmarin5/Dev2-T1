@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -55,6 +56,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
             playerVel.y = 0;
             jumpCount = 0;
         }
+
         moveDir = Input.GetAxisRaw("Horizontal") * transform.right + Input.GetAxisRaw("Vertical") * transform.forward;
         int  currSpeed = Input.GetButton("Sprint") ? speed * sprintMod : speed;
         audioManager.instance.playSFX(audSteps, audStepsVol);
@@ -82,6 +84,8 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     public void takeDamage(int amount)
     {
         audioManager.instance.playSFX(audHurt, audHurtVol);
+
+        StartCoroutine(flashDamage());
 
         if (heartbeatManager.instance != null)
         {
@@ -119,5 +123,12 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 
         // Return the greater of the two percentages to represent overall movement intensity.
         return Mathf.Max(horPercent, vertPercent);
+    }
+
+    IEnumerator flashDamage()
+    {
+        gameManager.instance.damageFlashUI.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        gameManager.instance.damageFlashUI.SetActive(false);
     }
 }

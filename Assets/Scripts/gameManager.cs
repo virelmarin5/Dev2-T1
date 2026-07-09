@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -11,6 +13,12 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuLose;
     [SerializeField] timeManager timeManager;
+
+    [SerializeField] private killScoreUI killScore;
+    [SerializeField] private TMP_Text scoreText;
+
+    [Header("Screen Flash")]
+    public GameObject damageFlashUI;
 
     public bool isPaused;
     public GameObject player;
@@ -75,5 +83,7 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
+
+        scoreText.text = killScore.getKillCount().ToString("f0");
     }
 }

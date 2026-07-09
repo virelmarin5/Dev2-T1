@@ -61,10 +61,10 @@ public class killScoreUI : MonoBehaviour
         killCounter.text = "Kills: " + currentKill;
         pauseKills.text = "Kills: " + currentKill;
         waveCounter.text = "Wave: " + currentWave;
-
     }
 
-
-   
-
+    public int getKillCount()
+    {
+        return currentKill;
+    }
 }

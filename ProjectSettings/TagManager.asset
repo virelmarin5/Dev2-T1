@@ -9,8 +9,8 @@ TagManager:
   - Handgun
   - AR
   - Bullet
-  - Shield
   - Enemy
+  - Shield
   layers:
   - Default
   - TransparentFX

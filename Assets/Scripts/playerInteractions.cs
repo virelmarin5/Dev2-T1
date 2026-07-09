@@ -14,25 +14,13 @@ public class playerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             weaponManager.instance.attack();
             if (heartbeatManager.instance != null)
             {
                 heartbeatManager.instance.playerShot();
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            audioManager.instance.playSFX(throwSFX, throwSFXVol);
-            weaponManager.instance.throwCurrentWeapon();
-
-            if (heartbeatManager.instance != null)
-            {
-                heartbeatManager.instance.playerShot();
-            }
-
         }
 
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);

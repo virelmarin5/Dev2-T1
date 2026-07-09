@@ -9,7 +9,7 @@ public class damage : MonoBehaviour
 
     [Range(1, 10)][SerializeField] int damageAmount;
     [Range(.1f, 10)][SerializeField] float damageRate;
-    [Range(10, 80)][SerializeField] int bulletSpeed;
+    [Range(1, 80)][SerializeField] int bulletSpeed;
     [Range(.1f, 20)][SerializeField] int bulletDestroyTime;
     [Range(.1f, 20)][SerializeField] float throwableLifetime = 5f;
     [SerializeField] ParticleSystem hitEffect;
