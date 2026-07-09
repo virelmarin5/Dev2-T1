@@ -27,7 +27,7 @@ public class weaponManager : MonoBehaviour
 
     void Update()
     {
-        attackTimer += Time.deltaTime;
+        attackTimer += Time.unscaledDeltaTime;
     }
 
     public void equipWeapon(weaponStats newWeapon)

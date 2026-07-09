@@ -50,18 +50,18 @@ public class heartbeatUI : MonoBehaviour
     void Update()
     {
 
-        bpmText.text = heartbeatManager.instance.getCurrentBPM() + " BPM";
-
         if (heartbeatManager.instance == null)
         {
             return;
         }
 
+        bpmText.text = heartbeatManager.instance.getCurrentBPM() + " BPM";
+
         int bpm = heartbeatManager.instance.getCurrentBPM();
 
         float beatInterval = 60f / bpm;
 
-        beatTimer += Time.deltaTime;
+        beatTimer += Time.unscaledDeltaTime;
 
 
         if (beatTimer >= beatInterval && !isPulsing)
@@ -78,7 +78,7 @@ public class heartbeatUI : MonoBehaviour
 
         heartImage.localScale = origHeartScale * pulseScale;
 
-        yield return new WaitForSeconds(pulseDuration);
+        yield return new WaitForSecondsRealtime(pulseDuration);
 
         heartImage.localScale = origHeartScale;
 
