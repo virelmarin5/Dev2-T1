@@ -55,18 +55,18 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
             playerVel.y = 0;
             jumpCount = 0;
         }
-        moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+        moveDir = Input.GetAxisRaw("Horizontal") * transform.right + Input.GetAxisRaw("Vertical") * transform.forward;
         int  currSpeed = Input.GetButton("Sprint") ? speed * sprintMod : speed;
         audioManager.instance.playSFX(audSteps, audStepsVol);
-        controller.Move(moveDir * currSpeed * Time.deltaTime);
+        controller.Move(moveDir * currSpeed * Time.unscaledDeltaTime);
 
         jump();
 
-        controller.Move(playerVel * Time.deltaTime);
+        controller.Move(playerVel * Time.unscaledDeltaTime);
 
-        playerVel.x = Mathf.MoveTowards(playerVel.x, 0, pushbackFriction * Time.deltaTime);
-        playerVel.z = Mathf.MoveTowards(playerVel.z, 0, pushbackFriction * Time.deltaTime);
-        playerVel.y -= gravity * Time.deltaTime;
+        playerVel.x = Mathf.MoveTowards(playerVel.x, 0, pushbackFriction * Time.unscaledDeltaTime);
+        playerVel.z = Mathf.MoveTowards(playerVel.z, 0, pushbackFriction * Time.unscaledDeltaTime);
+        playerVel.y -= gravity * Time.unscaledDeltaTime;
     }
 
     void jump()
@@ -82,12 +82,18 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     public void takeDamage(int amount)
     {
         audioManager.instance.playSFX(audHurt, audHurtVol);
-        HP -= amount;
 
-        if (HP <= 0)
+        if (heartbeatManager.instance != null)
         {
-            // dead
+            heartbeatManager.instance.playerDamaged();
         }
+        
+        //HP -= amount;
+
+        //if (HP <= 0)
+        //{
+        //    // dead
+        //}
     }
 
     public void weaponStats(weaponStats weapon)
