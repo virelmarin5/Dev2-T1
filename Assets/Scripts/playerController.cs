@@ -51,6 +51,8 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     }
     void movement()
     {
+        if(gameManager.instance != null && gameManager.instance.isPaused) return;
+        
         if (controller.isGrounded)
         {
             playerVel.y = 0;

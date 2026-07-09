@@ -6,10 +6,10 @@ public class weaponManager : MonoBehaviour
 
     [Header("Weapon")]
     public weaponStats activeWeapon;
-    public GameObject spawnedWeaponModel;
+    private GameObject spawnedWeaponModel;
 
 
-    [SerializeField] public GameObject weaponHoldPos;
+    private GameObject weaponHoldPos;
     public Transform gunBarrel;
     private float attackTimer;
 
@@ -23,6 +23,24 @@ public class weaponManager : MonoBehaviour
         {
             instance = this;
         }
+
+        if (weaponHoldPos == null)
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            Transform foundTransform = FindDeepChild(player.transform, "Weapon Hold Position");
+            if (foundTransform != null)
+            {
+                weaponHoldPos = foundTransform.gameObject;
+            }
+        }
+        
+        if (weaponHoldPos == null)
+        {
+            Debug.LogError("Weapon Manager: Failed to automatically locate 'Weapon Hold Position' under the Player structure.");
+        }
+    }
     }
 
     void Update()
@@ -43,7 +61,7 @@ public class weaponManager : MonoBehaviour
         }
 
         activeWeapon = newWeapon;
-        // Spawn model directly to target
+        // Spawn model
         spawnedWeaponModel = Instantiate(newWeapon.weaponModel, weaponHoldPos.transform, false);
 
         spawnedWeaponModel.transform.localPosition = Vector3.zero;

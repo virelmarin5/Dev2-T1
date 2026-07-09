@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &6906111 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6886459614246335101, guid: b93dd8bb687ca5341bf1e1e1a9e571e7, type: 3}
-  m_PrefabInstance: {fileID: 65971482}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &65971482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -868,10 +863,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 5171222979661156471, guid: dd64fc012141cdc4b8363f58d4123d00, type: 3}
-      propertyPath: weaponHoldPos
-      value: 
-      objectReference: {fileID: 6906111}
     - target: {fileID: 8562087459557776901, guid: dd64fc012141cdc4b8363f58d4123d00, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -964,11 +955,11 @@ SceneRoots:
   - {fileID: 675411346}
   - {fileID: 1604268014}
   - {fileID: 1041264627}
+  - {fileID: 65971482}
   - {fileID: 8184375681575194382}
   - {fileID: 1918033540}
   - {fileID: 355225157}
   - {fileID: 263170800}
   - {fileID: 1526205484}
   - {fileID: 1950817511}
-  - {fileID: 65971482}
   - {fileID: 939227355}

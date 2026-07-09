@@ -1395,7 +1395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::heartbeatManager
   restingBPM: 20
-  maxBPM: 190
+  maxBPM: 200
   currentBPM: 0
   currentStress: 0
   maxStress: 200
@@ -1622,8 +1622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::weaponManager
   activeWeapon: {fileID: 0}
-  spawnedWeaponModel: {fileID: 0}
-  weaponHoldPos: {fileID: 0}
   gunBarrel: {fileID: 0}
 --- !u!1 &3059496056684343557
 GameObject:

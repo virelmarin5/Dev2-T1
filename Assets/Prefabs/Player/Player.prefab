@@ -394,7 +394,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 256
-  maxDistance: 5
+  maxDistance: 1.99
   equip: {fileID: 8300000, guid: 06edc8a6e8fcf114797064b83ee4a7be, type: 3}
   equipVol: 0
   throwSFX: {fileID: 8300000, guid: e8853dc0b943e75489588822db5eb4eb, type: 3}

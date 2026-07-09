@@ -3,7 +3,7 @@ using System.Collections;
 
 public class damage : MonoBehaviour
 {
-    enum damageType { bullet, stationary, DOT, throwable}
+    enum damageType { bullet, stationary, DOT}
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
 
@@ -14,7 +14,7 @@ public class damage : MonoBehaviour
     [Range(.1f, 20)][SerializeField] float throwableLifetime = 5f;
     [SerializeField] ParticleSystem hitEffect;
 
-    bool isDamaging;
+    bool isDamaging; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,18 +43,8 @@ public class damage : MonoBehaviour
             {
                 Instantiate(hitEffect, transform.position, Quaternion.identity);
             }
-
-            if (type == damageType.bullet)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject, throwableLifetime);
-            }
         }
     }
-
 
     // DOT damage, we do not use it right now
     private void OnTriggerStay(Collider other)

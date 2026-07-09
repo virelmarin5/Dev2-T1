@@ -16,11 +16,9 @@ public class playerInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            if(gameManager.instance != null && gameManager.instance.isPaused) return;
+
             weaponManager.instance.attack();
-            if (heartbeatManager.instance != null)
-            {
-                heartbeatManager.instance.playerShot();
-            }
         }
 
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
