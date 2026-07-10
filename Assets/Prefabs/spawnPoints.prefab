@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4873560845556711521}
+  - component: {fileID: 4328925236543590652}
   m_Layer: 0
   m_Name: spawnPoints
   m_TagString: Untagged
@@ -34,6 +35,37 @@ Transform:
   - {fileID: 1945816470582835741}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4328925236543590652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998337673566928844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b942d49b7f30649b6fb299653bc060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::waveManager
+  currentWave: 0
+  maxWaves: 5
+  startingEnemies: 5
+  enemyIncreasePercent: 25
+  timeBetweenWaves: 3
+  timeBetweenSpawns: 3
+  basicEnemyPrefab: {fileID: 664652709444551372, guid: 6c8048cf7ced2274fb5617e126e8254a, type: 3}
+  rangedEnemyPrefab: {fileID: 7521726833427132236, guid: 63c3691f790d7874b81f32944993d6ee, type: 3}
+  heavyEnemyPrefab: {fileID: 4643874062370731178, guid: 05521e55a36e58144bf91c84bcfd74b3, type: 3}
+  rangedEnemyPercent: 60
+  basicEnemyPercent: 30
+  heavyEnemyPercent: 10
+  spawnPoints:
+  - {fileID: 4288864256959032904}
+  - {fileID: 4994012732658622737}
+  - {fileID: 1945816470582835741}
+  enemiesAlive: 0
+  enemiesSpawnedThisWave: 0
+  waveInProgress: 0
 --- !u!1 &5330348290663262123
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 9010805074510907916}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.47145, y: 2.1999998, z: -1.1751099}
+  m_LocalPosition: {x: -19.47145, y: 2.1999998, z: 22.82489}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -54,9 +54,9 @@ MonoBehaviour:
   rb: {fileID: 7083418051938216941}
   damageAmount: 2
   damageRate: 0.1
-  bulletSpeed: 10
+  bulletSpeed: 3
   bulletDestroyTime: 4
-  throwableLifetime: 0.1
+  deflectLayerName: Shield
   hitEffect: {fileID: 970440554703164915, guid: 8d2e6d44cc5f25f469ad05556e0d50ca, type: 3}
 --- !u!33 &7603304608557851629
 MeshFilter:
@@ -249,7 +249,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!135 &-4556469719132000074

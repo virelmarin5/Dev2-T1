@@ -113,7 +113,7 @@ public class heavyEnemy : EnemyBase
     // --- Shield Deflection ---
 
 
-    public bool TryDeflectBullet(Vector3 bulletPosition, Vector3 bulletDirection, out Vector3 deflectedDirection)
+    /*public bool TryDeflectBullet(Vector3 bulletPosition, Vector3 bulletDirection, out Vector3 deflectedDirection)
     {
         deflectedDirection = bulletDirection;
 
@@ -141,7 +141,7 @@ public class heavyEnemy : EnemyBase
         // Play deflect sound/particles here
 
         return true;
-    }
+    }*/
 
     // --- Damage Override (Shield Protection) ---
 
