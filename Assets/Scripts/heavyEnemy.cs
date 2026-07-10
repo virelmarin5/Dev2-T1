@@ -14,14 +14,14 @@ public class heavyEnemy : EnemyBase
     [SerializeField] private float meleeRange = 2f;
     [SerializeField] private int meleeDamage = 15;
     [SerializeField] private float meleeCooldown = 1.5f;
-    [SerializeField] private float meleeKnockback = 5f;
+    //[SerializeField] private float meleeKnockback = 5f;
 
     [Header("Heavy Stats")]
     [SerializeField] private float moveSpeed = 2.5f;        // Slower than regular enemies
-    [SerializeField] private float attackRange = 2f;
+    //[SerializeField] private float attackRange = 2f;
 
     private float meleeTimer;
-    private bool isAttacking = false;
+    //private bool isAttacking = false;
 
     // --- Setup ---
 
@@ -62,7 +62,7 @@ public class heavyEnemy : EnemyBase
         }
         else
         {
-            // In melee range — stop and attack
+            // In melee range ï¿½ stop and attack
             agent.isStopped = true;
             TryMeleeAttack();
         }
@@ -83,7 +83,7 @@ public class heavyEnemy : EnemyBase
 
     System.Collections.IEnumerator MeleeAttackRoutine()
     {
-        isAttacking = true;
+        //isAttacking = true;
 
         // Small wind-up delay (optional telegraph)
         yield return new WaitForSeconds(0.3f);
@@ -107,7 +107,7 @@ public class heavyEnemy : EnemyBase
         }
 
         yield return new WaitForSeconds(0.2f);
-        isAttacking = false;
+        //isAttacking = false;
     }
 
     // --- Shield Deflection ---
@@ -124,7 +124,7 @@ public class heavyEnemy : EnemyBase
         // Only deflect if hitting the front face of the shield
         if (angleToShield > shieldDeflectionAngle / 2f)
         {
-            return false; // Hit the side/back of shield — bullet goes through to enemy
+            return false; // Hit the side/back of shield ï¿½ bullet goes through to enemy
         }
 
         // Deflect the bullet (ricochet off)

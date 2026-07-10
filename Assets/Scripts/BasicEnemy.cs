@@ -8,7 +8,7 @@ public class BasicEnemy : EnemyBase
     [SerializeField] private float attackRange = 4f;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackRate = 1f;
-    [SerializeField] private float stoppingDistance = 1.5f;
+    //[SerializeField] private float stoppingDistance = 1.5f;
     [SerializeField] GameObject weapon;
     [SerializeField] Transform handPos;
 
@@ -91,7 +91,7 @@ public class BasicEnemy : EnemyBase
 
         if (isDead || playerTransform == null)
         {
-            Debug.Log("EARLY RETURN — enemy not moving");
+            Debug.Log("EARLY RETURN ï¿½ enemy not moving");
             return;
         }
 

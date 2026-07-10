@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 /*
@@ -24,7 +23,7 @@ public class killScoreUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI pauseKills;
 
     int currentKill;
-    int currentScore;
+    //int currentScore;
     int enemiesAlive;
     int previousEnemiesAlive;
     int previousWave;
@@ -34,7 +33,7 @@ public class killScoreUI : MonoBehaviour
     {
        
         currentKill = 0;
-        currentScore = 0;
+        //currentScore = 0;
 
         previousEnemiesAlive = waveManager.instance.getEnemiesAlive();
         previousWave = waveManager.instance.getCurrentWave();

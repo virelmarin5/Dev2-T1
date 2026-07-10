@@ -27,7 +27,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     [Range(0, 1)][SerializeField] float audStepsVol;
 
     int jumpCount;
-    int HPOriginal;
+    //int HPOriginal;
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -36,7 +36,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        HPOriginal = HP;
+        //HPOriginal = HP;
     }
 
     // Update is called once per frame
