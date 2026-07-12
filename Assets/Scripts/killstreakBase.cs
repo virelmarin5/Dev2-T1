@@ -29,7 +29,7 @@ public abstract class killstreakBase : MonoBehaviour
 
         if (duration <= 0f)
         {
-            endStreak;
+            endStreak();
         }
         else
         {
