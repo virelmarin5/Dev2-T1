@@ -14,7 +14,7 @@ public class playerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.LeftControl))
         {
             if(gameManager.instance != null && gameManager.instance.isPaused) return;
 

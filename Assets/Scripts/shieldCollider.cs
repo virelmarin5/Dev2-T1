@@ -14,12 +14,12 @@ public class ShieldCollider : MonoBehaviour
             Debug.LogError("ShieldCollider must be a child of a heavyEnemy!", this);
         }
 
-        // Ensure collider is set as trigger
+        /* Ensure collider is set as trigger
         Collider col = GetComponent<Collider>();
-        col.isTrigger = true;
+        col.isTrigger = false;*/
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         // Check if a bullet hit the shield
         // Assumes bullets have a "Bullet" tag or a Bullet component
@@ -46,11 +46,11 @@ public class ShieldCollider : MonoBehaviour
                 }
                 else
                 {
-                    // Bullet hit edge of shield — destroy it or let it pass through
+                    // Bullet hit edge of shield ï¿½ destroy it or let it pass through
                     // Option A: Destroy bullet (it "absorbed" into the shield edge)
                     Destroy(other.gameObject);
                 }
             }
         }
-    }
+    }*/
 }

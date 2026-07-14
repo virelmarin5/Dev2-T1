@@ -11,6 +11,7 @@ public class damage : MonoBehaviour
     [Range(.1f, 10)][SerializeField] float damageRate;
     [Range(1, 80)][SerializeField] int bulletSpeed;
     [Range(.1f, 20)][SerializeField] int bulletDestroyTime;
+    [SerializeField] string deflectLayerName = "Shield";
     [SerializeField] ParticleSystem hitEffect;
 
     bool isDamaging;
@@ -29,6 +30,12 @@ public class damage : MonoBehaviour
     {
         if (other.isTrigger)
             return;
+
+        if (type == damageType.bullet && other.gameObject.layer == LayerMask.NameToLayer(deflectLayerName))
+        {
+            DeflectBullet(other);
+            return;
+        }
 
         IDamage dmg = other.GetComponent<IDamage>();
         if (dmg != null && type != damageType.DOT)
@@ -67,5 +74,18 @@ public class damage : MonoBehaviour
         d.takeDamage(damageAmount);
         yield return new WaitForSeconds(damageRate);
         isDamaging = false;
+    }
+
+    private void DeflectBullet(Collider other)
+    {
+        Ray ray = new Ray(transform.position - rb.linearVelocity.normalized, rb.linearVelocity.normalized);
+        if (other.Raycast(ray, out RaycastHit hit, 2f))
+        {
+            // Calculate the reflection vector based on current velocity and surface normal
+            Vector3 reflectedVelocity = Vector3.Reflect(rb.linearVelocity, hit.normal);
+            
+            // Apply the new velocity
+            rb.linearVelocity = reflectedVelocity;
+        }
     }
 }

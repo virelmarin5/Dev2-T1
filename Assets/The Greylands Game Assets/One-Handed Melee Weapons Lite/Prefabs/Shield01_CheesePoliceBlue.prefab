@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 6628518553201933153}
   - component: {fileID: 1345163317746289366}
   - component: {fileID: 696908821628646986}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shield01_CheesePoliceBlue
   m_TagString: Shield
   m_Icon: {fileID: 0}

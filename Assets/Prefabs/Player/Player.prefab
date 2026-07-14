@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9119490908834705191}
   - component: {fileID: 107003286123238879}
   - component: {fileID: 8263649777267801813}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Weapon Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 1010387223488891732}
   - component: {fileID: 2683218837919734652}
   - component: {fileID: 4223943999339574812}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3628529504622381021}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Weapon Hold Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 8139411858721111770}
   - component: {fileID: 4864022406648233395}
   - component: {fileID: 8688196793456674709}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
