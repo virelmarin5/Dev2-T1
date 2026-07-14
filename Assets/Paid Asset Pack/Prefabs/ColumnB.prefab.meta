@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8b4141ff278aa944e95d5357a1b9ad86
-timeCreated: 1518080330
+guid: 350e291104a470a41b9f3df347823edf
+timeCreated: 1497715626
 licenseType: Store
 NativeFormatImporter:
   mainObjectFileID: 100100000
@@ -9,8 +9,8 @@ NativeFormatImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 110070
-  packageName: Free LowPoly SciFi Pack
-  packageVersion: 1.0
-  assetPath: Assets/Free LowPoly SciFi Pack/Prefabs/ColumnB.prefab
-  uploadId: 228927
+  productId: 94028
+  packageName: LowPoly SciFi Pack
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly SciFi Pack/Prefabs/ColumnB.prefab
+  uploadId: 187596

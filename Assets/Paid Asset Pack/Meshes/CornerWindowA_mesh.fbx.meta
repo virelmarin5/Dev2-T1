@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a9dd38c484b428f449090e885042f887
-timeCreated: 1516882163
+guid: bd41ce670da380a469095bd99a1c33d9
+timeCreated: 1497543146
 licenseType: Store
 ModelImporter:
   serializedVersion: 19
@@ -84,8 +84,8 @@ ModelImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 110070
-  packageName: Free LowPoly SciFi Pack
-  packageVersion: 1.0
-  assetPath: Assets/Free LowPoly SciFi Pack/Meshes/CornerWindowA_mesh.fbx
-  uploadId: 228927
+  productId: 94028
+  packageName: LowPoly SciFi Pack
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly SciFi Pack/Meshes/CornerWindowA_mesh.fbx
+  uploadId: 187596

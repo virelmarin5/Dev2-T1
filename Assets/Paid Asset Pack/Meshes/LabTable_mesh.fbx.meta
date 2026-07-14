@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7a16876a3740cbd4b863a3a3db778e14
-timeCreated: 1516882378
+guid: 6299fb42f5d390d4787fc288b3616f95
+timeCreated: 1497799069
 licenseType: Store
 ModelImporter:
   serializedVersion: 19
@@ -84,8 +84,8 @@ ModelImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 110070
-  packageName: Free LowPoly SciFi Pack
-  packageVersion: 1.0
-  assetPath: Assets/Free LowPoly SciFi Pack/Meshes/LabTable_mesh.fbx
-  uploadId: 228927
+  productId: 94028
+  packageName: LowPoly SciFi Pack
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly SciFi Pack/Meshes/LabTable_mesh.fbx
+  uploadId: 187596

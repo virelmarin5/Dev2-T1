@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 5fd94bba744a8c44991c32247651bb99
-timeCreated: 1516882266
+guid: ccf5fe9c060bbfb4f90a948180661f4a
+timeCreated: 1497543147
 licenseType: Store
 ModelImporter:
   serializedVersion: 19
@@ -84,8 +84,8 @@ ModelImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 110070
-  packageName: Free LowPoly SciFi Pack
-  packageVersion: 1.0
-  assetPath: Assets/Free LowPoly SciFi Pack/Meshes/ColumnB_mesh.fbx
-  uploadId: 228927
+  productId: 94028
+  packageName: LowPoly SciFi Pack
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly SciFi Pack/Meshes/ColumnB_mesh.fbx
+  uploadId: 187596

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e274c7bd48f126345961fb198e1c16db
-timeCreated: 1518080411
+guid: bbc43e913e7b2b7489deb50a95210e06
+timeCreated: 1497796303
 licenseType: Store
 NativeFormatImporter:
   mainObjectFileID: 100100000
@@ -9,8 +9,8 @@ NativeFormatImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 110070
-  packageName: Free LowPoly SciFi Pack
-  packageVersion: 1.0
-  assetPath: Assets/Free LowPoly SciFi Pack/Prefabs/FloorInteriorA4.prefab
-  uploadId: 228927
+  productId: 94028
+  packageName: LowPoly SciFi Pack
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly SciFi Pack/Prefabs/FloorInteriorA4.prefab
+  uploadId: 187596

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 5a39bd3dffc95dc4ca4759d5823e6622
-timeCreated: 1516881152
+guid: 9a420a8dbff569241bbbb5d6980c80ba
+timeCreated: 1497541351
 licenseType: Store
 NativeFormatImporter:
   mainObjectFileID: 2100000
@@ -9,8 +9,8 @@ NativeFormatImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 110070
-  packageName: Free LowPoly SciFi Pack
-  packageVersion: 1.0
-  assetPath: Assets/Free LowPoly SciFi Pack/Meshes/Materials/DARK_GREY_mat.mat
-  uploadId: 228927
+  productId: 94028
+  packageName: LowPoly SciFi Pack
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly SciFi Pack/Meshes/Materials/DARK_GREY_mat.mat
+  uploadId: 187596

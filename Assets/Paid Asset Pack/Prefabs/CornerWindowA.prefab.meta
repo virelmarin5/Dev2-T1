@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 3aa541d38da2cd643aec89b050153446
-timeCreated: 1518080393
+guid: 48b5084d557f0eb4498abf53f83516bf
+timeCreated: 1497797216
 licenseType: Store
 NativeFormatImporter:
   mainObjectFileID: 100100000
@@ -9,8 +9,8 @@ NativeFormatImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 110070
-  packageName: Free LowPoly SciFi Pack
-  packageVersion: 1.0
-  assetPath: Assets/Free LowPoly SciFi Pack/Prefabs/CornerWindowA.prefab
-  uploadId: 228927
+  productId: 94028
+  packageName: LowPoly SciFi Pack
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly SciFi Pack/Prefabs/CornerWindowA.prefab
+  uploadId: 187596

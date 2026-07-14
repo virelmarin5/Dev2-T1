@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9205fd4e5a2421047b62f0334133769b
-timeCreated: 1516882201
+guid: c8bbc0c2dfe84a34cae1504c2629e455
+timeCreated: 1497543146
 licenseType: Store
 ModelImporter:
   serializedVersion: 19
@@ -84,8 +84,8 @@ ModelImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 110070
-  packageName: Free LowPoly SciFi Pack
-  packageVersion: 1.0
-  assetPath: Assets/Free LowPoly SciFi Pack/Meshes/RampSmall_mesh.fbx
-  uploadId: 228927
+  productId: 94028
+  packageName: LowPoly SciFi Pack
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly SciFi Pack/Meshes/RampSmall_mesh.fbx
+  uploadId: 187596
