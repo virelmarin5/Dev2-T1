@@ -130,7 +130,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     IEnumerator flashDamage()
     {
         gameManager.instance.damageFlashUI.SetActive(true);
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSecondsRealtime(.1f);    // <-- always real-time
         gameManager.instance.damageFlashUI.SetActive(false);
     }
 }

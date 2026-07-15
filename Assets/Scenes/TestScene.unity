@@ -576,6 +576,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4f0d9e7dbf221419b0bd0e1286aa16, type: 3}
+--- !u!1 &1345817799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1345817801}
+  - component: {fileID: 1345817800}
+  m_Layer: 0
+  m_Name: Adrenaline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1345817800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345817799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44182fa8b6a24a246921e47dd0aa9341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::killstreakAdrenaline
+  killstreakName: BulletTime
+  duration: 3
+  worldTimeScale: 0.2
+--- !u!4 &1345817801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345817799}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.50334, y: 8.99443, z: -10.80389}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1526205484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -729,6 +776,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1950544055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2120605778528473372, guid: dd64fc012141cdc4b8363f58d4123d00, type: 3}
+  m_PrefabInstance: {fileID: 8184375681575194382}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1950544058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950544055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a83c07dad81b5c4bb01978d1b8a874e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::killstreakManager
+  killstreakChance: 0.5
+  killstreaks:
+  - {fileID: 1345817800}
 --- !u!1001 &1950817511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -863,6 +930,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: spawnPoints
       objectReference: {fileID: 0}
+    - target: {fileID: 4328925236543590652, guid: 21b3dbd020b648248b43a9595dab7eed, type: 3}
+      propertyPath: heavyEnemyPrefab
+      value: 
+      objectReference: {fileID: 664652709444551372, guid: 6c8048cf7ced2274fb5617e126e8254a, type: 3}
+    - target: {fileID: 4328925236543590652, guid: 21b3dbd020b648248b43a9595dab7eed, type: 3}
+      propertyPath: rangedEnemyPrefab
+      value: 
+      objectReference: {fileID: 664652709444551372, guid: 6c8048cf7ced2274fb5617e126e8254a, type: 3}
     - target: {fileID: 4873560845556711521, guid: 21b3dbd020b648248b43a9595dab7eed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.47145
@@ -1003,7 +1078,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2120605778528473372, guid: dd64fc012141cdc4b8363f58d4123d00, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1950544058}
   m_SourcePrefab: {fileID: 100100000, guid: dd64fc012141cdc4b8363f58d4123d00, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -1021,3 +1099,4 @@ SceneRoots:
   - {fileID: 1950817511}
   - {fileID: 939227355}
   - {fileID: 3825264374832468946}
+  - {fileID: 1345817801}
