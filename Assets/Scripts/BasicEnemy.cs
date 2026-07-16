@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class BasicEnemy : EnemyBase
 {
     [Header("Melee Attack")]
-    [SerializeField] private float attackRange = 4f;
+    [SerializeField] private float attackRange = 5.0f;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackRate = 1f;
     //[SerializeField] private float stoppingDistance = 1.5f;
@@ -48,7 +48,7 @@ public class BasicEnemy : EnemyBase
             return;
 
         float dist = Vector3.Distance(transform.position, playerTransform.position);
-        float stopDistance = 3.5f; // how far back you want it to stop
+        float stopDistance = 3.0f; // how far back you want it to stop
 
         if (dist <= stopDistance)
         {
@@ -65,10 +65,11 @@ public class BasicEnemy : EnemyBase
                 agent.SetDestination(hit.position);
         }
 
-        // Melee attack when in attack range (separate from stop distance)
-        if (dist <= attackRange)
+        // Melee attack when in attack range
+        attackTimer += Time.deltaTime;
+        if (!agent.pathPending && agent.remainingDistance <= attackRange)
         {
-            attackTimer += Time.deltaTime;
+           
             if (attackTimer >= attackRate)
             {
                 MeleeAttack();
