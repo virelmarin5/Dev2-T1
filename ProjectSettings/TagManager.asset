@@ -4,13 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Shotgun
-  - Pellet
-  - Handgun
-  - AR
-  - Bullet
   - Shield
   - Enemy
+  - Weapon Hold Position
+  - Player Shield
   layers:
   - Default
   - TransparentFX
@@ -18,8 +15,8 @@ TagManager:
   - Shield
   - Water
   - UI
-  - Bullet
-  - Gun
+  - Weapon Holder
+  - 
   - Weapon
   - Projectile
   - Player

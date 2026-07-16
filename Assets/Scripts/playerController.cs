@@ -17,6 +17,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     [SerializeField] int gravity;
     [SerializeField] float pushbackForce = 5f;
     [SerializeField] float pushbackFriction = 5f;
+    [SerializeField] GameObject playerShield;
 
     [Header("Audio Settings")]    
     [SerializeField] AudioClip audJump;
@@ -52,6 +53,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     void movement()
     {
         if(gameManager.instance != null && gameManager.instance.isPaused) return;
+        if(killChainManager.instance != null && killChainManager.instance.activatePlayershield) StartCoroutine(addPlayerShield());
         
         if (controller.isGrounded)
         {
@@ -132,5 +134,13 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         gameManager.instance.damageFlashUI.SetActive(true);
         yield return new WaitForSeconds(.1f);
         gameManager.instance.damageFlashUI.SetActive(false);
+    }
+
+        IEnumerator addPlayerShield()
+    {
+        playerShield.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        playerShield.SetActive(false);
+        killChainManager.instance.activatePlayershield = false;
     }
 }

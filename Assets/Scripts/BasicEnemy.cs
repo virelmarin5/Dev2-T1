@@ -123,4 +123,9 @@ public class BasicEnemy : EnemyBase
             yield return null;
         }
     }
+
+    public override void takeDamage(int amount)
+    {
+        base.takeDamage(amount);
+    }
 }

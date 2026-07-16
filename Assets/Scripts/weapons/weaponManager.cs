@@ -25,22 +25,13 @@ public class weaponManager : MonoBehaviour
         }
 
         if (weaponHoldPos == null)
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player != null)
         {
-            Transform foundTransform = FindDeepChild(player.transform, "Weapon Hold Position");
-            if (foundTransform != null)
-            {
-                weaponHoldPos = foundTransform.gameObject;
-            }
+            GameObject weaponHoldObj = GameObject.FindWithTag("Weapon Hold Position");
+            if (weaponHoldObj != null)
+                weaponHoldPos = weaponHoldObj;
+            else
+                Debug.LogError("Weapon Manager: Failed to locate an object with the tag 'Weapon Hold Position' in the scene.");
         }
-        
-        if (weaponHoldPos == null)
-        {
-            Debug.LogError("Weapon Manager: Failed to automatically locate 'Weapon Hold Position' under the Player structure.");
-        }
-    }
     }
 
     void Update()
@@ -66,8 +57,6 @@ public class weaponManager : MonoBehaviour
 
         spawnedWeaponModel.transform.localPosition = Vector3.zero;
         spawnedWeaponModel.transform.localRotation = Quaternion.identity;
-
-        if (spawnedWeaponModel.TryGetComponent<Collider>(out var col)) col.enabled = false;
 
         // Locate the barrel or hitpoint
         string targetName = (newWeapon is gunStats) ? "Muzzle" : "HitPoint";

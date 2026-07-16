@@ -86,4 +86,9 @@ public class RangedEnemy : EnemyBase
             playerInTrigger = false;
         }
     }
+
+    public override void takeDamage(int amount)
+    {
+        base.takeDamage(amount);
+    }
 }

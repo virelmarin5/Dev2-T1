@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 public class killChainManager : MonoBehaviour
 {
+    public static killChainManager instance;
     [SerializeField] float chainTimeLimit = 3f;
     [SerializeField] TextMeshProUGUI killChainCountUI;
 
@@ -10,6 +11,12 @@ public class killChainManager : MonoBehaviour
     int killChainCount = 0;
     float killChainTimer = 0f;
 
+    public bool activatePlayershield = false;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     // Update is called once per frame
     void Update()
@@ -39,7 +46,7 @@ public class killChainManager : MonoBehaviour
         switch (killChainCount)
         {
             case 2:
-                Debug.Log("Double Kill!");
+                activatePlayershield = true;
                 break;
             case 3:
                 Debug.Log("Triple Kill!");

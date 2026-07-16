@@ -4,12 +4,12 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class heavyEnemy : EnemyBase
 {
-    [Header("Shield")]
+    /*[Header("Shield")]
     [SerializeField] private Collider shieldCollider;       // The shield's collider (trigger or normal)
     [SerializeField] private Transform shieldTransform;      // Reference to shield for angle checks
     [SerializeField] private float shieldDeflectionAngle = 75f; // Degrees from forward to deflect
     //[SerializeField] private float deflectionForce = 15f;   // Optional: force for physics-based deflection
-
+*/
     [Header("Melee")]
     [SerializeField] private float meleeRange = 2f;
     [SerializeField] private int meleeDamage = 15;
@@ -35,12 +35,12 @@ public class heavyEnemy : EnemyBase
     protected override void Start()
     {
         base.Start();
-        // Ensure shield collider is set up properly
+        /* Ensure shield collider is set up properly
         if (shieldCollider != null)
         {
             shieldCollider.gameObject.tag = "Shield";
             shieldCollider.gameObject.layer = LayerMask.NameToLayer("Shield");
-        }
+        }*/
     }
 
     // --- Core Behavior ---
@@ -103,7 +103,7 @@ public class heavyEnemy : EnemyBase
                 Vector3 pushDir = (playerTransform.position - transform.position).normalized;
                 pc.PushBack(pushDir);
             }
-      
+
         }
 
         yield return new WaitForSeconds(0.2f);
@@ -166,7 +166,7 @@ public class heavyEnemy : EnemyBase
 
     // --- Gizmos ---
 
-    void OnDrawGizmosSelected()
+    /*void OnDrawGizmosSelected()
     {
         // Melee range
         Gizmos.color = Color.red;
@@ -181,5 +181,5 @@ public class heavyEnemy : EnemyBase
             Gizmos.DrawLine(shieldTransform.position, shieldTransform.position + leftBound * 3f);
             Gizmos.DrawLine(shieldTransform.position, shieldTransform.position + rightBound * 3f);
         }
-    }
+    }*/
 }

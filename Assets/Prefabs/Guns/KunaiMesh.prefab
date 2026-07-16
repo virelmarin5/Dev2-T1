@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8957085133221005905}
   - component: {fileID: 8560977856222089517}
   - component: {fileID: 5529042920351713910}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: KunaiMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,10 +51,12 @@ MonoBehaviour:
   rb: {fileID: 8560977856222089517}
   damageAmount: 10
   damageRate: 0.1
-  bulletSpeed: 10
+  bulletSpeed: 3
   bulletDestroyTime: 3
-  throwableLifetime: 5
-  hitEffect: {fileID: 0}
+  deflectLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  hitEffect: {fileID: 970440554703164915, guid: 8d2e6d44cc5f25f469ad05556e0d50ca, type: 3}
 --- !u!54 &8560977856222089517
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79,9 +81,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &5529042920351713910
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -116,7 +118,7 @@ GameObject:
   - component: {fileID: 7214697768525405241}
   - component: {fileID: 5693382308248316429}
   - component: {fileID: 9163869997438464957}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: KunaiProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,13 +133,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4037536698420022522}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7090019, y: -0, z: -0, w: 0.70520663}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.131}
   m_LocalScale: {x: 2.1137, y: 2.1137, z: 2.1137}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4840384255211066881}
-  m_LocalEulerAnglesHint: {x: 90.306, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
 --- !u!33 &5693382308248316429
 MeshFilter:
   m_ObjectHideFlags: 0

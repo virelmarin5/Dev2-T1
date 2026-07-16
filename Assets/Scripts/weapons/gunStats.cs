@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class gunStats : weaponStats
 {
-    public enum GunType {Pistol, AR, Shotgun}
+    public enum GunType { Pistol, AR, Shotgun }
 
     [Header("Gun Settings")]
     public GunType gunType;
 
     [Header("Projectile")]
     [SerializeField] public Transform bullet;
+
+    [Header("Spawn Position")]
+    public Vector3 Position;
+    public Vector3 Rotation;
 
     [Header("Ammo")]
     [Range(2, 6)] public int pelletCount;
@@ -27,8 +31,9 @@ public class gunStats : weaponStats
 
         if (shootSound != null)
             audioManager.instance.playSFX(shootSound, shootSoundVol);
-        
+
         int shotsToFire = (gunType == GunType.Shotgun) ? pelletCount : 1;
+        spreadAngle = (gunType == GunType.Shotgun) ? spreadAngle : 0;
 
         if (bullet != null)
         {

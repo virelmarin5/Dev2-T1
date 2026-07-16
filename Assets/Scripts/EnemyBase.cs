@@ -14,7 +14,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
     [Header("Visuals")]
     [SerializeField] protected Renderer model;
-    [SerializeField] protected Material flashMaterial;
+    //[SerializeField] protected Material flashMaterial;
     protected Color colorOrig;
 
     protected NavMeshAgent agent;
@@ -77,7 +77,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         }
         else
         {
-            Debug.LogWarning("No model assigned — cannot flash black!");
+            Debug.LogWarning("No model assigned ï¿½ cannot flash black!");
         }
     }
 
@@ -104,7 +104,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
     protected virtual IEnumerator FlashBlack()
     {
-        if (model == null || flashMaterial == null) yield break;
+        /*if (model == null || flashMaterial == null) yield break;
 
         Material[] originalMats = model.materials;
         int count = originalMats.Length;
@@ -115,7 +115,11 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
         model.materials = flashMats;
         yield return new WaitForSeconds(0.15f);
-        model.materials = originalMats;
+        model.materials = originalMats;*/
+
+        model.material.color = Color.black;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = colorOrig; 
     }
 
     protected virtual void FaceTarget()
