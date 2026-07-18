@@ -5,6 +5,8 @@ public class killChainManager : MonoBehaviour
     [SerializeField] float chainTimeLimit = 3f;
     [SerializeField] TextMeshProUGUI killChainCountUI;
 
+    [SerializeField] int killsPerStreakRoll = 3;
+
     int killChainCount = 0;
     float killChainTimer = 0f;
 
@@ -22,6 +24,7 @@ public class killChainManager : MonoBehaviour
             {
                 ResetChain();
             }
+
         }
 
     }
@@ -47,6 +50,14 @@ public class killChainManager : MonoBehaviour
             case 5:
                 Debug.Log("Killing FRENZY!!");
                 break;
+        }
+
+        if (killsPerStreakRoll > 0 && killChainCount % killsPerStreakRoll == 0)
+        {
+            if (killstreakManager.instance != null)
+            {
+                killstreakManager.instance.tryRoll();
+            }
         }
     }
 
