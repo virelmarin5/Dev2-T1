@@ -90,8 +90,14 @@ public class waveManager : MonoBehaviour
 
     IEnumerator beginNextWave()
     {
-        yield return new WaitForSeconds(timeBetweenWaves);
+        // Flash the warning lights while waiting for the next wave.
+        if (waveLightController.instance != null)
+        {
+            waveLightController.instance.FlashWarningLights(timeBetweenWaves);
+        }
 
+        // Wait for the warning sequence to finish.
+        yield return new WaitForSeconds(timeBetweenWaves);
         currentWave++;
 
         if (currentWave > maxWaves)

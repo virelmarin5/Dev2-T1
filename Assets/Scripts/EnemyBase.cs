@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
@@ -6,17 +7,17 @@ using System.Collections;
 public abstract class EnemyBase : MonoBehaviour, IDamage
 {
     [Header("Health")]
-    [SerializeField] protected int maxHP = 10;
+    [SerializeField] protected int maxHP;
     [SerializeField] protected int currentHP;
 
     [Header("Movement")]
-    [SerializeField] protected float faceTargetSpeed = 8f;
+    [SerializeField] protected float faceTargetSpeed;
 
     [Header("Visuals")]
     [SerializeField] protected Renderer model;
     [SerializeField] protected Material flashMaterial;
-    protected Color colorOrig;
 
+    protected Color colorOrig;
     protected NavMeshAgent agent;
     protected Transform playerTransform;
     protected Vector3 playerDir;
@@ -34,18 +35,25 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         currentHP = maxHP;
 
         if (model != null)
+        {
             colorOrig = model.material.color;
+        }
 
-        // Try gameManager first, then fall back to FindWithTag
-        if (gameManager.instance != null && gameManager.instance.player != null)
+        // Try to get the player through GameManager first.
+        if (gameManager.instance != null &&
+            gameManager.instance.player != null)
         {
             playerTransform = gameManager.instance.player.transform;
         }
         else
         {
-            GameObject playerObj = GameObject.FindWithTag("Player");
-            if (playerObj != null)
-                playerTransform = playerObj.transform;
+            // Fallback in case GameManager has not found the player yet.
+            GameObject playerObject = GameObject.FindWithTag("Player");
+
+            if (playerObject != null)
+            {
+                playerTransform = playerObject.transform;
+            }
         }
     }
 
@@ -55,16 +63,22 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
             return;
 
         playerDir = playerTransform.position - transform.position;
+
         FaceTarget();
         UpdateBehavior();
     }
 
     public virtual void takeDamage(int amount)
     {
-        if (isDead) return;
+        if (isDead)
+            return;
 
         currentHP -= amount;
-        Debug.Log("Took damage: " + amount + " | HP: " + currentHP + " | model: " + model);
+
+        Debug.Log(
+            "Enemy took damage: " + amount +
+            " | Current HP: " + currentHP
+        );
 
         if (currentHP <= 0)
         {
@@ -72,55 +86,101 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         }
         else if (model != null)
         {
-            Debug.Log("Starting FlashBlack coroutine");
             StartCoroutine(FlashBlack());
         }
         else
         {
-            Debug.LogWarning("No model assigned — cannot flash black!");
+            Debug.LogWarning(
+                "EnemyBase: No model assigned, so damage flash cannot play."
+            );
         }
+    }
+
+    /// <summary>
+    /// Immediately kills this enemy while still running the normal
+    /// WaveManager, kill-chain, death-effect, and cleanup sequence.
+    /// Used by killstreaks such as the Nuke.
+    /// </summary>
+    public void ForceKill()
+    {
+        if (isDead)
+            return;
+
+        Die();
     }
 
     protected virtual void Die()
     {
+        if (isDead)
+            return;
+
         isDead = true;
+
         NotifyWaveManager();
         OnDeath();
+
         Destroy(gameObject);
     }
 
     protected virtual void NotifyWaveManager()
     {
-        // Hook this up to your WaveManager, e.g.:
-        // WaveManager.Instance?.OnEnemyDied(this);
-        waveManager.instance.enemyKilled();
+        if (waveManager.instance != null)
+        {
+            waveManager.instance.enemyKilled();
+        }
     }
 
-    protected void OnDeath()
+    protected virtual void OnDeath()
     {
-        // Override in subclass for particles, audio, etc.
-        FindAnyObjectByType<killChainManager>().RegisterKill();
+        // Normal player kills are registered here.
+        // The Nuke temporarily tells KillChainManager to ignore these calls.
+        if (killChainManager.instance != null)
+        {
+            killChainManager.instance.RegisterKill();
+        }
     }
 
     protected virtual IEnumerator FlashBlack()
     {
-        if (model == null || flashMaterial == null) yield break;
+        if (model == null || flashMaterial == null)
+            yield break;
 
-        Material[] originalMats = model.materials;
-        int count = originalMats.Length;
-        Material[] flashMats = new Material[count];
+        Material[] originalMaterials = model.materials;
+        Material[] flashMaterials = new Material[originalMaterials.Length];
 
-        for (int i = 0; i < count; i++)
-            flashMats[i] = flashMaterial;
+        for (int i = 0; i < flashMaterials.Length; i++)
+        {
+            flashMaterials[i] = flashMaterial;
+        }
 
-        model.materials = flashMats;
+        model.materials = flashMaterials;
+
         yield return new WaitForSeconds(0.15f);
-        model.materials = originalMats;
+
+        if (model != null)
+        {
+            model.materials = originalMaterials;
+        }
     }
 
     protected virtual void FaceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, faceTargetSpeed * Time.deltaTime);
+        if (playerDir.sqrMagnitude <= 0f)
+            return;
+
+        Vector3 flatDirection =
+            new Vector3(playerDir.x, 0f, playerDir.z);
+
+        if (flatDirection.sqrMagnitude <= 0f)
+            return;
+
+        Quaternion targetRotation =
+            Quaternion.LookRotation(flatDirection);
+
+        transform.rotation = Quaternion.Lerp(
+            transform.rotation,
+            targetRotation,
+            faceTargetSpeed * Time.deltaTime
+        );
     }
 }
