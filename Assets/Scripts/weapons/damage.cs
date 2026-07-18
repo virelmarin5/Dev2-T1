@@ -11,7 +11,7 @@ public class damage : MonoBehaviour
     [Range(.1f, 10)][SerializeField] float damageRate;
     [Range(1, 80)][SerializeField] int bulletSpeed;
     [Range(.1f, 20)][SerializeField] int bulletDestroyTime;
-    [SerializeField] string deflectLayerName = "Shield";
+    [SerializeField] string deflectLayer;
     [SerializeField] ParticleSystem hitEffect;
 
     bool isDamaging;
@@ -31,7 +31,7 @@ public class damage : MonoBehaviour
         if (other.isTrigger)
             return;
 
-        if (type == damageType.bullet && other.gameObject.layer == LayerMask.NameToLayer(deflectLayerName))
+        if (type == damageType.bullet && ((1 << other.gameObject.layer) & deflectLayer) != 0)
         {
             DeflectBullet(other);
             return;
