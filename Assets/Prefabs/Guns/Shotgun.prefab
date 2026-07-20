@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 2882416504792515310}
   - component: {fileID: 4863825239290623286}
   - component: {fileID: 2391795316730029753}
+  - component: {fileID: 1800281428877546526}
   m_Layer: 8
   m_Name: Shotgun
   m_TagString: Untagged
@@ -351,7 +352,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.52, y: 10.61, z: -16.422}
-  m_LocalScale: {x: 2.8, y: 2.8, z: 2.8}
+  m_LocalScale: {x: 1.8, y: 2.2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6944158539899376497}
@@ -399,6 +400,23 @@ CapsuleCollider:
   m_Height: 1.3
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.21}
+--- !u!114 &1800281428877546526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667066249292612647}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9b8a55ac3ae4744945e92736f00edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Clip
+  clipLayer:
+    serializedVersion: 2
+    m_Bits: 2176
+  checkDist: 1.5
+  newDir: {x: 0, y: -90, z: 0}
 --- !u!1 &2056705170315943731
 GameObject:
   m_ObjectHideFlags: 0

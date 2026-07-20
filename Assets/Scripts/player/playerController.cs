@@ -7,6 +7,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 {
     [Header("Controller")]
     [SerializeField] CharacterController controller;
+    [SerializeField] Animator anim;
 
     [Header("Player Settings")]
     [SerializeField] int HP;
@@ -19,7 +20,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     [SerializeField] float pushbackFriction = 5f;
     [SerializeField] GameObject playerShield;
 
-    [Header("Audio Settings")]    
+    [Header("Audio Settings")]
     [SerializeField] AudioClip audJump;
     [Range(0, 1)][SerializeField] float audJumpVol;
     [SerializeField] AudioClip audHurt;
@@ -32,7 +33,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 
     Vector3 moveDir;
     Vector3 playerVel;
-     
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,9 +53,13 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     }
     void movement()
     {
-        if(gameManager.instance != null && gameManager.instance.isPaused) return;
-        if(killChainManager.instance != null && killChainManager.instance.activatePlayershield) StartCoroutine(addPlayerShield());
-        
+        if (gameManager.instance != null && gameManager.instance.isPaused) return;
+        if (killChainManager.instance != null && killChainManager.instance.activatePlayershield)
+        {
+            killChainManager.instance.activatePlayershield = false;
+            StartCoroutine(addPlayerShield());
+        }
+
         if (controller.isGrounded)
         {
             playerVel.y = 0;
@@ -62,10 +67,10 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         }
 
         moveDir = Input.GetAxisRaw("Horizontal") * transform.right + Input.GetAxisRaw("Vertical") * transform.forward;
-        int  currSpeed = Input.GetButton("Sprint") ? speed * sprintMod : speed;
+        int currSpeed = Input.GetButton("Sprint") ? speed * sprintMod : speed;
         audioManager.instance.playSFX(audSteps, audStepsVol);
         controller.Move(moveDir * currSpeed * Time.unscaledDeltaTime);
-
+        
         jump();
 
         controller.Move(playerVel * Time.unscaledDeltaTime);
@@ -108,7 +113,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     public float getSpeedPercent()
     {
         // Returns a value between 0 and 1 representing how fast the player is moving relative to their max speed.
-        Vector3 hor = new Vector3(moveDir.x,0, moveDir.z);
+        Vector3 hor = new Vector3(moveDir.x, 0, moveDir.z);
         float horPercent = Mathf.Clamp01(hor.magnitude);
 
         // If the player is in the air, we also consider their vertical speed relative to jump speed.
@@ -129,7 +134,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         gameManager.instance.damageFlashUI.SetActive(false);
     }
 
-        IEnumerator addPlayerShield()
+    IEnumerator addPlayerShield()
     {
         playerShield.SetActive(true);
         yield return new WaitForSeconds(10f);

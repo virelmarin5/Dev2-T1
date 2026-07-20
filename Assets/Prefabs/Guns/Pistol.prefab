@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 5637647805091910780}
   - component: {fileID: 7853622137294301037}
   - component: {fileID: 1600091359314167330}
+  - component: {fileID: 767894515129350033}
   m_Layer: 8
   m_Name: Pistol
   m_TagString: Untagged
@@ -351,7 +352,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.322, y: 10.867, z: -21.761}
-  m_LocalScale: {x: 2.8, y: 2.8, z: 2.8}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 2.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 476728578323917510}
@@ -400,6 +401,23 @@ CapsuleCollider:
   m_Height: 0.28
   m_Direction: 2
   m_Center: {x: 0, y: 0.02, z: 0.024}
+--- !u!114 &767894515129350033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859026477195048651}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9b8a55ac3ae4744945e92736f00edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::clip
+  clipLayer:
+    serializedVersion: 2
+    m_Bits: 2176
+  checkDist: 0.6
+  newDir: {x: 0, y: -90, z: 0}
 --- !u!1 &6898970785776082926
 GameObject:
   m_ObjectHideFlags: 0
