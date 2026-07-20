@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 88849044850034664}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -245,6 +245,10 @@ MonoBehaviour:
   pushbackForce: 5
   pushbackFriction: 5
   playerShield: {fileID: 1163693913067826184}
+  maxStamina: 5
+  staminaDrainRate: 2
+  staminaRegenRate: 2
+  sprintForwardOnly: 1
   stepInterval: 0.4
 --- !u!114 &7039411983326474933
 MonoBehaviour:

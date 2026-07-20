@@ -14,7 +14,6 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
     [Header("Visuals")]
     [SerializeField] protected Renderer model;
-    //[SerializeField] protected Material flashMaterial;
     protected Color colorOrig;
 
     protected NavMeshAgent agent;
@@ -36,17 +35,8 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         if (model != null)
             colorOrig = model.material.color;
 
-        // Try gameManager first, then fall back to FindWithTag
         if (gameManager.instance != null && gameManager.instance.player != null)
-        {
             playerTransform = gameManager.instance.player.transform;
-        }
-        else
-        {
-            GameObject playerObj = GameObject.FindWithTag("Player");
-            if (playerObj != null)
-                playerTransform = playerObj.transform;
-        }
     }
 
     protected virtual void Update()
@@ -64,7 +54,6 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         if (isDead) return;
 
         currentHP -= amount;
-        Debug.Log("Took damage: " + amount + " | HP: " + currentHP + " | model: " + model);
 
         if (currentHP <= 0)
         {
@@ -72,12 +61,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         }
         else if (model != null)
         {
-            Debug.Log("Starting FlashBlack coroutine");
             StartCoroutine(FlashBlack());
-        }
-        else
-        {
-            Debug.LogWarning("No model assigned � cannot flash black!");
         }
     }
 
@@ -104,22 +88,9 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
     protected virtual IEnumerator FlashBlack()
     {
-        /*if (model == null || flashMaterial == null) yield break;
-
-        Material[] originalMats = model.materials;
-        int count = originalMats.Length;
-        Material[] flashMats = new Material[count];
-
-        for (int i = 0; i < count; i++)
-            flashMats[i] = flashMaterial;
-
-        model.materials = flashMats;
-        yield return new WaitForSeconds(0.15f);
-        model.materials = originalMats;*/
-
         model.material.color = Color.black;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = colorOrig; 
+        model.material.color = colorOrig;
     }
 
     protected virtual void FaceTarget()

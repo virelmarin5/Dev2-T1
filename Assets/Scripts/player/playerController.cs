@@ -20,6 +20,14 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     [SerializeField] float pushbackFriction = 5f;
     [SerializeField] GameObject playerShield;
 
+    [Header("Stamina Settings")]
+    [SerializeField] float maxStamina = 5f;
+    [SerializeField] float staminaDrainRate = 1f;
+    [SerializeField] float staminaRegenRate = 1f;
+    [SerializeField] bool sprintForwardOnly = true;
+
+    float currentStamina;
+
     [Header("Footstep Settings")]
     [SerializeField] float stepInterval = 0.4f;
     float stepTimer;
@@ -35,6 +43,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     void Start()
     {
         //HPOriginal = HP;
+        currentStamina = maxStamina;
     }
 
     // Update is called once per frame
@@ -67,8 +76,37 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
             jumpCount = 0;
         }
 
-        moveDir = Input.GetAxisRaw("Horizontal") * transform.right + Input.GetAxisRaw("Vertical") * transform.forward;
-        bool isSprinting = Input.GetButton("Sprint");
+        float hInput = Input.GetAxisRaw("Horizontal");
+        float vInput = Input.GetAxisRaw("Vertical");
+
+        moveDir = (hInput * transform.right + vInput * transform.forward).normalized;
+
+        bool isMoving = moveDir.sqrMagnitude > 0.01f;
+        bool isMovingForward = vInput > 0;
+
+        bool canSprint = isMoving && currentStamina > 0;
+        if (sprintForwardOnly) canSprint &= isMovingForward;
+
+        bool isSprinting = Input.GetButton("Sprint") && canSprint;
+
+        if (isSprinting)
+        {
+            currentStamina -= staminaDrainRate * Time.deltaTime;
+            if (currentStamina <= 0)
+            {
+                currentStamina = 0;
+                isSprinting = false;
+            }
+        }
+        else
+        {
+            if (currentStamina < maxStamina)
+            {
+                currentStamina += staminaRegenRate * Time.deltaTime;
+                currentStamina = Mathf.Min(currentStamina, maxStamina);
+            }
+        }
+
         int currSpeed = isSprinting ? speed * sprintMod : speed;
 
         controller.Move(moveDir * currSpeed * Time.unscaledDeltaTime);

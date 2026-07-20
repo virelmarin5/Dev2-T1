@@ -8,14 +8,12 @@ public class BasicEnemy : EnemyBase
     [SerializeField] private float attackRange = 4f;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackRate = 1f;
-    //[SerializeField] private float stoppingDistance = 1.5f;
     [SerializeField] GameObject weapon;
     [SerializeField] Transform handPos;
 
     private Quaternion katanaOrigRot;
     private Transform katanaTransform;
     private float attackTimer;
-    private killChainManager killChain;
 
     protected override  void  Start()
     {
@@ -91,7 +89,6 @@ public class BasicEnemy : EnemyBase
 
         if (isDead || playerTransform == null)
         {
-            Debug.Log("EARLY RETURN � enemy not moving");
             return;
         }
 

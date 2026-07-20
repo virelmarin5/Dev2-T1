@@ -51,7 +51,7 @@ public class RangedEnemy : EnemyBase
 
     protected override void Start()
     {
-        base.Start(); // Runs EnemyBase.Start() first (HP, color, playerTransform)
+        base.Start();
     }
 
     void shoot()
