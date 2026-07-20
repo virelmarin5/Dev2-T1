@@ -20,13 +20,9 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     [SerializeField] float pushbackFriction = 5f;
     [SerializeField] GameObject playerShield;
 
-    [Header("Audio Settings")]
-    [SerializeField] AudioClip audJump;
-    [Range(0, 1)][SerializeField] float audJumpVol;
-    [SerializeField] AudioClip audHurt;
-    [Range(0, 1)][SerializeField] float audHurtVol;
-    [SerializeField] AudioClip audSteps;
-    [Range(0, 1)][SerializeField] float audStepsVol;
+    [Header("Footstep Settings")]
+    [SerializeField] float stepInterval = 0.4f;
+    float stepTimer;
 
     int jumpCount;
     //int HPOriginal;
@@ -53,7 +49,12 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     }
     void movement()
     {
-        if (gameManager.instance != null && gameManager.instance.isPaused) return;
+        if (gameManager.instance != null && gameManager.instance.isPaused)
+        {
+            gameManager.instance.interactUI.SetActive(false);
+            return;
+        }
+
         if (killChainManager.instance != null && killChainManager.instance.activatePlayershield)
         {
             killChainManager.instance.activatePlayershield = false;
@@ -67,10 +68,28 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         }
 
         moveDir = Input.GetAxisRaw("Horizontal") * transform.right + Input.GetAxisRaw("Vertical") * transform.forward;
-        int currSpeed = Input.GetButton("Sprint") ? speed * sprintMod : speed;
-        audioManager.instance.playSFX(audSteps, audStepsVol);
+        bool isSprinting = Input.GetButton("Sprint");
+        int currSpeed = isSprinting ? speed * sprintMod : speed;
+
         controller.Move(moveDir * currSpeed * Time.unscaledDeltaTime);
-        
+
+        if (controller.isGrounded && moveDir.sqrMagnitude > 0)
+        {
+            stepTimer -= Time.deltaTime;
+            if (stepTimer <= 0f)
+            {
+                if (audioManager.instance != null)
+                {
+                    audioManager.instance.playSFX(audioManager.instance.steps, audioManager.instance.stepsVol);
+                }
+                stepTimer = isSprinting ? (stepInterval / sprintMod) : stepInterval;
+            }
+        }
+        else
+        {
+            stepTimer = 0f;
+        }
+
         jump();
 
         controller.Move(playerVel * Time.unscaledDeltaTime);
@@ -84,7 +103,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     {
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
-            audioManager.instance.playSFX(audJump, audJumpVol);
+            if (audioManager.instance != null) audioManager.instance.playSFX(audioManager.instance.jump, audioManager.instance.jumpVol);
             playerVel.y = jumpSpeed;
             jumpCount++;
         }
@@ -92,7 +111,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 
     public void takeDamage(int amount)
     {
-        audioManager.instance.playSFX(audHurt, audHurtVol);
+        if (audioManager.instance != null) audioManager.instance.playSFX(audioManager.instance.hurt, audioManager.instance.hurtVol);
 
         StartCoroutine(flashDamage());
 
@@ -106,6 +125,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     {
         if (weaponManager.instance != null)
         {
+            if (audioManager.instance != null) audioManager.instance.playSFX(audioManager.instance.equip, audioManager.instance.equipVol);
             weaponManager.instance.equipWeapon(weapon);
         }
     }

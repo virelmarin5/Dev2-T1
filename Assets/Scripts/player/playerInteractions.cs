@@ -7,9 +7,6 @@ public class playerInteraction : MonoBehaviour
     [Range(1f, 5)][SerializeField] private float maxDistance = 2f;
     [SerializeField] LayerMask interactLayer;
 
-    [Header("Audio")]
-    [SerializeField] AudioClip equip;
-    [Range(0, 1)][SerializeField] float equipVol;
 
     private Camera mainCam;
     private IPickWeapon picker;
@@ -22,12 +19,10 @@ public class playerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            if (gameManager.instance != null && gameManager.instance.isPaused) return;
+        if (gameManager.instance != null && gameManager.instance.isPaused) return;
 
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.LeftControl))
             weaponManager.instance.attack();
-        }
 
         Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
         RaycastHit hit;
@@ -37,10 +32,8 @@ public class playerInteraction : MonoBehaviour
             if (hit.collider.TryGetComponent<pickWeapon>(out var weaponPickup))
             {
                 gameManager.instance.interactUI.SetActive(true);
-
                 if (Input.GetKeyDown(KeyCode.E) && picker != null)
                 {
-                    if (audioManager.instance != null) audioManager.instance.playSFX(equip, equipVol);
                     weaponPickup.interact(picker);
                     gameManager.instance.interactUI.SetActive(false);
                 }

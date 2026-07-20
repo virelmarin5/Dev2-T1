@@ -26,11 +26,9 @@ public class weaponManager : MonoBehaviour
 
         if (weaponHoldPos == null)
         {
-            GameObject weaponHoldObj = GameObject.FindWithTag("Weapon Hold Position");
+            GameObject weaponHoldObj = GameObject.FindWithTag("Weapon Holder");
             if (weaponHoldObj != null)
                 weaponHoldPos = weaponHoldObj;
-            else
-                Debug.LogError("Weapon Manager: Failed to locate an object with the tag 'Weapon Hold Position' in the scene.");
         }
     }
 

@@ -50,6 +50,12 @@ public class damage : MonoBehaviour
                 Instantiate(hitEffect, transform.position, Quaternion.identity);
             }
 
+            /*if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                audioManager.instance.playSpatialSFX(audioManager.instance.enemyHit, transform.position, audioManager.instance.enemyHitVol);
+            else
+                audioManager.instance.playSpatialSFX(audioManager.instance.wallHit, transform.position, audioManager.instance.wallHitVol);
+            */
+
             Destroy(gameObject);
         }
     }
@@ -83,7 +89,8 @@ public class damage : MonoBehaviour
         {
             // Calculate the reflection vector based on current velocity and surface normal
             Vector3 reflectedVelocity = Vector3.Reflect(rb.linearVelocity, hit.normal);
-            
+            audioManager.instance.playSpatialSFX(audioManager.instance.bulletRicochet, transform.position, audioManager.instance.bulletRicochetVol);
+
             // Apply the new velocity
             rb.linearVelocity = reflectedVelocity;
         }

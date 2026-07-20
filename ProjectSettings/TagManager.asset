@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Shield
   - Enemy
-  - Weapon Hold Position
   - Player Shield
-  - CameraRecoil
+  - Weapon Holder
   - Clipper
   layers:
   - Default

@@ -48,5 +48,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5179a046286984d90a80e246c52482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::audioManager
-  masterVolume: 0.3
+  masterVolume: 0.5
   sfxVolume: 0.3
+  jump: {fileID: 8300000, guid: 8b2b27fa6eb613943b2440f74229f9ee, type: 3}
+  jumpVol: 0.3
+  hurt: {fileID: 8300000, guid: 2dadaf35b026ef348bb28975d3343350, type: 3}
+  hurtVol: 0.3
+  steps: {fileID: 8300000, guid: f98170067636ac846a1f539d9461d921, type: 3}
+  stepsVol: 0.3
+  enemyHit: {fileID: 0}
+  enemyHitVol: 0.3
+  wallHit: {fileID: 0}
+  wallHitVol: 0.3
+  equip: {fileID: 8300000, guid: 06edc8a6e8fcf114797064b83ee4a7be, type: 3}
+  equipVol: 0.3
+  bulletRicochet: {fileID: 8300000, guid: 098ae026aae84954a8ff095be846e6c7, type: 3}
+  bulletRicochetVol: 0.3
