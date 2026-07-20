@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8506489377359620230}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -142,11 +142,9 @@ MonoBehaviour:
   currentHP: 0
   faceTargetSpeed: 8
   model: {fileID: 5790676660924593904}
-  flashMaterial: {fileID: 2100000, guid: 76ac4f5b15e2272408d01f4606bff9c7, type: 2}
   attackRange: 2
   attackDamage: 1
   attackRate: 1
-  stoppingDistance: 1.5
   weapon: {fileID: 6413440490822234159, guid: a04645d8876d1a448ad847390068b125, type: 3}
   handPos: {fileID: 3944370326679410268}
 --- !u!136 &7936237065783409545

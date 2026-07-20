@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4618653301713916583}
   - component: {fileID: 3227519692920855607}
   - component: {fileID: 304971188936524132}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HeavyEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -245,10 +245,6 @@ MonoBehaviour:
   currentHP: 0
   faceTargetSpeed: 8
   model: {fileID: 2567143705488947480}
-  flashMaterial: {fileID: 2100000, guid: 76ac4f5b15e2272408d01f4606bff9c7, type: 2}
-  shieldCollider: {fileID: 1345163317746289366, guid: f664fe2a15f5c74478c3be43f9a9d62a, type: 3}
-  shieldTransform: {fileID: 1528316706312784209}
-  shieldDeflectionAngle: 75
   meleeRange: 2
   meleeDamage: 15
   meleeCooldown: 1.5

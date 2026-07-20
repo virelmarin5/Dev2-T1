@@ -16,6 +16,7 @@ public class gameManager : MonoBehaviour
 
     [SerializeField] private killScoreUI killScore;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] public GameObject interactUI;
 
     [Header("Screen Flash")]
     public GameObject damageFlashUI;

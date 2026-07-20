@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Weapon Hold Position
   - Player Shield
+  - CameraRecoil
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Weapon Holder
-  - 
+  - Enemy
   - Weapon
   - Projectile
   - Player

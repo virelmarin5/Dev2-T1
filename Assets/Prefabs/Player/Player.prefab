@@ -486,6 +486,7 @@ MonoBehaviour:
   gravity: 35
   pushbackForce: 5
   pushbackFriction: 5
+  playerShield: {fileID: 2461642522944281512}
   audJump: {fileID: 8300000, guid: ef6a3d565fd089d489581efa33bd4b7e, type: 3}
   audJumpVol: 1
   audHurt: {fileID: 8300000, guid: b0febe0bee3735544900f4a007e0171d, type: 3}
@@ -505,11 +506,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerInteraction
   maxDistance: 3
-  outlineMaterial: {fileID: 2100000, guid: 011d02272ba3fcc418623cef5435cab0, type: 2}
+  interactLayer:
+    serializedVersion: 2
+    m_Bits: 256
   equip: {fileID: 8300000, guid: 06edc8a6e8fcf114797064b83ee4a7be, type: 3}
   equipVol: 0
-  throwSFX: {fileID: 8300000, guid: e8853dc0b943e75489588822db5eb4eb, type: 3}
-  throwSFXVol: 0
 --- !u!33 &3534952803938698613
 MeshFilter:
   m_ObjectHideFlags: 0

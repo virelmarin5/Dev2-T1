@@ -95,13 +95,6 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         {
             heartbeatManager.instance.playerDamaged();
         }
-        
-        //HP -= amount;
-
-        //if (HP <= 0)
-        //{
-        //    // dead
-        //}
     }
 
     public void weaponStats(weaponStats weapon)
