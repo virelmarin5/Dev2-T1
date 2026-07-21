@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private killScoreUI killScore;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] public GameObject pickUpUI;
+    [SerializeField] public Image playerStaminaBar;
 
     [Header("Screen Flash")]
     public GameObject damageFlashUI;

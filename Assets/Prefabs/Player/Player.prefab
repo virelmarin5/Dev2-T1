@@ -245,9 +245,9 @@ MonoBehaviour:
   pushbackForce: 5
   pushbackFriction: 5
   playerShield: {fileID: 1163693913067826184}
-  maxStamina: 5
-  staminaDrainRate: 2
-  staminaRegenRate: 2
+  maxStamina: 50
+  staminaDrainRate: 11
+  staminaRegenRate: 8
   sprintForwardOnly: 1
   stepInterval: 0.4
 --- !u!114 &7039411983326474933

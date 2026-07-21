@@ -7,8 +7,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 {
     [Header("Controller")]
     [SerializeField] CharacterController controller;
-    [SerializeField] Animator anim;
-
+    
     [Header("Player Settings")]
     [SerializeField] int HP;
     [SerializeField] int speed;
@@ -50,6 +49,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     void Update()
     {
         movement();
+        updatePlayerUI();
     }
     public void PushBack(Vector3 direction)
     {
@@ -72,7 +72,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 
         if (controller.isGrounded)
         {
-            playerVel.y = 0;
+            playerVel.y = -2f;
             jumpCount = 0;
         }
 
@@ -84,7 +84,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         bool isMoving = moveDir.sqrMagnitude > 0.01f;
         bool isMovingForward = vInput > 0;
 
-        bool canSprint = isMoving && currentStamina > 0;
+        bool canSprint = isMoving && currentStamina > 0.01f;
         if (sprintForwardOnly) canSprint &= isMovingForward;
 
         bool isSprinting = Input.GetButton("Sprint") && canSprint;
@@ -92,9 +92,9 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         if (isSprinting)
         {
             currentStamina -= staminaDrainRate * Time.deltaTime;
-            if (currentStamina <= 0)
+            if (currentStamina <= 0.01f)
             {
-                currentStamina = 0;
+                currentStamina = 0.01f;
                 isSprinting = false;
             }
         }
@@ -111,7 +111,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 
         controller.Move(moveDir * currSpeed * Time.unscaledDeltaTime);
 
-        if (controller.isGrounded && moveDir.sqrMagnitude > 0)
+        if (controller.isGrounded && isMoving)
         {
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0f)
@@ -126,8 +126,6 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         }
 
         jump();
-
-        controller.Move(playerVel * Time.unscaledDeltaTime);
 
         playerVel.x = Mathf.MoveTowards(playerVel.x, 0, pushbackFriction * Time.unscaledDeltaTime);
         playerVel.z = Mathf.MoveTowards(playerVel.z, 0, pushbackFriction * Time.unscaledDeltaTime);
@@ -195,5 +193,10 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         yield return new WaitForSeconds(10f);
         playerShield.SetActive(false);
         killChainManager.instance.activatePlayershield = false;
+    }
+
+    public void updatePlayerUI()
+    {
+        gameManager.instance.playerStaminaBar.fillAmount = (float)currentStamina / maxStamina;
     }
 }
