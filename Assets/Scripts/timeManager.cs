@@ -19,6 +19,8 @@ public class timeManager : MonoBehaviour
 
     float currentTimeScale;
 
+    private float? overrideTimeScale = null;
+    private float overrideFixedDeltaTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -31,7 +33,17 @@ public class timeManager : MonoBehaviour
     private void Update()
     {
         if (gameManager.instance == null || gameManager.instance.isPaused) return;
-
+        // If a killstreak owns time, lock it and skip normal scaling logic.
+        if (overrideTimeScale.HasValue)
+        {
+            if (!Mathf.Approximately(Time.timeScale, overrideTimeScale.Value))
+            {
+                Time.timeScale = overrideTimeScale.Value;
+                Time.fixedDeltaTime = overrideFixedDeltaTime;
+            }
+            currentTimeScale = Time.timeScale;
+            return;
+        }
         // Get the player's speed percentage and calculate the target time scale based on it.
         float playerSpeedPercent = gameManager.instance.playerScript.getSpeedPercent();
         float target = Mathf.Lerp(minTimeScale, moveMaxTimeScale, playerSpeedPercent);
@@ -54,15 +66,37 @@ public class timeManager : MonoBehaviour
     public void setTimeScale(float newTimeScale)
     {
         if (gameManager.instance != null && gameManager.instance.isPaused) return;
-
+        if (overrideTimeScale.HasValue) return; // blocked while killstreak owns time
         Time.timeScale = newTimeScale;
         // Adjust the fixedDeltaTime based on the new time scale for consistent physics updates like bullets and player movement. This ensures that physics calculations remain stable regardless of the time scale.
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
 
         currentTimeScale = Time.timeScale;
     }
+    public void setTimeScaleOverride(float worldTimeScale)
+    {
+        if (!overrideTimeScale.HasValue)
+        {
+            currentTimeScale = Time.timeScale; // remember where we were
+        }
 
+        overrideTimeScale = Mathf.Clamp(worldTimeScale, 0.01f, maxTimeScale);
+        overrideFixedDeltaTime = 0.02f * overrideTimeScale.Value;
 
+        Time.timeScale = overrideTimeScale.Value;
+        Time.fixedDeltaTime = overrideFixedDeltaTime;
+    }
+    public void clearTimeScaleOverride()
+    {
+        overrideTimeScale = null;
+        Time.timeScale = currentTimeScale;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+    }
+
+    public bool isTimeOverridden()
+    {
+        return overrideTimeScale.HasValue;
+    }
     public float getTimeScale()
     {
         return Time.timeScale;
@@ -72,10 +106,18 @@ public class timeManager : MonoBehaviour
     {
         Time.timeScale = 0;
     }
-    
+
     public void unpauseTime()
     {
-        Time.timeScale = currentTimeScale;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        if (overrideTimeScale.HasValue)
+        {
+            Time.timeScale = overrideTimeScale.Value;
+            Time.fixedDeltaTime = overrideFixedDeltaTime;
+        }
+        else
+        {
+            Time.timeScale = currentTimeScale;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
     }
 }

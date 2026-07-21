@@ -78,7 +78,7 @@ public class heartbeatManager : MonoBehaviour
     void decayStress()
     {
         // Stress lowers over time based on the Inspector value.
-        currentStress -= stressDecayRate * Time.deltaTime;
+        currentStress -= stressDecayRate * Time.unscaledDeltaTime;
         currentStress = Mathf.Clamp(currentStress, 0f, maxStress);
     }
 
