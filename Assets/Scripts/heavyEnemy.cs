@@ -22,6 +22,7 @@ public class heavyEnemy : EnemyBase
 
     private float meleeTimer;
     //private bool isAttacking = false;
+    
 
     // --- Setup ---
 
@@ -41,6 +42,7 @@ public class heavyEnemy : EnemyBase
             shieldCollider.gameObject.tag = "Shield";
             shieldCollider.gameObject.layer = LayerMask.NameToLayer("Shield");
         }
+        meleeTimer -= Time.deltaTime;
     }
 
     // --- Core Behavior ---
@@ -49,26 +51,47 @@ public class heavyEnemy : EnemyBase
     {
         if (playerTransform == null) return;
 
-        float distToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+        if (!hasLeftSpawnRoom)
+            return;
 
-        // Always face the player (shield faces them)
-        FaceTarget();
+        float dist = Vector3.Distance(transform.position, playerTransform.position);
+        
+        if (state == EnemyState.Roam)
+        {
+            
+            agent.isStopped = false;
+            HandleRoam();
 
-        // Move toward player if not in melee range
-        if (distToPlayer > meleeRange)
+            if (dist <= detectionRange)
+            {
+                state = EnemyState.Chase;
+            }
+            return;
+        }
+
+        if (state == EnemyState.Chase)
         {
             agent.isStopped = false;
             agent.SetDestination(playerTransform.position);
-        }
-        else
-        {
-            // In melee range � stop and attack
-            agent.isStopped = true;
-            TryMeleeAttack();
+
+            if (dist <= meleeRange)
+                state = EnemyState.Attack;
+
+            if (dist > detectionRange)
+                state = EnemyState.Roam;
         }
 
-        // Cooldown management
-        meleeTimer -= Time.deltaTime;
+
+
+        if (state == EnemyState.Attack)
+        {
+            agent.isStopped = true;
+            FaceTarget();
+            if (meleeTimer > meleeCooldown)
+            {
+                TryMeleeAttack(); 
+            }
+        }
     }
 
     // --- Melee Attack ---
