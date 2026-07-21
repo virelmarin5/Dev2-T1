@@ -12,6 +12,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuSound;
     [SerializeField] timeManager timeManager;
 
     [SerializeField] private killScoreUI killScore;
@@ -49,6 +50,10 @@ public class gameManager : MonoBehaviour
             {
                 stateUnpause();
             }
+            else if (menuActive == menuSound)
+            {
+                openPauseMenu();
+            }
         }
     }
 
@@ -70,6 +75,26 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
+    }
+
+    public void openSoundMenu()
+    {
+        if (menuActive != null)
+        {
+            menuActive.SetActive(false);
+        }
+        menuActive = menuSound;
+        menuActive.SetActive(true);
+    }
+
+    public void openPauseMenu()
+    {
+        if (menuActive != null)
+        {
+            menuActive.SetActive(false);
+        }
+        menuActive = menuPause;
+        menuActive.SetActive(true);
     }
 
     // Update the heart rate in UI only, moving it to just heartBeatManager

@@ -14,6 +14,16 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnpause();
     }
 
+    public void sound()
+    {
+        gameManager.instance.openSoundMenu();
+    }
+
+    public void soundBack()
+    {
+        gameManager.instance.openPauseMenu();
+    }
+
     public void quit()
     {
         #if UNITY_EDITOR

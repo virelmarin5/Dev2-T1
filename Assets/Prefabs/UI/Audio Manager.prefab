@@ -56,11 +56,13 @@ MonoBehaviour:
   hurtVol: 0.3
   steps: {fileID: 8300000, guid: f98170067636ac846a1f539d9461d921, type: 3}
   stepsVol: 0.3
-  enemyHit: {fileID: 0}
+  enemyHit: {fileID: 8300000, guid: 1695e571e135cd94c893267034d133ba, type: 3}
   enemyHitVol: 0.3
-  wallHit: {fileID: 0}
+  wallHit: {fileID: 8300000, guid: a689d92cfb243194ba045dc1b38618b0, type: 3}
   wallHitVol: 0.3
   equip: {fileID: 8300000, guid: 06edc8a6e8fcf114797064b83ee4a7be, type: 3}
   equipVol: 0.3
   bulletRicochet: {fileID: 8300000, guid: 098ae026aae84954a8ff095be846e6c7, type: 3}
   bulletRicochetVol: 0.3
+  glass: {fileID: 8300000, guid: 34eff18d497aa1941b9077d5021ecfbe, type: 3}
+  glassVol: 0.3

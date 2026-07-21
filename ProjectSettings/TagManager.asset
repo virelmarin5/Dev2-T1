@@ -8,6 +8,8 @@ TagManager:
   - Player Shield
   - Weapon Holder
   - Clipper
+  - Shield
+  - Weapon Hold Position
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Projectile
   - Player
   - Room
-  - 
+  - Glass
   - 
   - 
   - 

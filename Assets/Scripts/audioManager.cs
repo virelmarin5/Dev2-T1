@@ -23,6 +23,10 @@ public class audioManager : MonoBehaviour
     [Range(0, 1)][SerializeField] public float equipVol;
     [SerializeField] public AudioClip bulletRicochet;
     [Range(0, 1)][SerializeField] public float bulletRicochetVol;
+    [SerializeField] public AudioClip glass;
+    [Range(0, 1)][SerializeField] public float glassVol;
+
+    public bool isMuted = false;
 
     private AudioSource audioSource;
 
@@ -43,6 +47,23 @@ public class audioManager : MonoBehaviour
 
         audioSource.spatialBlend = 0f;
     }
+
+    public void toggleMute()
+    {
+        isMuted = !isMuted;
+        AudioListener.volume = isMuted ? 0f : 1f;
+    }
+
+    public void setMasterVolume(float vol)
+    {
+        masterVolume = vol;
+    }
+
+    public void setSFXVolume(float vol)
+    {
+        sfxVolume = vol;
+    }
+
     public void playSFX(AudioClip clip, float localVolumeMod = 1f)
     {
         if (clip == null) return;
