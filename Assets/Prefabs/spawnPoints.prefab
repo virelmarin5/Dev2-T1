@@ -54,8 +54,8 @@ MonoBehaviour:
   timeBetweenWaves: 3
   timeBetweenSpawns: 3
   basicEnemyPrefab: {fileID: 664652709444551372, guid: 6c8048cf7ced2274fb5617e126e8254a, type: 3}
-  rangedEnemyPrefab: {fileID: 7521726833427132236, guid: 63c3691f790d7874b81f32944993d6ee, type: 3}
-  heavyEnemyPrefab: {fileID: 4643874062370731178, guid: 05521e55a36e58144bf91c84bcfd74b3, type: 3}
+  rangedEnemyPrefab: {fileID: 664652709444551372, guid: 6c8048cf7ced2274fb5617e126e8254a, type: 3}
+  heavyEnemyPrefab: {fileID: 664652709444551372, guid: 6c8048cf7ced2274fb5617e126e8254a, type: 3}
   rangedEnemyPercent: 60
   basicEnemyPercent: 30
   heavyEnemyPercent: 10
