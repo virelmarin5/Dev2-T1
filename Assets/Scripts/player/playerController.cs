@@ -116,10 +116,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0f)
             {
-                if (audioManager.instance != null)
-                {
-                    audioManager.instance.playSFX(audioManager.instance.steps, audioManager.instance.stepsVol);
-                }
+                audioManager.instance.playSteps();
                 stepTimer = isSprinting ? (stepInterval / sprintMod) : stepInterval;
             }
         }
@@ -141,7 +138,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     {
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
-            if (audioManager.instance != null) audioManager.instance.playSFX(audioManager.instance.jump, audioManager.instance.jumpVol);
+            audioManager.instance.playJump();
             playerVel.y = jumpSpeed;
             jumpCount++;
         }
@@ -149,7 +146,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 
     public void takeDamage(int amount)
     {
-        if (audioManager.instance != null) audioManager.instance.playSFX(audioManager.instance.hurt, audioManager.instance.hurtVol);
+        audioManager.instance.playHurt();
 
         StartCoroutine(flashDamage());
 
@@ -163,7 +160,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     {
         if (weaponManager.instance != null)
         {
-            if (audioManager.instance != null) audioManager.instance.playSFX(audioManager.instance.equip, audioManager.instance.equipVol);
+            audioManager.instance.playEquip();
             weaponManager.instance.equipWeapon(weapon);
         }
     }

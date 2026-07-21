@@ -1543,7 +1543,7 @@ MonoBehaviour:
   timeManager: {fileID: 7924454631682479090}
   killScore: {fileID: 5277223105376993847}
   scoreText: {fileID: 6530162608498976283}
-  interactUI: {fileID: 5592344118484624567}
+  pickUpUI: {fileID: 5592344118484624567}
   damageFlashUI: {fileID: 4535515450543624943}
   isPaused: 0
   player: {fileID: 0}

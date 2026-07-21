@@ -4,6 +4,10 @@ public class audioManager : MonoBehaviour
 {
     public static audioManager instance { get; private set; }
 
+    [Header("Audio Source")]
+    public AudioSource sfxSource;
+    public AudioSource musicSource;
+
     [Header("Volume Settings")]
     [Range(0f, 1f)] public float masterVolume = 1f;
     [Range(0f, 1f)] public float sfxVolume = 1f;
@@ -25,10 +29,8 @@ public class audioManager : MonoBehaviour
     [Range(0, 1)][SerializeField] public float bulletRicochetVol;
     [SerializeField] public AudioClip glass;
     [Range(0, 1)][SerializeField] public float glassVol;
-
-    public bool isMuted = false;
-
-    private AudioSource audioSource;
+    [SerializeField] public AudioClip buttonClick;
+    [SerializeField] public AudioClip titleScreenSound;
 
     void Awake()
     {
@@ -40,18 +42,7 @@ public class audioManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
 
-        if (!TryGetComponent<AudioSource>(out audioSource))
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
-
-        audioSource.spatialBlend = 0f;
-    }
-
-    public void toggleMute()
-    {
-        isMuted = !isMuted;
-        AudioListener.volume = isMuted ? 0f : 1f;
+        sfxSource.spatialBlend = 0f;
     }
 
     public void setMasterVolume(float vol)
@@ -69,7 +60,7 @@ public class audioManager : MonoBehaviour
         if (clip == null) return;
 
         float Volume = localVolumeMod * sfxVolume * masterVolume;
-        audioSource.PlayOneShot(clip, Volume);
+        sfxSource.PlayOneShot(clip, Volume);
     }
 
     public void playSpatialSFX(AudioClip clip, Vector3 position, float localVolumeMod = 1f, float minDistance = 1f, float maxDistance = 50f)
@@ -92,5 +83,44 @@ public class audioManager : MonoBehaviour
         source.Play();
 
         Destroy(tempGO, clip.length);
+    }
+
+    public void playMusic(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        musicSource.clip = clip;
+        musicSource.volume = masterVolume;
+        musicSource.Play();
+    }
+
+    public void playJump()
+    {
+        playSFX(jump, jumpVol);
+    }
+
+    public void playHurt()
+    {
+        playSFX(hurt, hurtVol);
+    }
+
+    public void playSteps()
+    {
+        playSFX(steps, stepsVol);
+    }
+
+    public void playEquip()
+    {
+        playSFX(equip, equipVol);
+    }
+
+    public void playButtonClick()
+    {
+        playSFX(buttonClick);
+    }
+
+    public void playTitleScreenSound()
+    {
+        playMusic(titleScreenSound);
     }
 }

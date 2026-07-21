@@ -20,8 +20,7 @@ public class meleeStats : weaponStats
         Transform gunBarrel = manager.gunBarrel;
         if (gunBarrel == null) return;
 
-        if (swingSound != null)
-            audioManager.instance.playSFX(swingSound, swingSoundVol);
+        audioManager.instance.playSFX(swingSound, swingSoundVol);
 
         RaycastHit hit;
         if (Physics.Raycast(gunBarrel.position, gunBarrel.forward, out hit, attackDist))
@@ -30,13 +29,11 @@ public class meleeStats : weaponStats
             if (dmg != null)
             {
                 dmg.takeDamage(attackDamage);
-                if (hitFleshSound != null)
-                    audioManager.instance.playSFX(hitFleshSound, hitFleshVol);
+                audioManager.instance.playSFX(hitFleshSound, hitFleshVol);
             }
             else
             {
-                if (hitWallSound != null)
-                    audioManager.instance.playSFX(hitWallSound, hitWallVol);
+                audioManager.instance.playSFX(hitWallSound, hitWallVol);
             }
         }
     }

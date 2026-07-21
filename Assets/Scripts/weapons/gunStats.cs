@@ -29,7 +29,6 @@ public class gunStats : weaponStats
         Transform gunBarrel = manager.gunBarrel;
         if (gunBarrel == null) return;
 
-        if (shootSound != null)
             audioManager.instance.playSFX(shootSound, shootSoundVol);
 
         int shotsToFire = (gunType == GunType.Shotgun) ? pelletCount : 1;

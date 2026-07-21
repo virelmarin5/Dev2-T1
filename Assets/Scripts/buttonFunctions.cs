@@ -5,17 +5,20 @@ public class buttonFunctions : MonoBehaviour
 {
     public void resume()
     {
+        audioManager.instance.playButtonClick();
         gameManager.instance.stateUnpause();
     }
 
     public void restart()
     {
+        audioManager.instance.playButtonClick();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameManager.instance.stateUnpause();
     }
 
     public void sound()
     {
+        audioManager.instance.playButtonClick();
         gameManager.instance.openSoundMenu();
     }
 
@@ -26,6 +29,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void quit()
     {
+        audioManager.instance.playButtonClick();
         #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
         #else
