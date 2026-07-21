@@ -1,16 +1,20 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class damage : MonoBehaviour
 {
-    enum damageType { bullet, stationary, DOT }
+    enum damageType { bullet, stationary, DOT, shard }
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
 
     [Range(1, 10)][SerializeField] int damageAmount;
     [Range(.1f, 10)][SerializeField] float damageRate;
+
+    [Header("Bullet")]
     [Range(1, 80)][SerializeField] int bulletSpeed;
     [Range(.1f, 20)][SerializeField] int bulletDestroyTime;
+    [SerializeField] float shatterForce = 350f;
     [SerializeField] LayerMask deflectLayer;
     [SerializeField] ParticleSystem hitEffect;
 
@@ -19,8 +23,14 @@ public class damage : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (rb == null && !TryGetComponent<Rigidbody>(out rb))
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+        }
+
         if (type == damageType.bullet)
         {
+            rb.useGravity = false;
             rb.linearVelocity = transform.forward * bulletSpeed;
             Destroy(gameObject, bulletDestroyTime);
         }
@@ -35,6 +45,19 @@ public class damage : MonoBehaviour
         {
             DeflectBullet(other);
             return;
+        }
+
+        glassShatter glass = other.GetComponent<glassShatter>();
+        if (glass == null)
+        {
+            glass = other.GetComponentInParent<glassShatter>();
+        }
+
+        if (glass != null)
+        {
+            Vector3 hitPoint = other.ClosestPoint(transform.position);
+
+            glass.Shatter(hitPoint, transform.forward, shatterForce);
         }
 
         IDamage dmg = other.GetComponent<IDamage>();

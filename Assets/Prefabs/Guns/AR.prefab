@@ -509,8 +509,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Clip
   clipLayer:
     serializedVersion: 2
-    m_Bits: 2048
-  checkDist: 1.5
+    m_Bits: 2049
+  checkDist: 3
   newDir: {x: 0, y: -90, z: 0}
 --- !u!1 &5824911893833813757
 GameObject:
