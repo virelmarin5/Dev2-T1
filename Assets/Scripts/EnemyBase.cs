@@ -22,6 +22,8 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     protected Vector3 playerDir;
     protected bool isDead;
 
+    public bool hasEnteredPlayArea = false;
+
     protected abstract void UpdateBehavior();
 
     protected virtual void Awake()
