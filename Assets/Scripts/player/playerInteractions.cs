@@ -31,15 +31,15 @@ public class playerInteraction : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<pickWeapon>(out var weaponPickup))
             {
-                gameManager.instance.interactUI.SetActive(true);
+                gameManager.instance.pickUpUI.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E) && picker != null)
                 {
                     weaponPickup.interact(picker);
-                    gameManager.instance.interactUI.SetActive(false);
+                    gameManager.instance.pickUpUI.SetActive(false);
                 }
                 return;
             }
         }
-        gameManager.instance.interactUI.SetActive(false);
+        gameManager.instance.pickUpUI.SetActive(false);
     }
 }
