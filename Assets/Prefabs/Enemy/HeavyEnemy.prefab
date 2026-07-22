@@ -167,18 +167,13 @@ MonoBehaviour:
   maxHP: 50
   faceTargetSpeed: 10
   FOV: 120
-  attackRate: 0.5
+  attackRate: 1
   attackRange: 3
   attackDamage: 3
   roamDist: 14
   roamWaitTime: 1.4
   hasLeftSpawnRoom: 0
   pushbackForce: 20
-  windUpDistance: 2
-  windUpDuration: 0.4
-  chargeSpeed: 12
-  chargeDuration: 0.6
-  hitDistance: 0.5
 --- !u!33 &977282381851803801
 MeshFilter:
   m_ObjectHideFlags: 0

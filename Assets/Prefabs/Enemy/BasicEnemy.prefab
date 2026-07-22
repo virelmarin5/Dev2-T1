@@ -55,7 +55,7 @@ MonoBehaviour:
   maxHP: 2
   faceTargetSpeed: 10
   FOV: 90
-  attackRate: 0.1
+  attackRate: 0.6
   attackRange: 2
   attackDamage: 1
   roamDist: 10

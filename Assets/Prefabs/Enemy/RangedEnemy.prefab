@@ -197,9 +197,9 @@ MonoBehaviour:
   model: {fileID: 3262802430056639548}
   agent: {fileID: 7931631704010347091}
   maxHP: 3
-  faceTargetSpeed: 10
+  faceTargetSpeed: 15
   FOV: 100
-  attackRate: 0.1
+  attackRate: 0.4
   attackRange: 8
   attackDamage: 1
   roamDist: 12
