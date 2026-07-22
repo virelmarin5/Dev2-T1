@@ -64,11 +64,11 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
             return;
         }
 
-        if (killChainManager.instance != null && killChainManager.instance.activatePlayershield)
+        /*if (killChainManager.instance != null && killChainManager.instance.activatePlayershield)
         {
             killChainManager.instance.activatePlayershield = false;
             StartCoroutine(addPlayerShield());
-        }
+        }*/
 
         if (controller.isGrounded)
         {
@@ -193,7 +193,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         playerShield.SetActive(true);
         yield return new WaitForSeconds(10f);
         playerShield.SetActive(false);
-        killChainManager.instance.activatePlayershield = false;
+        //killChainManager.instance.activatePlayershield = false;
     }
 
     public void updatePlayerUI()

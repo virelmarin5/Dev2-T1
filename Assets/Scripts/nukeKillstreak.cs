@@ -4,9 +4,9 @@ public class nukeKillstreak : killstreakBase
 {
     protected override void onActivate()
     {
-        if (audioManager.instance != null)
+        if (AudioManager.instance != null)
         {
-            audioManager.instance.playNuke();
+            AudioManager.instance.playNuke();
         }
 
         // Prevent all enemies killed by the nuke from adding
@@ -26,7 +26,7 @@ public class nukeKillstreak : killstreakBase
             if (enemy == null)
                 continue;
 
-            enemy.ForceKill();
+            //enemy.ForceKill();
             enemiesKilled++;
         }
 

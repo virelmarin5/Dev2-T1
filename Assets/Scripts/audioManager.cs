@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class audioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
-    public static audioManager instance { get; private set; }
+    public static AudioManager instance { get; private set; }
 
     [Header("Volume Settings")]
     [Range(0f, 1f)] public float masterVolume = 1f;
