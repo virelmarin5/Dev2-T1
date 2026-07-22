@@ -63,6 +63,7 @@ public class gameManager : MonoBehaviour
         timeManager.pauseTime();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        if (audioManager.instance != null) audioManager.instance.pauseMusic();
     }
 
     // Unpause the game
@@ -74,6 +75,7 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
+        if (audioManager.instance != null) audioManager.instance.resumeMusic();
     }
 
     public void openSoundMenu()

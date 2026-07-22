@@ -1,221 +1,151 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-using UnityEngine.Rendering;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public abstract class EnemyBase : MonoBehaviour, IDamage
 {
-    [Header("Health")]
-    [SerializeField] protected int maxHP = 10;
-    [SerializeField] protected int currentHP;
-
-    [Header("Movement")]
-    [SerializeField] protected float faceTargetSpeed = 8f;
-    [SerializeField] float roamRadius = 10f;
-    [SerializeField] float roamWaitMin = 1f;
-    [SerializeField] float roamWaitMax = 3f;
-    [SerializeField] public float detectionRange = 3.0f;
-
-    bool playerInTrigger;
-
-    Vector3 roamCenter;
-    Vector3 roamTarget;
-    float roamTimer;
-
     [Header("Visuals")]
-    [SerializeField] protected Renderer model;
-    protected Color colorOrig;
+    [SerializeField] public Renderer model;
+    Color colorOrig;
 
-    protected NavMeshAgent agent;
+    [Header("Agent")]
+    [SerializeField] public NavMeshAgent agent;
+
+    [Header("Stats")]
+    int currentHP;
+    [Range(1, 50)][SerializeField] int maxHP;
+    [Range(1, 10)][SerializeField] float faceTargetSpeed = 8f;
+    [Range(15, 120)][SerializeField] float FOV = 90f;
+    [Range(.1f, 5)][SerializeField] public float attackRate = 1.5f;
+    [Range(1, 20)][SerializeField] public float attackRange = 2f;
+    [Range(1, 20)][SerializeField] public int attackDamage = 1;
+
+    [Header("Roaming")]
+    [SerializeField] float roamDist = 10f;
+    [SerializeField] float roamWaitTime = 2f;
+    float roamTimer;
+    Vector3 startingPos;
+
+    protected bool playerInTrigger;
+    protected float angleToPlayer;
+    protected float stoppingDistOrig;
+    protected float attackTimer;
+
+
     protected Transform playerTransform;
     protected Vector3 playerDir;
-    protected bool isDead;
-    protected SpawnRoom mySpawnRoom;
     public bool hasLeftSpawnRoom = false;
-
-
-    protected enum EnemyState
-    {
-        Roam,
-        Chase,
-        Attack
-    }
-
-    protected EnemyState state = EnemyState.Roam;
-
-    protected abstract void UpdateBehavior();
-
-    protected virtual void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
 
     protected virtual void Start()
     {
-
+        agent = GetComponent<NavMeshAgent>();
         currentHP = maxHP;
+        startingPos = transform.position;
+        stoppingDistOrig = agent.stoppingDistance;
 
         if (model != null)
             colorOrig = model.material.color;
 
-
-
-
-        // Try gameManager first, then fall back to FindWithTag
         if (gameManager.instance != null && gameManager.instance.player != null)
-        {
             playerTransform = gameManager.instance.player.transform;
+    }
+
+    void Update()
+    {
+        if (playerInTrigger && canSeePlayer())
+        {
         }
         else
         {
-            GameObject playerObj = GameObject.FindWithTag("Player");
-            if (playerObj != null)
-                playerTransform = playerObj.transform;
+            checkRoam();
         }
     }
 
-    protected virtual void Update()
+    bool canSeePlayer()
     {
-        if (isDead || playerTransform == null)
-            return;
+        playerDir = gameManager.instance.player.transform.position - transform.position;
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+        Debug.DrawRay(transform.position, playerDir);
 
-        playerDir = playerTransform.position - transform.position;
+        if (Physics.Raycast(transform.position, playerDir, out RaycastHit hit))
+        {
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= FOV)
+            {
+                agent.SetDestination(gameManager.instance.player.transform.position);
+                faceTarget();
 
-        UpdateBehavior();
+                float distToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+                attack(distToPlayer, playerTransform);
+                return true;
+            }
+        }
+        agent.stoppingDistance = 0;
+        return true;
+    }
+
+    void checkRoam()
+    {
+        if (agent.remainingDistance < 0.01f)
+        {
+            roamTimer += Time.deltaTime;
+            if (roamTimer > roamWaitTime) roam();
+        }
+    }
+
+    void roam()
+    {
+        roamTimer = 0;
+        agent.stoppingDistance = 0;
+        Vector3 ranPos = Random.insideUnitSphere * roamDist + startingPos;
+        if (NavMesh.SamplePosition(ranPos, out NavMeshHit hit, roamDist, 1))
+            agent.SetDestination(hit.position);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerInTrigger = true;
-        }
+        if (other.CompareTag("Player")) playerInTrigger = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            agent.stoppingDistance = 0;
             playerInTrigger = false;
         }
     }
 
     public void takeDamage(int amount)
     {
-        if (isDead) return;
-
         currentHP -= amount;
-        Debug.Log("Took damage: " + amount + " | HP: " + currentHP + " | model: " + model);
+        if (gameManager.instance?.player != null)
+            agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (currentHP <= 0)
         {
-            Die();
+            waveManager.instance.enemyKilled();
+            FindAnyObjectByType<killChainManager>()?.RegisterKill();
+            Destroy(gameObject);
         }
         else if (model != null)
         {
-            Debug.Log("Starting FlashBlack coroutine");
             StartCoroutine(FlashBlack());
         }
-        else
-        {
-            Debug.LogWarning("No model assigned � cannot flash black!");
-        }
     }
 
-    protected virtual void Die()
-    {
-        isDead = true;
-        NotifyWaveManager();
-        OnDeath();
-        Destroy(gameObject);
-    }
-
-    protected virtual void NotifyWaveManager()
-    {
-        // Hook this up to your WaveManager, e.g.:
-        // WaveManager.Instance?.OnEnemyDied(this);
-        waveManager.instance.enemyKilled();
-    }
-
-    protected void OnDeath()
-    {
-        // Override in subclass for particles, audio, etc.
-        FindAnyObjectByType<killChainManager>().RegisterKill();
-    }
-
-    protected virtual IEnumerator FlashBlack()
+    IEnumerator FlashBlack()
     {
         model.material.color = Color.black;
         yield return new WaitForSeconds(.1f);
         model.material.color = colorOrig;
     }
 
-    protected virtual void FaceTarget()
+    public void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, faceTargetSpeed * Time.deltaTime);
     }
 
-
-    //Pick a random point on the navmesh and set destination to that point
-    protected void PickRoamTarget()
-    {
-        if (!hasLeftSpawnRoom) return;
-        if (state != EnemyState.Roam) return;
-
-        roamTimer = Random.Range(roamWaitMin, roamWaitMax);
-
-        Vector2 circle = Random.insideUnitCircle * roamRadius;
-        Vector3 candidate = roamCenter + new Vector3(circle.x, 0, circle.y);
-
-        if (NavMesh.SamplePosition(candidate, out NavMeshHit hit, 2f, NavMesh.AllAreas))
-            roamTarget = hit.position;
-        else
-            roamTarget = transform.position;
-
-        agent.SetDestination(roamTarget);
-    }
-
-    protected void HandleRoam()
-    {
-        if (!hasLeftSpawnRoom)
-            return;
-        if (roamTimer > 0)
-        {
-            roamTimer -= Time.deltaTime;
-            return;
-        }
-        agent.SetDestination(roamTarget);
-        if (Vector3.Distance(transform.position, roamTarget) < 1f)
-            PickRoamTarget();
-    }
-
-    public void AssignSpawnRoom(SpawnRoom sr)
-    {
-        Debug.Log($"{name} assigned spawnroom: {sr}");
-        mySpawnRoom = sr;
-        StartCoroutine(LeaveSpawnRoom());
-    }
-
-    protected IEnumerator LeaveSpawnRoom()
-    {
-        Debug.Log($"{name} isOnNavMesh = {agent.isOnNavMesh}");
-        while (mySpawnRoom == null || mySpawnRoom.exit == null)
-            yield return null;
-
-        agent.isStopped = false;
-        agent.SetDestination(mySpawnRoom.exit.position);
-
-        while (Vector3.Distance(transform.position, mySpawnRoom.exit.position) > 1.5f)
-            yield return null;
-
-        hasLeftSpawnRoom = true;
-
-        state = EnemyState.Roam;
-
-        roamCenter = transform.position;
-
-        PickRoamTarget();
-    }
+    protected abstract void attack(float distToPlayer, Transform playerTransform);
 }

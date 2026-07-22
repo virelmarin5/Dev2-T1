@@ -62,7 +62,7 @@ public class audioManager : MonoBehaviour
 
     public void playSFX(AudioClip clip, float localVolumeMod = 1f)
     {
-        if (clip == null) return;
+        if (clip == null || sfxSource == null) return;
 
         float Volume = localVolumeMod * sfxVolume * masterVolume;
         sfxSource.PlayOneShot(clip, Volume);
@@ -92,11 +92,35 @@ public class audioManager : MonoBehaviour
 
     public void playMusic(AudioClip clip)
     {
-        if (clip == null) return;
+        if (clip == null || musicSource == null) return;
 
         musicSource.clip = clip;
         musicSource.volume = masterVolume;
         musicSource.Play();
+    }
+
+    public void pauseMusic()
+    {
+        if (musicSource != null && musicSource.isPlaying)
+        {
+            musicSource.Pause();
+        }
+    }
+
+    public void resumeMusic()
+    {
+        if (musicSource != null)
+        {
+            musicSource.UnPause();
+        }
+    }
+
+    public void stopMusic()
+    {
+        if (musicSource != null)
+        {
+            musicSource.Stop();
+        }
     }
 
     public void playJump()
@@ -134,15 +158,9 @@ public class audioManager : MonoBehaviour
         playSFX(nukeSFX);
     }
 
-    // Plays the techno music during the delay between waves.
     public void playRoundTransitionMusic()
     {
-        stopRoundTransitionMusic();
+        stopMusic();
         playMusic(roundTransitionMusic);
-    }
-
-    public void stopRoundTransitionMusic()
-    {
-        musicSource.Stop();
     }
 }

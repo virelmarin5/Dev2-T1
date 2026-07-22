@@ -104,10 +104,7 @@ public class waveManager : MonoBehaviour
         // Wait for the warning sequence to finish.
         yield return new WaitForSeconds(timeBetweenWaves);
 
-        if (audioManager.instance != null)
-        {
-            audioManager.instance.stopRoundTransitionMusic();
-        }
+        if (audioManager.instance != null) audioManager.instance.stopMusic();
 
         currentWave++;
 
@@ -162,7 +159,7 @@ public class waveManager : MonoBehaviour
 
         if (eb != null && sr != null)
         {
-            eb.AssignSpawnRoom(sr);
+            //eb.AssignSpawnRoom(sr);
         }
     }
 

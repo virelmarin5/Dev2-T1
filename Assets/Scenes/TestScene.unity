@@ -761,14 +761,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 1019684079856606141, guid: a23cf4d738a991842b1992fb5325b019, type: 3}
-      propertyPath: nukeSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 602768a8ba1ec864a8a76e396e507fa6, type: 3}
-    - target: {fileID: 1019684079856606141, guid: a23cf4d738a991842b1992fb5325b019, type: 3}
-      propertyPath: roundTransitionMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 934498df584f5474fa0f414c74dbc3d3, type: 3}
     - target: {fileID: 3862678195115134454, guid: a23cf4d738a991842b1992fb5325b019, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

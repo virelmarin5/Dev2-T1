@@ -201,8 +201,8 @@ MonoBehaviour:
   bullet: {fileID: 6645017349430475150, guid: c6cab34c94862e1448ffd1090d551c2d, type: 3}
   gunPivot: {fileID: 159994775117151930}
   shootPos: {fileID: 730905333726389755}
-  shootRate: 2
-  gunRotateSpeed: 5
+  shootRate: 0.8
+  gunRotateSpeed: 8
   FOV: 45
 --- !u!33 &2642240633011332284
 MeshFilter:

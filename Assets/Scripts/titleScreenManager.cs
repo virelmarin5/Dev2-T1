@@ -62,6 +62,8 @@ public class titleMenuManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
+        if (audioManager.instance != null) audioManager.instance.stopMusic();
+
         scene.allowSceneActivation = true;
     }
 

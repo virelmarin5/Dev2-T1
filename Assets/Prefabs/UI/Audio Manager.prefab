@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::audioManager
   sfxSource: {fileID: 3832314194105392896}
   musicSource: {fileID: 9132604555403354137}
-  masterVolume: 1
+  masterVolume: 0.6
   sfxVolume: 0.3
   jump: {fileID: 8300000, guid: 8b2b27fa6eb613943b2440f74229f9ee, type: 3}
   jumpVol: 0.3
@@ -71,7 +71,9 @@ MonoBehaviour:
   glass: {fileID: 8300000, guid: 34eff18d497aa1941b9077d5021ecfbe, type: 3}
   glassVol: 0.3
   buttonClick: {fileID: 8300000, guid: f896a9b6ed378a1418aaddd0eb0a6a76, type: 3}
+  nukeSFX: {fileID: 8300000, guid: 602768a8ba1ec864a8a76e396e507fa6, type: 3}
   titleScreenSound: {fileID: 8300000, guid: 1939e6d46ee629740944c54c2b3d234e, type: 3}
+  roundTransitionMusic: {fileID: 8300000, guid: 934498df584f5474fa0f414c74dbc3d3, type: 3}
 --- !u!82 &3832314194105392896
 AudioSource:
   m_ObjectHideFlags: 0

@@ -15,7 +15,6 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
-    [SerializeField] float pushbackForce = 5f;
     [SerializeField] float pushbackFriction = 5f;
     [SerializeField] GameObject playerShield;
 
@@ -51,9 +50,8 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         movement();
         updatePlayerUI();
     }
-    public void PushBack(Vector3 direction)
+    public void PushBack(Vector3 direction, float pushbackForce)
     {
-        // CharacterController can be moved directly
         playerVel += direction * pushbackForce;
     }
     void movement()
