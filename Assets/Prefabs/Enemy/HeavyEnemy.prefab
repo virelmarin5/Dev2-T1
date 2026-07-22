@@ -168,17 +168,12 @@ MonoBehaviour:
   faceTargetSpeed: 10
   FOV: 120
   attackRate: 0.5
-  attackRange: 3
+  attackRange: 1
   attackDamage: 3
   roamDist: 14
   roamWaitTime: 1.4
   hasLeftSpawnRoom: 0
-  pushbackForce: 20
-  windUpDistance: 2
-  windUpDuration: 0.4
-  chargeSpeed: 12
-  chargeDuration: 0.6
-  hitDistance: 0.5
+  pushbackForce: 5
 --- !u!33 &977282381851803801
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -300,7 +295,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 13
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5250952585558121734
 GameObject:

@@ -4,7 +4,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class heavyEnemy : EnemyBase
 {
-    [SerializeField] float pushbackForce = 5f;
+    [SerializeField] float pushbackForce = 2f;
 
     protected override void attack()
     {
