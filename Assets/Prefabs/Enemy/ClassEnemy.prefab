@@ -196,15 +196,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   model: {fileID: 0}
   agent: {fileID: 0}
-  HP: 0
-  faceTargetSpeed: 0
-  FOV: 0
+  HP: 1
+  faceTargetSpeed: 1
+  FOV: 15
   roamDist: 0
   roamPauseTime: 0
   bullet: {fileID: 0}
   gunPivot: {fileID: 0}
   shootPos: {fileID: 0}
-  shootRate: 0
+  shootRate: 0.1
   gunRotateSpeed: 3
 --- !u!33 &2642240633011332284
 MeshFilter:

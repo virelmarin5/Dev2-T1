@@ -7,7 +7,7 @@ public class RangedEnemy : EnemyBase
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gunPivot;
     [SerializeField] Transform shootPos;
-    [Range(1, 10)][SerializeField] int gunRotateSpeed;
+    [Range(1, 30)][SerializeField] int gunRotateSpeed;
 
     protected override void attack()
     {

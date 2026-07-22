@@ -380,6 +380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AR
       objectReference: {fileID: 0}
+    - target: {fileID: 6420664862211359096, guid: eba6cb08ef6755948b7eeea05d75f594, type: 3}
+      propertyPath: clipLayer.m_Bits
+      value: 6281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -838,6 +842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2811215219488502729, guid: c86a67b0c5e834742bd49b453e4e54e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9052313350287944961, guid: c86a67b0c5e834742bd49b453e4e54e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.580643
@@ -1149,6 +1157,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy 1.0 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7791680660320909169, guid: f07200c1e7570da41a4cb102a86c160b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8112398099157542644, guid: f07200c1e7570da41a4cb102a86c160b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1219,6 +1231,10 @@ PrefabInstance:
     - target: {fileID: 423618413738385519, guid: 5458afda8bd37b3479300efac54fae3c, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 423618413738385519, guid: 5458afda8bd37b3479300efac54fae3c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3658511276146168407, guid: 5458afda8bd37b3479300efac54fae3c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1455,6 +1471,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeavyEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4643874062370731178, guid: 05521e55a36e58144bf91c84bcfd74b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1471,6 +1491,10 @@ PrefabInstance:
     - target: {fileID: 1667066249292612647, guid: 23420cd4a077aa1438142986260b9f4f, type: 3}
       propertyPath: m_Name
       value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800281428877546526, guid: 23420cd4a077aa1438142986260b9f4f, type: 3}
+      propertyPath: clipLayer.m_Bits
+      value: 6281
       objectReference: {fileID: 0}
     - target: {fileID: 2882416504792515310, guid: 23420cd4a077aa1438142986260b9f4f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1700,7 +1724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2811215219488502729, guid: c86a67b0c5e834742bd49b453e4e54e2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9052313350287944961, guid: c86a67b0c5e834742bd49b453e4e54e2, type: 3}
       propertyPath: m_LocalScale.x
@@ -1767,6 +1791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy 1.0
       objectReference: {fileID: 0}
+    - target: {fileID: 7791680660320909169, guid: f07200c1e7570da41a4cb102a86c160b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8112398099157542644, guid: f07200c1e7570da41a4cb102a86c160b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.580641
@@ -1832,6 +1860,10 @@ PrefabInstance:
     - target: {fileID: 7521726833427132236, guid: 63c3691f790d7874b81f32944993d6ee, type: 3}
       propertyPath: m_Name
       value: RangedEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521726833427132236, guid: 63c3691f790d7874b81f32944993d6ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8409822020815722294, guid: 63c3691f790d7874b81f32944993d6ee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1965,6 +1997,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767894515129350033, guid: 14b71ce1189a1e14eadaf89c6cab9e3d, type: 3}
+      propertyPath: clipLayer.m_Bits
+      value: 6281
+      objectReference: {fileID: 0}
     - target: {fileID: 2859026477195048651, guid: 14b71ce1189a1e14eadaf89c6cab9e3d, type: 3}
       propertyPath: m_Name
       value: Pistol
@@ -4385,6 +4421,10 @@ PrefabInstance:
     - target: {fileID: 2019202327217967198, guid: 21b3dbd020b648248b43a9595dab7eed, type: 3}
       propertyPath: exit
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4328925236543590652, guid: 21b3dbd020b648248b43a9595dab7eed, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4637510553804372965, guid: 21b3dbd020b648248b43a9595dab7eed, type: 3}
       propertyPath: exit

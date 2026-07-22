@@ -53,7 +53,7 @@ MonoBehaviour:
   model: {fileID: 7057455984083282150}
   agent: {fileID: 41331064655073898}
   maxHP: 2
-  faceTargetSpeed: 8
+  faceTargetSpeed: 10
   FOV: 90
   attackRate: 0.1
   attackRange: 2
@@ -184,7 +184,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
+  m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6316001288784388813
 GameObject:

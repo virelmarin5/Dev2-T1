@@ -198,7 +198,7 @@ MonoBehaviour:
   agent: {fileID: 7931631704010347091}
   maxHP: 3
   faceTargetSpeed: 10
-  FOV: 120
+  FOV: 100
   attackRate: 0.8
   attackRange: 8
   attackDamage: 1
@@ -208,7 +208,7 @@ MonoBehaviour:
   bullet: {fileID: 6152012165266093810, guid: 05e0818bb028d7f4c93c246ee307f7c5, type: 3}
   gunPivot: {fileID: 7980070263694380636}
   shootPos: {fileID: 7070603407456855050}
-  gunRotateSpeed: 4
+  gunRotateSpeed: 10
 --- !u!33 &7075587635719164594
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 7
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &7931631704010347091
 NavMeshAgent:

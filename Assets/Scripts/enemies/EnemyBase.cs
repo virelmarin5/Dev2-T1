@@ -15,7 +15,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     [Header("Stats")]
     int currentHP;
     [Range(1, 50)][SerializeField] int maxHP;
-    [Range(1, 10)][SerializeField] float faceTargetSpeed = 8f;
+    [Range(1, 30)][SerializeField] float faceTargetSpeed = 8f;
     [Range(15, 120)][SerializeField] float FOV = 90f;
     [Range(.1f, 5)][SerializeField] public float attackRate = 1.5f;
     [Range(1, 20)][SerializeField] public float attackRange = 2f;
