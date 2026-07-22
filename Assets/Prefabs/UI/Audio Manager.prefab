@@ -70,8 +70,8 @@ MonoBehaviour:
   bulletRicochetVol: 0.3
   glass: {fileID: 8300000, guid: 34eff18d497aa1941b9077d5021ecfbe, type: 3}
   glassVol: 0.3
-  buttonClick: {fileID: 8300000, guid: 9efc6bf48977e374a9084e6db8468231, type: 3}
-  titleScreenSound: {fileID: 0}
+  buttonClick: {fileID: 8300000, guid: f896a9b6ed378a1418aaddd0eb0a6a76, type: 3}
+  titleScreenSound: {fileID: 8300000, guid: 1939e6d46ee629740944c54c2b3d234e, type: 3}
 --- !u!82 &3832314194105392896
 AudioSource:
   m_ObjectHideFlags: 0

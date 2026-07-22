@@ -72,7 +72,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 
         if (controller.isGrounded)
         {
-            playerVel.y = -2f;
+            playerVel.y = 0;
             jumpCount = 0;
         }
 
@@ -91,7 +91,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
 
         if (isSprinting)
         {
-            currentStamina -= staminaDrainRate * Time.deltaTime;
+            currentStamina -= staminaDrainRate * Time.unscaledDeltaTime;
             if (currentStamina <= 0.01f)
             {
                 currentStamina = 0.01f;
@@ -102,18 +102,25 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         {
             if (currentStamina < maxStamina)
             {
-                currentStamina += staminaRegenRate * Time.deltaTime;
+                currentStamina += staminaRegenRate * Time.unscaledDeltaTime;
                 currentStamina = Mathf.Min(currentStamina, maxStamina);
             }
         }
 
         int currSpeed = isSprinting ? speed * sprintMod : speed;
 
-        controller.Move(moveDir * currSpeed * Time.unscaledDeltaTime);
+        playerVel.x = Mathf.MoveTowards(playerVel.x, 0, pushbackFriction * Time.unscaledDeltaTime);
+        playerVel.z = Mathf.MoveTowards(playerVel.z, 0, pushbackFriction * Time.unscaledDeltaTime);
+        playerVel.y -= gravity * Time.unscaledDeltaTime;
+
+        jump();
+
+        Vector3 finalVelocity = (moveDir * currSpeed) + playerVel;
+        controller.Move(finalVelocity * Time.unscaledDeltaTime);
 
         if (controller.isGrounded && isMoving)
         {
-            stepTimer -= Time.deltaTime;
+            stepTimer -= Time.unscaledDeltaTime;
             if (stepTimer <= 0f)
             {
                 audioManager.instance.playSteps();
@@ -124,12 +131,6 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
         {
             stepTimer = 0f;
         }
-
-        jump();
-
-        playerVel.x = Mathf.MoveTowards(playerVel.x, 0, pushbackFriction * Time.unscaledDeltaTime);
-        playerVel.z = Mathf.MoveTowards(playerVel.z, 0, pushbackFriction * Time.unscaledDeltaTime);
-        playerVel.y -= gravity * Time.unscaledDeltaTime;
     }
 
     void jump()

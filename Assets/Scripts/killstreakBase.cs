@@ -1,7 +1,5 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
-using UnityEditor.Compilation;
 
 public abstract class killstreakBase : MonoBehaviour
 {

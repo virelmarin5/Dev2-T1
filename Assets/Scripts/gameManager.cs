@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour

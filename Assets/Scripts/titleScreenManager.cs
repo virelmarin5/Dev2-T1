@@ -1,9 +1,13 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class titleMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject titleMenuPanel;
+    [SerializeField] private Slider progressBar;
+    CanvasGroup canvasGroup;
 
     void Start()
     {
@@ -16,17 +20,58 @@ public class titleMenuManager : MonoBehaviour
     public void continueGame()
     {
         audioManager.instance.playButtonClick();
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+        StartCoroutine(LoadSceneAsync());
+    }
+
+    private IEnumerator LoadSceneAsync()
+    {
+        if (canvasGroup != null)
+        {
+            while (canvasGroup.alpha > 0f)
+            {
+                canvasGroup.alpha -= Time.deltaTime * 2f;
+                yield return null;
+            }
+        }
+
+        if (progressBar != null)
+        {
+            progressBar.gameObject.SetActive(true);
+            progressBar.value = 0f;
+        }
+
+        AsyncOperation scene = SceneManager.LoadSceneAsync(1);
+        scene.allowSceneActivation = false;
+
+        while (scene.progress < 0.9f)
+        {
+            float progressValue = Mathf.Clamp01(scene.progress / 0.9f);
+            
+            if (progressBar != null)
+            {
+                progressBar.value = progressValue;
+            }
+
+            yield return null;
+        }
+
+        if (progressBar != null)
+        {
+            progressBar.value = 1f;
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        scene.allowSceneActivation = true;
     }
 
     public void quitGame()
     {
         audioManager.instance.playButtonClick();
         #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+                UnityEditor.EditorApplication.isPlaying = false;
         #else
-            Application.Quit();
+                    Application.Quit();
         #endif
     }
 }
