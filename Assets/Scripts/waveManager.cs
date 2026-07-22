@@ -156,7 +156,14 @@ public class waveManager : MonoBehaviour
 
         Transform chosenSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        Instantiate(enemyToSpawn, chosenSpawn.position, chosenSpawn.rotation);
+        GameObject enemyObj = Instantiate(enemyToSpawn, chosenSpawn.position, chosenSpawn.rotation);
+        EnemyBase eb = enemyObj.GetComponent<EnemyBase>();
+        SpawnRoom sr = chosenSpawn.GetComponent<SpawnRoom>();
+
+        if (eb != null && sr != null)
+        {
+            eb.AssignSpawnRoom(sr);
+        }
     }
 
     GameObject chooseEnemyPrefab()

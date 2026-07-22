@@ -17,41 +17,65 @@ public class RangedEnemy : EnemyBase
     }
     protected override void UpdateBehavior()
     {
-        if (playerInTrigger)
-        {
-
-
-            shootTimer += Time.deltaTime;
-            rotateGun();
-            if (shootTimer >= shootRate)
-            {
-                shoot();
-            }
-        }
+     
         if (agent == null || !agent.isActiveAndEnabled)
             return;
 
-        float dist = Vector3.Distance(transform.position, playerTransform.position);
-        float stopDistance = 5.0f; // how far back you want it to stop
+        if (!hasLeftSpawnRoom)
+            return;
 
-        if (dist <= stopDistance)
-        {
-            agent.isStopped = true;
-            agent.ResetPath();
-            FaceTarget();
-        }
-        else
+        float dist = Vector3.Distance(transform.position, playerTransform.position);
+        
+        //Roam when player is far
+        if (state == EnemyState.Roam)
         {
             agent.isStopped = false;
-            if (NavMesh.SamplePosition(playerTransform.position, out NavMeshHit hit, 50f, NavMesh.AllAreas))
-                agent.SetDestination(hit.position);
+            HandleRoam();
+
+            if (dist <= detectionRange)
+                state = EnemyState.Chase;
+            return;
+            
         }
+
+        if (state == EnemyState.Chase)
+        {
+            agent.isStopped = false;
+            agent.SetDestination(playerTransform.position);
+
+            if (dist <= detectionRange)
+                state = EnemyState.Attack;
+            if (dist > detectionRange)
+                state = EnemyState.Roam;
+            return;
+        }
+
+        if (state == EnemyState.Attack)
+        {
+            shootTimer += Time.deltaTime;
+            agent.isStopped = true;
+            rotateGun();
+            
+
+            if (shootTimer >= shootRate)
+                shoot();
+
+            if (dist > 4f)
+                state = EnemyState.Chase;
+
+            if (dist > detectionRange)
+                state = EnemyState.Roam;
+        }
+        
+
+        
     }
 
 
     protected override void Start()
     {
-        base.Start();
+        base.Start(); // Runs EnemyBase.Start() first (HP, color, playerTransform)
+        
     }
 
     void shoot()
@@ -85,10 +109,5 @@ public class RangedEnemy : EnemyBase
         {
             playerInTrigger = false;
         }
-    }
-
-    public override void takeDamage(int amount)
-    {
-        base.takeDamage(amount);
     }
 }

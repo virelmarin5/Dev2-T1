@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &57505722 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3699040299279216216, guid: 1e4f0d9e7dbf221419b0bd0e1286aa16, type: 3}
+  m_PrefabInstance: {fileID: 1041264627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &65971482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -655,7 +660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127565821731316, guid: 1e4f0d9e7dbf221419b0bd0e1286aa16, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 4127565821731316, guid: 1e4f0d9e7dbf221419b0bd0e1286aa16, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1010,6 +1015,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: spawnPoints
       objectReference: {fileID: 0}
+    - target: {fileID: 2019202327217967198, guid: 21b3dbd020b648248b43a9595dab7eed, type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 1797576972}
+    - target: {fileID: 4637510553804372965, guid: 21b3dbd020b648248b43a9595dab7eed, type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 57505722}
     - target: {fileID: 4873560845556711521, guid: 21b3dbd020b648248b43a9595dab7eed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.47145

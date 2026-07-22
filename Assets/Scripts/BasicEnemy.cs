@@ -4,19 +4,26 @@ using UnityEngine.AI;
 
 public class BasicEnemy : EnemyBase
 {
+    
+    
+
     [Header("Melee Attack")]
-    [SerializeField] private float attackRange = 4f;
+    [SerializeField] private float attackRange = 5.0f;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackRate = 1f;
+    //[SerializeField] private float stoppingDistance = 1.5f;
     [SerializeField] GameObject weapon;
     [SerializeField] Transform handPos;
 
     private Quaternion katanaOrigRot;
     private Transform katanaTransform;
     private float attackTimer;
+    private killChainManager killChain;
+    
 
     protected override  void  Start()
     {
+        base.Start();
         currentHP = maxHP;
 
         if (model != null)
@@ -28,6 +35,7 @@ public class BasicEnemy : EnemyBase
 
         katanaTransform = weaponInstance.transform;
         katanaOrigRot = katanaTransform.localRotation;
+        attackTimer += Time.deltaTime;
 
 
 
@@ -42,36 +50,56 @@ public class BasicEnemy : EnemyBase
     }
     protected override void UpdateBehavior()
     {
+        
         if (agent == null || !agent.isActiveAndEnabled)
             return;
 
+        if (!hasLeftSpawnRoom)
+            return;
+
         float dist = Vector3.Distance(transform.position, playerTransform.position);
-        float stopDistance = 3.5f; // how far back you want it to stop
-
-        if (dist <= stopDistance)
-        {
-            agent.isStopped = true;
-            agent.ResetPath();
-
-            // Still face the player
-            FaceTarget();
-        }
-        else
+        bool playerDetected = dist <= detectionRange;
+        //Roam when player is outside of detection range
+        if (state == EnemyState.Roam)
         {
             agent.isStopped = false;
-            if (NavMesh.SamplePosition(playerTransform.position, out NavMeshHit hit, 50f, NavMesh.AllAreas))
-                agent.SetDestination(hit.position);
+            HandleRoam();
+
+            if (dist <= detectionRange)
+                state = EnemyState.Chase;
+
+            return;
         }
 
-        // Melee attack when in attack range (separate from stop distance)
-        if (dist <= attackRange)
+        //Chase when player is within detection range
+        if (state == EnemyState.Chase)
         {
-            attackTimer += Time.deltaTime;
+            agent.isStopped = false;
+            agent.SetDestination(playerTransform.position);
+            
+            if (dist <= attackRange)
+                state = EnemyState.Attack;
+            if (dist > detectionRange)
+                state = EnemyState.Roam;
+
+            return;
+        }
+
+        if (state == EnemyState.Attack)
+        {
+            agent.isStopped = true;
+            FaceTarget();
+
+            if (dist > attackRange)
+                state = EnemyState.Chase;
+
             if (attackTimer >= attackRate)
             {
+                attackTimer = 0;
                 MeleeAttack();
-                attackTimer = 0f;
             }
+
+            return;
         }
     }
 
@@ -89,6 +117,7 @@ public class BasicEnemy : EnemyBase
 
         if (isDead || playerTransform == null)
         {
+            Debug.Log("EARLY RETURN � enemy not moving");
             return;
         }
 
@@ -119,10 +148,5 @@ public class BasicEnemy : EnemyBase
             katanaTransform.localRotation = Quaternion.Lerp(endRot, startRot, t);
             yield return null;
         }
-    }
-
-    public override void takeDamage(int amount)
-    {
-        base.takeDamage(amount);
     }
 }
