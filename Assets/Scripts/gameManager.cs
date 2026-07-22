@@ -17,6 +17,12 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] public GameObject pickUpUI;
     [SerializeField] public Image playerStaminaBar;
+    [SerializeField] public GameObject checkpointPopup;
+    public GameObject playerSpawnPos;
+
+    [SerializeField] TMP_Text gameGoalCountText;
+    int gameGoalCount;
+
 
     [Header("Screen Flash")]
     public GameObject damageFlashUI;
@@ -39,6 +45,7 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
+            audioManager.instance.playButtonClick();
             if (menuActive == null)
             {
                 statePause();
@@ -112,5 +119,15 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(true);
 
         scoreText.text = killScore.getKillCount().ToString("f0");
+    }
+
+    public void updateGameGoal(int amount)
+    {
+        gameGoalCount += amount;
+        //gameGoalCountText.text = gameGoalCount.ToString("f0");
+
+        if (gameGoalCount <= 0)
+        {
+        }
     }
 }

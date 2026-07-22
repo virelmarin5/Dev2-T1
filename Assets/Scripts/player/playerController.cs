@@ -198,4 +198,12 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     {
         gameManager.instance.playerStaminaBar.fillAmount = (float)currentStamina / maxStamina;
     }
+
+    public void spawnPlayer()
+    {
+        controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        Physics.SyncTransforms();
+        currentStamina = maxStamina;
+        updatePlayerUI();
+    }
 }

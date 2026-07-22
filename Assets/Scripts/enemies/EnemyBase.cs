@@ -121,6 +121,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         {
             waveManager.instance.enemyKilled();
             FindAnyObjectByType<killChainManager>()?.RegisterKill();
+            //gameManager.updateGameGoal(-1);
             Destroy(gameObject);
         }
         else if (model != null)

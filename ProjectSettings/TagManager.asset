@@ -4,13 +4,18 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Shotgun
+  - Pellet
+  - Handgun
+  - AR
+  - Bullet
+  - Shield
   - Enemy
+  - Adrenaline
   - Player Shield
   - Weapon Holder
   - Clipper
-  - Shield
-  - Weapon Hold Position
-  - Adrenaline
+  - Player Spawn Pos
   layers:
   - Default
   - TransparentFX
@@ -18,13 +23,13 @@ TagManager:
   - Shield
   - Water
   - UI
-  - Weapon Holder
+  - Room
   - Enemy
   - Weapon
   - Projectile
   - Player
-  - Room
-  - Glass
+  - 
+  - 
   - 
   - 
   - 

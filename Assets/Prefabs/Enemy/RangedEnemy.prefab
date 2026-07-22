@@ -199,7 +199,7 @@ MonoBehaviour:
   maxHP: 3
   faceTargetSpeed: 10
   FOV: 100
-  attackRate: 0.8
+  attackRate: 0.1
   attackRange: 8
   attackDamage: 1
   roamDist: 12

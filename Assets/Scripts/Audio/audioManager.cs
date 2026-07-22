@@ -21,6 +21,8 @@ public class audioManager : MonoBehaviour
     [Range(0, 1)][SerializeField] public float stepsVol;
     [SerializeField] public AudioClip enemyHit;
     [Range(0, 1)][SerializeField] public float enemyHitVol;
+    [SerializeField] public AudioClip enemyShoot;
+    [Range(0, 1)][SerializeField] public float enemyShootVol;
     [SerializeField] public AudioClip wallHit;
     [Range(0, 1)][SerializeField] public float wallHitVol;
     [SerializeField] public AudioClip equip;

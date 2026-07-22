@@ -156,9 +156,9 @@ GameObject:
   - component: {fileID: 7075587635719164594}
   - component: {fileID: 3262802430056639548}
   - component: {fileID: 710156433528328776}
-  - component: {fileID: 1602554364477588958}
   - component: {fileID: 7951171459439065473}
   - component: {fileID: 5261133990583353142}
+  - component: {fileID: 4640707960078011538}
   m_Layer: 7
   m_Name: RangedEnemy3
   m_TagString: Enemy
@@ -262,27 +262,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1602554364477588958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521726833427132236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17fee492a531fe0428864f65b515dd0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
-  maxHP: 2
-  currentHP: 0
-  faceTargetSpeed: 8
-  model: {fileID: 3262802430056639548}
-  bullet: {fileID: 6645017349430475150, guid: c6cab34c94862e1448ffd1090d551c2d, type: 3}
-  gunPivot: {fileID: 7980070263694380636}
-  shootPos: {fileID: 5022654184659056084}
-  shootRate: 0.5
-  gunRotateSpeed: 3
 --- !u!195 &7951171459439065473
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -326,6 +305,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 6.87
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4640707960078011538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521726833427132236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f545fff86ada1142ac0fb28d94d4e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
+  model: {fileID: 0}
+  agent: {fileID: 0}
+  maxHP: 0
+  faceTargetSpeed: 8
+  FOV: 90
+  attackRate: 1.5
+  attackRange: 2
+  attackDamage: 1
+  roamDist: 10
+  roamWaitTime: 2
+  hasLeftSpawnRoom: 0
+  bullet: {fileID: 0}
+  gunPivot: {fileID: 0}
+  shootPos: {fileID: 0}
+  gunRotateSpeed: 0
 --- !u!1001 &8886980051121718680
 PrefabInstance:
   m_ObjectHideFlags: 0

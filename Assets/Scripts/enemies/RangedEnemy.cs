@@ -20,6 +20,9 @@ public class RangedEnemy : EnemyBase
     void shoot()
     {
         attackTimer = 0f;
+        if(audioManager.instance != null) 
+            audioManager.instance.playSpatialSFX(audioManager.instance.enemyShoot, shootPos.position, audioManager.instance.enemyShootVol);
+        
         if (bullet != null && shootPos != null && gunPivot != null)
             Instantiate(bullet, shootPos.position, gunPivot.rotation);
     }

@@ -24,6 +24,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void soundBack()
     {
+        audioManager.instance.playButtonClick();
         gameManager.instance.openPauseMenu();
     }
 
