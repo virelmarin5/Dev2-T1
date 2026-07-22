@@ -7,6 +7,7 @@ public class titleMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject titleMenuPanel;
     [SerializeField] private Slider progressBar;
+    [SerializeField] private GameObject Buttons;
     CanvasGroup canvasGroup;
 
     void Start()
@@ -33,6 +34,8 @@ public class titleMenuManager : MonoBehaviour
                 yield return null;
             }
         }
+
+        Buttons.SetActive(false);
 
         if (progressBar != null)
         {
