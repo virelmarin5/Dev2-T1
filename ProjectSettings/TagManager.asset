@@ -10,6 +10,7 @@ TagManager:
   - Clipper
   - Shield
   - Weapon Hold Position
+  - Adrenaline
   layers:
   - Default
   - TransparentFX

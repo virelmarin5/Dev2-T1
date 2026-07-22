@@ -10,7 +10,6 @@ public class RangedEnemy : EnemyBase
     [SerializeField] float shootRate;
     [SerializeField] int gunRotateSpeed;
     float shootTimer;
-    bool playerInTrigger;
     protected override void Update()
     {
         base.Update();
@@ -93,21 +92,5 @@ public class RangedEnemy : EnemyBase
     {
         Quaternion rot = Quaternion.LookRotation(playerDir);
         gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, rot, gunRotateSpeed * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInTrigger = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInTrigger = false;
-        }
     }
 }

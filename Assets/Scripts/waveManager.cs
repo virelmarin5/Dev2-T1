@@ -96,17 +96,17 @@ public class waveManager : MonoBehaviour
             waveLightController.instance.FlashWarningLights(timeBetweenWaves);
         }
 
-        if (AudioManager.instance != null)
+        if (audioManager.instance != null)
         {
-            AudioManager.instance.playRoundTransitionMusic();
+            audioManager.instance.playRoundTransitionMusic();
         }
 
         // Wait for the warning sequence to finish.
         yield return new WaitForSeconds(timeBetweenWaves);
 
-        if (AudioManager.instance != null)
+        if (audioManager.instance != null)
         {
-            AudioManager.instance.stopRoundTransitionMusic();
+            audioManager.instance.stopRoundTransitionMusic();
         }
 
         currentWave++;

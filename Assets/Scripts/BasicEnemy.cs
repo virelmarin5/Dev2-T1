@@ -57,6 +57,9 @@ public class BasicEnemy : EnemyBase
         if (!hasLeftSpawnRoom)
             return;
 
+
+        Debug.Log("State: " + state);
+
         float dist = Vector3.Distance(transform.position, playerTransform.position);
         bool playerDetected = dist <= detectionRange;
         //Roam when player is outside of detection range

@@ -12,7 +12,7 @@ public class audioManager : MonoBehaviour
     [Range(0f, 1f)] public float masterVolume = 1f;
     [Range(0f, 1f)] public float sfxVolume = 1f;
 
-    [Header("Audio")]
+    [Header("SFX")]
     [SerializeField] public AudioClip jump;
     [Range(0, 1)][SerializeField] public float jumpVol;
     [SerializeField] public AudioClip hurt;
@@ -30,7 +30,12 @@ public class audioManager : MonoBehaviour
     [SerializeField] public AudioClip glass;
     [Range(0, 1)][SerializeField] public float glassVol;
     [SerializeField] public AudioClip buttonClick;
+    [SerializeField] private AudioClip nukeSFX;
+
+    [Header("Music")]
     [SerializeField] public AudioClip titleScreenSound;
+    [SerializeField] private AudioClip roundTransitionMusic;
+
 
     void Awake()
     {
@@ -122,5 +127,22 @@ public class audioManager : MonoBehaviour
     public void playTitleScreenSound()
     {
         playMusic(titleScreenSound);
+    }
+
+    public void playNuke()
+    {
+        playSFX(nukeSFX);
+    }
+
+    // Plays the techno music during the delay between waves.
+    public void playRoundTransitionMusic()
+    {
+        stopRoundTransitionMusic();
+        playMusic(roundTransitionMusic);
+    }
+
+    public void stopRoundTransitionMusic()
+    {
+        musicSource.Stop();
     }
 }

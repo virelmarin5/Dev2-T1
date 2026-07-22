@@ -20,6 +20,11 @@ public class killstreakManager : MonoBehaviour
         instance = this;
     }
 
+    void Start()
+    {
+        //killstreaks[1] = GameObject.FindWithTag("Adrenaline");
+    }
+
     public void tryRoll()
     {
         if (killstreaks == null || killstreaks.Length == 0)

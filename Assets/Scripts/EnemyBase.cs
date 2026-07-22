@@ -17,13 +17,14 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     [SerializeField] float roamWaitMax = 3f;
     [SerializeField] public float detectionRange = 3.0f;
 
+    bool playerInTrigger;
+
     Vector3 roamCenter;
     Vector3 roamTarget;
     float roamTimer;
 
     [Header("Visuals")]
     [SerializeField] protected Renderer model;
-    [SerializeField] protected Material flashMaterial;
     protected Color colorOrig;
 
     protected NavMeshAgent agent;
@@ -31,9 +32,9 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     protected Vector3 playerDir;
     protected bool isDead;
     protected SpawnRoom mySpawnRoom;
-    protected bool hasLeftSpawnRoom = false;
+    public bool hasLeftSpawnRoom = false;
 
-    
+
     protected enum EnemyState
     {
         Roam,
@@ -52,13 +53,13 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
     protected virtual void Start()
     {
-        
+
         currentHP = maxHP;
 
         if (model != null)
             colorOrig = model.material.color;
 
-        
+
 
 
         // Try gameManager first, then fall back to FindWithTag
@@ -80,11 +81,27 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
             return;
 
         playerDir = playerTransform.position - transform.position;
-        
+
         UpdateBehavior();
     }
 
-    public virtual void takeDamage(int amount)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInTrigger = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInTrigger = false;
+        }
+    }
+
+    public void takeDamage(int amount)
     {
         if (isDead) return;
 
@@ -102,7 +119,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         }
         else
         {
-            Debug.LogWarning("No model assigned — cannot flash black!");
+            Debug.LogWarning("No model assigned ï¿½ cannot flash black!");
         }
     }
 
@@ -129,18 +146,9 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
     protected virtual IEnumerator FlashBlack()
     {
-        if (model == null || flashMaterial == null) yield break;
-
-        Material[] originalMats = model.materials;
-        int count = originalMats.Length;
-        Material[] flashMats = new Material[count];
-
-        for (int i = 0; i < count; i++)
-            flashMats[i] = flashMaterial;
-
-        model.materials = flashMats;
-        yield return new WaitForSeconds(0.15f);
-        model.materials = originalMats;
+        model.material.color = Color.black;
+        yield return new WaitForSeconds(.1f);
+        model.material.color = colorOrig;
     }
 
     protected virtual void FaceTarget()
@@ -203,7 +211,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
             yield return null;
 
         hasLeftSpawnRoom = true;
-        
+
         state = EnemyState.Roam;
 
         roamCenter = transform.position;

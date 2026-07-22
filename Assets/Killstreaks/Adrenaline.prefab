@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5470885889810817642}
   m_Layer: 0
   m_Name: Adrenaline
-  m_TagString: Untagged
+  m_TagString: Adrenaline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::killstreakAdrenaline
   killstreakName: BulletTime
   duration: 60
-  worldTimeScale: 0.1
+  worldTimeScale: 0.2
