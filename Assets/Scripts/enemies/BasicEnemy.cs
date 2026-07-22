@@ -7,32 +7,33 @@ public class BasicEnemy : EnemyBase
     [SerializeField] GameObject weapon;
     [SerializeField] Transform handPos;
 
-    private Quaternion katanaOrigRot;
-    private Transform katanaTransform; 
+    Quaternion katanaOrigRot;
+    Transform katanaTransform;
 
     protected override void Start()
     {
         base.Start();
-        
-        GameObject weaponInstance = Instantiate(weapon, handPos);
-        weaponInstance.transform.localPosition = Vector3.zero;
-        weaponInstance.transform.localRotation = Quaternion.identity;
+        if (weapon != null && handPos != null)
+        {
+            GameObject weaponInstance = Instantiate(weapon, handPos);
+            weaponInstance.transform.localPosition = Vector3.zero;
+            weaponInstance.transform.localRotation = Quaternion.identity;
 
-        katanaTransform = weaponInstance.transform;
-        katanaOrigRot = katanaTransform.localRotation;
-        attackTimer += Time.deltaTime;
+            katanaTransform = weaponInstance.transform;
+            katanaOrigRot = katanaTransform.localRotation;
+        }
     }
 
-    protected override void attack(float distToPlayer, Transform playerTransform)
+    protected override void attack()
     {
-        agent.stoppingDistance = attackRange;
-        
-        if (distToPlayer <= attackRange && attackTimer > attackRate)
+        agent.stoppingDistance = Mathf.Max(0.5f, attackRange - 0.5f);
+
+        if (attackTimer > attackRate)
         {
             attackTimer = 0;
-            StartCoroutine(katanaSwing());
-            
-            IDamage damageable = playerTransform.GetComponent<IDamage>();
+            if (katanaTransform != null) StartCoroutine(katanaSwing());
+
+            IDamage damageable = gameManager.instance.player.gameObject.GetComponent<IDamage>();
             damageable?.takeDamage(attackDamage);
         }
     }

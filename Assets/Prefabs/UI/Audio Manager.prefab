@@ -52,8 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::audioManager
   sfxSource: {fileID: 3832314194105392896}
   musicSource: {fileID: 9132604555403354137}
-  masterVolume: 0.6
-  sfxVolume: 0.3
+  masterVolume: 0.3
+  sfxVolume: 0.1
   jump: {fileID: 8300000, guid: 8b2b27fa6eb613943b2440f74229f9ee, type: 3}
   jumpVol: 0.3
   hurt: {fileID: 8300000, guid: 2dadaf35b026ef348bb28975d3343350, type: 3}

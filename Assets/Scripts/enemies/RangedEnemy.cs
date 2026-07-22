@@ -9,18 +9,18 @@ public class RangedEnemy : EnemyBase
     [SerializeField] Transform shootPos;
     [Range(1, 10)][SerializeField] int gunRotateSpeed;
 
-    protected override void attack(float distToPlayer, Transform playerTransform)
+    protected override void attack()
     {
         agent.stoppingDistance = stoppingDistOrig;
-        
+
         if (gunPivot != null) rotateGun();
         if (attackTimer > attackRate) shoot();
     }
 
     void shoot()
     {
-        attackTimer = 0;
-        if(bullet != null)
+        attackTimer = 0f;
+        if (bullet != null && shootPos != null && gunPivot != null)
             Instantiate(bullet, shootPos.position, gunPivot.rotation);
     }
 

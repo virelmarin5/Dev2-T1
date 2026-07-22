@@ -32,8 +32,6 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     protected float stoppingDistOrig;
     protected float attackTimer;
 
-
-    protected Transform playerTransform;
     protected Vector3 playerDir;
     public bool hasLeftSpawnRoom = false;
 
@@ -46,13 +44,11 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
         if (model != null)
             colorOrig = model.material.color;
-
-        if (gameManager.instance != null && gameManager.instance.player != null)
-            playerTransform = gameManager.instance.player.transform;
     }
 
     void Update()
     {
+        attackTimer += Time.deltaTime;
         if (playerInTrigger && canSeePlayer())
         {
         }
@@ -75,8 +71,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
                 agent.SetDestination(gameManager.instance.player.transform.position);
                 faceTarget();
 
-                float distToPlayer = Vector3.Distance(transform.position, playerTransform.position);
-                attack(distToPlayer, playerTransform);
+                attack();
                 return true;
             }
         }
@@ -147,5 +142,5 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, faceTargetSpeed * Time.deltaTime);
     }
 
-    protected abstract void attack(float distToPlayer, Transform playerTransform);
+    protected abstract void attack();
 }

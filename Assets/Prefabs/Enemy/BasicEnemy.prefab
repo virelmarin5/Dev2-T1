@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3658511276146168407}
+  - component: {fileID: 2644010585126085273}
   - component: {fileID: 2420307151298392500}
   - component: {fileID: 7057455984083282150}
   - component: {fileID: 6885633283120293279}
   - component: {fileID: 41331064655073898}
-  - component: {fileID: 6299359756849598463}
   - component: {fileID: -2403286266421125899}
   m_Layer: 0
   m_Name: BasicEnemy
@@ -38,6 +38,31 @@ Transform:
   - {fileID: 509105239251634250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2644010585126085273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423618413738385519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fb1d8666a68d345acf31aeac2c29f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicEnemy
+  model: {fileID: 7057455984083282150}
+  agent: {fileID: 41331064655073898}
+  maxHP: 2
+  faceTargetSpeed: 8
+  FOV: 90
+  attackRate: 0.1
+  attackRange: 2
+  attackDamage: 1
+  roamDist: 10
+  roamWaitTime: 4
+  hasLeftSpawnRoom: 0
+  weapon: {fileID: 6413440490822234159, guid: a04645d8876d1a448ad847390068b125, type: 3}
+  handPos: {fileID: 509105239251634250}
 --- !u!33 &2420307151298392500
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -132,7 +157,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -140,31 +165,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6299359756849598463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423618413738385519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b588cee159392340b3771cdf39dee23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BasicEnemy
-  model: {fileID: 7057455984083282150}
-  agent: {fileID: 41331064655073898}
-  maxHP: 2
-  faceTargetSpeed: 8
-  FOV: 90
-  attackRate: 0.5
-  attackRange: 1
-  attackDamage: 1
-  roamDist: 10
-  roamWaitTime: 3
-  hasLeftSpawnRoom: 0
-  weapon: {fileID: 6413440490822234159, guid: a04645d8876d1a448ad847390068b125, type: 3}
-  handPos: {fileID: 509105239251634250}
 --- !u!135 &-2403286266421125899
 SphereCollider:
   m_ObjectHideFlags: 0

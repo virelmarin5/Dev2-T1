@@ -121,10 +121,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3336681919024084105}
+  - component: {fileID: 5761882155414452657}
   - component: {fileID: 977282381851803801}
   - component: {fileID: 2567143705488947480}
   - component: {fileID: 4618653301713916583}
-  - component: {fileID: 3227519692920855607}
   - component: {fileID: 304971188936524132}
   - component: {fileID: 1499817781400502170}
   m_Layer: 7
@@ -150,6 +150,30 @@ Transform:
   - {fileID: 1528316706312784209}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5761882155414452657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4643874062370731178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f2768483f951a46a2519c4dd37bbbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::heavyEnemy
+  model: {fileID: 2567143705488947480}
+  agent: {fileID: 304971188936524132}
+  maxHP: 50
+  faceTargetSpeed: 8
+  FOV: 90
+  attackRate: 0.5
+  attackRange: 3
+  attackDamage: 3
+  roamDist: 14
+  roamWaitTime: 1.4
+  hasLeftSpawnRoom: 0
+  pushbackForce: 8
 --- !u!33 &977282381851803801
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -230,30 +254,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3227519692920855607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4643874062370731178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6ddfcf26784a0b409c63430fb6c1b42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::heavyEnemy
-  model: {fileID: 2567143705488947480}
-  agent: {fileID: 304971188936524132}
-  maxHP: 50
-  faceTargetSpeed: 10
-  FOV: 120
-  attackRate: 1
-  attackRange: 1
-  attackDamage: 3
-  roamDist: 10
-  roamWaitTime: 3
-  hasLeftSpawnRoom: 0
-  pushbackForce: 8
 --- !u!195 &304971188936524132
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0.5
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
