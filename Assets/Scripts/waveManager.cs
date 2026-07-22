@@ -90,7 +90,24 @@ public class waveManager : MonoBehaviour
 
     IEnumerator beginNextWave()
     {
+        // Flash the warning lights while waiting for the next wave.
+        if (waveLightController.instance != null)
+        {
+            waveLightController.instance.FlashWarningLights(timeBetweenWaves);
+        }
+
+        if (audioManager.instance != null)
+        {
+            audioManager.instance.playRoundTransitionMusic();
+        }
+
+        // Wait for the warning sequence to finish.
         yield return new WaitForSeconds(timeBetweenWaves);
+
+        if (audioManager.instance != null)
+        {
+            audioManager.instance.stopRoundTransitionMusic();
+        }
 
         currentWave++;
 
