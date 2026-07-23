@@ -29,17 +29,20 @@ public class killstreakManager : MonoBehaviour
     {
         if (killstreaks == null || killstreaks.Length == 0)
         {
-            Debug.LogWarning("killstreakManager: no killstreaks assigned"); return;
+            // Debug.LogWarning("killstreakManager: no killstreaks assigned"); 
+            return;
         }
 
         if (activeStreak != null && activeStreak.isActive)
         {
-            Debug.Log("Roll skipped"); return;
+            // Debug.Log("Roll skipped"); 
+            return;
         }
 
         if (Random.value > killstreakChance)
         {
-            Debug.Log("Roll Failed"); return;
+            // Debug.Log("Roll Failed"); 
+            return;
         }
 
         killstreakBase picked = killstreaks[Random.Range(0, killstreaks.Length)];

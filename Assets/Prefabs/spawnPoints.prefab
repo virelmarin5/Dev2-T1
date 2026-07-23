@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::waveManager
   currentWave: 0
-  maxWaves: 5
+  maxWaves: 100
   startingEnemies: 5
   enemyIncreasePercent: 25
   timeBetweenWaves: 3
@@ -74,7 +74,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4288864256959032904}
-  - component: {fileID: 4637510553804372965}
   m_Layer: 0
   m_Name: SpawnPoint1
   m_TagString: Untagged
@@ -97,19 +96,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4873560845556711521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4637510553804372965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5330348290663262123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b90b405877fea84a8a8532062b6907e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpawnRoom
-  exit: {fileID: 0}
 --- !u!1 &9010805074510907916
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +105,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4994012732658622737}
-  - component: {fileID: 2019202327217967198}
   m_Layer: 0
   m_Name: SpawnPoint2
   m_TagString: Untagged
@@ -142,19 +127,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4873560845556711521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2019202327217967198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9010805074510907916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b90b405877fea84a8a8532062b6907e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpawnRoom
-  exit: {fileID: 0}
 --- !u!1001 &4575405615475129437
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -63,7 +63,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     {
         playerDir = gameManager.instance.player.transform.position - transform.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-        Debug.DrawRay(transform.position, playerDir);
+        // Debug.DrawRay(transform.position, playerDir);
 
         if (Physics.Raycast(transform.position, playerDir, out RaycastHit hit))
         {

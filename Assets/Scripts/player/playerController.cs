@@ -197,6 +197,7 @@ public class playerController : MonoBehaviour, IDamage, IPickWeapon
     public void updatePlayerUI()
     {
         gameManager.instance.playerStaminaBar.fillAmount = (float)currentStamina / maxStamina;
+        
     }
 
     public void spawnPlayer()

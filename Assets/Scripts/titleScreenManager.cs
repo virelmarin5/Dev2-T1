@@ -8,6 +8,7 @@ public class titleMenuManager : MonoBehaviour
     [SerializeField] private GameObject titleMenuPanel;
     [SerializeField] private Slider progressBar;
     [SerializeField] private GameObject Buttons;
+    [SerializeField] private GameObject SoundMenu;
     CanvasGroup canvasGroup;
 
     void Start()
@@ -22,6 +23,20 @@ public class titleMenuManager : MonoBehaviour
     {
         audioManager.instance.playButtonClick();
         StartCoroutine(LoadSceneAsync());
+    }
+
+    public void openSettings()
+    {
+        audioManager.instance.playButtonClick();
+        Buttons.SetActive(false);
+        SoundMenu.SetActive(true);
+    }
+
+    public void closeSettings()
+    {
+        audioManager.instance.playButtonClick();
+        SoundMenu.SetActive(false);
+        Buttons.SetActive(true);
     }
 
     private IEnumerator LoadSceneAsync()

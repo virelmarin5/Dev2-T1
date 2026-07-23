@@ -22,7 +22,7 @@ public abstract class killstreakBase : MonoBehaviour
         if (isActive) return;
 
         isActive = true;
-        Debug.Log(killstreakName + " activated!");
+        //Debug.Log(killstreakName + " activated!");
         onActivate();
 
         if (duration <= 0f)
@@ -72,7 +72,7 @@ public abstract class killstreakBase : MonoBehaviour
     {
         isActive = false;
         onDeactivate();
-        Debug.Log("Killstreak ended: " + killstreakName);
+        //Debug.Log("Killstreak ended: " + killstreakName);
 
         if (killstreakManager.instance != null)
         {

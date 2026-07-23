@@ -13,8 +13,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuSound;
     [SerializeField] timeManager timeManager;
 
-    [SerializeField] private killScoreUI killScore;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] TextMeshProUGUI pauseKills;
+    [SerializeField] TextMeshProUGUI killCounter;
+    [SerializeField] TextMeshProUGUI waveCounter;
     [SerializeField] public GameObject pickUpUI;
     [SerializeField] public Image playerStaminaBar;
     [SerializeField] public GameObject checkpointPopup;
@@ -22,6 +24,10 @@ public class gameManager : MonoBehaviour
 
     [SerializeField] TMP_Text gameGoalCountText;
     int gameGoalCount;
+    int currentKill = 0;
+    int enemiesAlive;
+    int previousEnemiesAlive;
+    int previousWave;
 
 
     [Header("Screen Flash")]
@@ -61,6 +67,8 @@ public class gameManager : MonoBehaviour
                 openPauseMenu();
             }
         }
+
+        updateUI();
     }
 
     // Pause the game
@@ -70,6 +78,7 @@ public class gameManager : MonoBehaviour
         timeManager.pauseTime();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        pauseKills.text = currentKill.ToString("f0");
         if (audioManager.instance != null) audioManager.instance.pauseMusic();
     }
 
@@ -117,8 +126,7 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
-
-        scoreText.text = killScore.getKillCount().ToString("f0");
+        scoreText.text = currentKill.ToString("f0");
     }
 
     public void updateGameGoal(int amount)
@@ -129,5 +137,26 @@ public class gameManager : MonoBehaviour
         if (gameGoalCount <= 0)
         {
         }
+    }
+
+    void updateUI()
+    {
+        int currentWave = waveManager.instance.getCurrentWave();
+        enemiesAlive = waveManager.instance.getEnemiesAlive();
+
+        if (currentWave != previousWave)
+        {
+            previousWave = currentWave;
+            previousEnemiesAlive = enemiesAlive;
+        }
+        else if (enemiesAlive < previousEnemiesAlive)
+        {
+            currentKill += previousEnemiesAlive - enemiesAlive;
+        }
+
+        previousEnemiesAlive = enemiesAlive;
+        
+        waveCounter.text = currentWave.ToString("f0");
+        killCounter.text = "Kills: " + currentKill;
     }
 }

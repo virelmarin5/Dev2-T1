@@ -68,7 +68,7 @@ public class heartbeatUI : MonoBehaviour
         {
             beatTimer -= beatInterval;
             StartCoroutine(Pulse());
-            Debug.Log(Time.time);
+            //Debug.Log(Time.time);
         }
     }
 

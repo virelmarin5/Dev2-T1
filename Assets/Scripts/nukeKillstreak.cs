@@ -36,9 +36,9 @@ public class nukeKillstreak : killstreakBase
             killChainManager.instance.SetIgnoreRegisteredKills(false);
         }
 
-        Debug.Log(
-            "Nuke activated. Enemies killed: " + enemiesKilled
-        );
+        // Debug.Log(
+        //     "Nuke activated. Enemies killed: " + enemiesKilled
+        // );
     }
 
     protected override void onDeactivate()

@@ -57,7 +57,7 @@ MonoBehaviour:
   FOV: 180
   attackRate: 0.5
   attackRange: 2
-  attackDamage: 1
+  attackDamage: 20
   roamDist: 10
   roamWaitTime: 4
   hasLeftSpawnRoom: 0

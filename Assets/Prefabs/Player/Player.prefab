@@ -247,7 +247,7 @@ MonoBehaviour:
   staminaDrainRate: 11
   staminaRegenRate: 6
   sprintForwardOnly: 1
-  stepInterval: 0.4
+  stepInterval: 0.8
 --- !u!114 &7039411983326474933
 MonoBehaviour:
   m_ObjectHideFlags: 0

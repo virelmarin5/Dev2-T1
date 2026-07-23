@@ -31,16 +31,16 @@ public class heartbeatRefreshKillstreak : killstreakBase
     {
         if (heartbeatManager.instance == null)
         {
-            Debug.LogWarning(
-                "Heartbeat Refresh failed because HeartbeatManager was not found."
-            );
+            // Debug.LogWarning(
+            //     "Heartbeat Refresh failed because HeartbeatManager was not found."
+            // );
 
             return;
         }
 
         heartbeatManager.instance.resetHeartbeat();
 
-        Debug.Log("Heartbeat Refresh activated.");
+        //Debug.Log("Heartbeat Refresh activated.");
     }
 
     protected override void onDeactivate()

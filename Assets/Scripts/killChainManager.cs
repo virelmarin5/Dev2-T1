@@ -69,7 +69,7 @@ public class killChainManager : MonoBehaviour
         killChainCount++;
         killChainTimer = 0f;
 
-        Debug.Log("Kill Chain: " + killChainCount);
+        /*Debug.Log("Kill Chain: " + killChainCount);
 
         switch (killChainCount)
         {
@@ -88,7 +88,7 @@ public class killChainManager : MonoBehaviour
             case 5:
                 Debug.Log("Killing FRENZY!");
                 break;
-        }
+        }*/
 
         // Every configured number of kills, attempt to award
         // the player a random killstreak.
@@ -112,7 +112,7 @@ public class killChainManager : MonoBehaviour
         killChainCount = 0;
         killChainTimer = 0f;
 
-        Debug.Log("Kill Chain Reset");
+        //Debug.Log("Kill Chain Reset");
     }
 
     public int GetKillChainCount()

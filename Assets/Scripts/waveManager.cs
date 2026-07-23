@@ -37,7 +37,7 @@ public class waveManager : MonoBehaviour
     public static waveManager instance;
 
     [Header("Wave Settings")]
-    [SerializeField] private int currentWave;
+    [SerializeField] public int currentWave;
     [SerializeField] private int maxWaves;
     [SerializeField] private int startingEnemies;
 
@@ -122,7 +122,7 @@ public class waveManager : MonoBehaviour
 
         enemiesAlive = enemiesToSpawn;
 
-        Debug.Log("Wave " + currentWave + " started. Enemies: " + enemiesToSpawn);
+        //Debug.Log("Wave " + currentWave + " started. Enemies: " + enemiesToSpawn);
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
@@ -139,7 +139,7 @@ public class waveManager : MonoBehaviour
     {
         if (spawnPoints == null || spawnPoints.Length == 0)
         {
-            Debug.LogWarning("WaveManager has no spawn points assigned.");
+            //Debug.LogWarning("WaveManager has no spawn points assigned.");
             return;
         }
 
@@ -147,7 +147,7 @@ public class waveManager : MonoBehaviour
 
         if (enemyToSpawn == null)
         {
-            Debug.LogWarning("WaveManager is missing an enemy prefab.");
+            //Debug.LogWarning("WaveManager is missing an enemy prefab.");
             return;
         }
 
@@ -155,12 +155,6 @@ public class waveManager : MonoBehaviour
 
         GameObject enemyObj = Instantiate(enemyToSpawn, chosenSpawn.position, chosenSpawn.rotation);
         EnemyBase eb = enemyObj.GetComponent<EnemyBase>();
-        SpawnRoom sr = chosenSpawn.GetComponent<SpawnRoom>();
-
-        if (eb != null && sr != null)
-        {
-            //eb.AssignSpawnRoom(sr);
-        }
     }
 
     GameObject chooseEnemyPrefab()
@@ -169,7 +163,7 @@ public class waveManager : MonoBehaviour
 
         if (totalPercent <= 0)
         {
-            Debug.LogWarning("Enemy spawn percentages are not set.");
+            //Debug.LogWarning("Enemy spawn percentages are not set.");
             return null;
         }
 
@@ -224,7 +218,7 @@ public class waveManager : MonoBehaviour
             heartbeatManager.instance.enemyKilled();
         }
 
-        Debug.Log("Enemy killed. Enemies alive: " + enemiesAlive);
+        //Debug.Log("Enemy killed. Enemies alive: " + enemiesAlive);
 
         if (!isSpawning && enemiesAlive <= 0)
         {
@@ -241,7 +235,7 @@ public class waveManager : MonoBehaviour
 
         waveInProgress = false;
 
-        Debug.Log("Wave " + currentWave + " completed.");
+        //Debug.Log("Wave " + currentWave + " completed.");
 
         if (heartbeatManager.instance != null)
         {
@@ -253,7 +247,7 @@ public class waveManager : MonoBehaviour
 
     void playerWins()
     {
-        Debug.Log("All waves completed. Player wins.");
+        //Debug.Log("All waves completed. Player wins.");
 
         if (gameManager.instance != null)
         {

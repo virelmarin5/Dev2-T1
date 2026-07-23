@@ -32,7 +32,9 @@ public class audioManager : MonoBehaviour
     [SerializeField] public AudioClip glass;
     [Range(0, 1)][SerializeField] public float glassVol;
     [SerializeField] public AudioClip buttonClick;
+    [Range(0, 1)][SerializeField] public float buttonClickVol;
     [SerializeField] private AudioClip nukeSFX;
+    [Range(0, 1)][SerializeField] public float nukeSFXVol;
 
     [Header("Music")]
     [SerializeField] public AudioClip titleScreenSound;
@@ -147,7 +149,7 @@ public class audioManager : MonoBehaviour
 
     public void playButtonClick()
     {
-        playSFX(buttonClick);
+        playSFX(buttonClick, buttonClickVol);
     }
 
     public void playTitleScreenSound()
@@ -157,7 +159,7 @@ public class audioManager : MonoBehaviour
 
     public void playNuke()
     {
-        playSFX(nukeSFX);
+        playSFX(nukeSFX, nukeSFXVol);
     }
 
     public void playRoundTransitionMusic()

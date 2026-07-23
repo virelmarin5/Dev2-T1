@@ -67,11 +67,11 @@ public class waveLightController : MonoBehaviour
         saveOriginalLightSettings();
         prepareEmissionMaterials();
 
-        Debug.Log(
-            "WaveLightController initialized with " +
-            warningLights.Length +
-            " Unity lights."
-        );
+        // Debug.Log(
+        //     "WaveLightController initialized with " +
+        //     warningLights.Length +
+        //     " Unity lights."
+        // );
     }
 
     private void saveOriginalLightSettings()
@@ -121,18 +121,18 @@ public class waveLightController : MonoBehaviour
     {
         if (duration <= 0f)
         {
-            Debug.LogWarning(
-                "WaveLightController received a duration of zero or less."
-            );
+            // Debug.LogWarning(
+            //     "WaveLightController received a duration of zero or less."
+            // );
 
             return;
         }
 
         if (warningLights == null || warningLights.Length == 0)
         {
-            Debug.LogWarning(
-                "WaveLightController has no Light components assigned."
-            );
+            // Debug.LogWarning(
+            //     "WaveLightController has no Light components assigned."
+            // );
 
             return;
         }
@@ -143,7 +143,7 @@ public class waveLightController : MonoBehaviour
             StopCoroutine(flashCoroutine);
         }
 
-        Debug.Log("Wave warning lights started for " + duration + " seconds.");
+        //Debug.Log("Wave warning lights started for " + duration + " seconds.");
 
         flashCoroutine = StartCoroutine(flashRoutine(duration));
     }
@@ -176,7 +176,7 @@ public class waveLightController : MonoBehaviour
 
         flashCoroutine = null;
 
-        Debug.Log("Wave warning lights finished.");
+        //Debug.Log("Wave warning lights finished.");
     }
 
     private IEnumerator fadeLights(
