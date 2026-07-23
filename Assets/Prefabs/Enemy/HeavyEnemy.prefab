@@ -165,15 +165,21 @@ MonoBehaviour:
   model: {fileID: 2567143705488947480}
   agent: {fileID: 304971188936524132}
   maxHP: 50
-  faceTargetSpeed: 10
+  faceTargetSpeed: 30
   FOV: 120
   attackRate: 1
-  attackRange: 3
+  attackRange: 1.9
   attackDamage: 3
   roamDist: 14
   roamWaitTime: 1.4
   hasLeftSpawnRoom: 0
   pushbackForce: 20
+  retreatDistance: 5
+  windUpTime: 0.6
+  chargeSpeed: 12
+  chargeMaxDuration: 0.1
+  hitRange: 1.5
+  recoverTime: 1
 --- !u!33 &977282381851803801
 MeshFilter:
   m_ObjectHideFlags: 0
