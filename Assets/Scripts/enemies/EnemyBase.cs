@@ -16,14 +16,14 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     int currentHP;
     [Range(1, 50)][SerializeField] int maxHP;
     [Range(1, 30)][SerializeField] float faceTargetSpeed = 8f;
-    [Range(15, 120)][SerializeField] float FOV = 90f;
+    [Range(15, 180)][SerializeField] float FOV = 90f;
     [Range(.1f, 5)][SerializeField] public float attackRate = 1.5f;
     [Range(1, 20)][SerializeField] public float attackRange = 2f;
     [Range(1, 20)][SerializeField] public int attackDamage = 1;
 
     [Header("Roaming")]
     [SerializeField] float roamDist = 10f;
-    [SerializeField] float roamWaitTime = 2f;
+    [SerializeField] float roamWaitTime = 1.1f;
     float roamTimer;
     Vector3 startingPos;
 
@@ -48,7 +48,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
     void Update()
     {
-        attackTimer += Time.deltaTime;
+        attackTimer += Time.unscaledDeltaTime;
         if (playerInTrigger && canSeePlayer())
         {
         }
@@ -144,4 +144,11 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     }
 
     protected abstract void attack();
+
+    public void ForceKill()
+    {
+        waveManager.instance.enemyKilled();
+        FindAnyObjectByType<killChainManager>()?.RegisterKill();
+        Destroy(gameObject);
+    }
 }

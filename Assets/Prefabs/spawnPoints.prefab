@@ -27,10 +27,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.47145, y: 8.8, z: -19.82489}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.83333325, y: 0.83333325, z: 0.83333325}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7068945686624468589}
+  - {fileID: 895417397607229869}
   - {fileID: 4288864256959032904}
   - {fileID: 4994012732658622737}
   m_Father: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnRoom
   exit: {fileID: 0}
---- !u!1001 &5839975666059733917
+--- !u!1001 &4575405615475129437
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -212,8 +212,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87ce04bba4a529d4897526bac5ed3df7, type: 3}
---- !u!4 &7068945686624468589 stripped
+--- !u!4 &895417397607229869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3680059145025590768, guid: 87ce04bba4a529d4897526bac5ed3df7, type: 3}
-  m_PrefabInstance: {fileID: 5839975666059733917}
+  m_PrefabInstance: {fileID: 4575405615475129437}
   m_PrefabAsset: {fileID: 0}

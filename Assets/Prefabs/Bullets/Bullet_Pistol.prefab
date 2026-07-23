@@ -55,7 +55,7 @@ MonoBehaviour:
   damageAmount: 1
   damageRate: 0.1
   bulletSpeed: 3
-  bulletDestroyTime: 3
+  bulletDestroyTime: 10
   shatterForce: 350
   deflectLayer:
     serializedVersion: 2
@@ -144,7 +144,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a217f32cd7765344bb5c38420b2dde70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,7 +167,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Time: 0.6
+  m_Time: 10
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3

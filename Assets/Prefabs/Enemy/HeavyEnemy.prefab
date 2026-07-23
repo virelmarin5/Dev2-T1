@@ -165,21 +165,15 @@ MonoBehaviour:
   model: {fileID: 2567143705488947480}
   agent: {fileID: 304971188936524132}
   maxHP: 50
-  faceTargetSpeed: 30
+  faceTargetSpeed: 10
   FOV: 120
-  attackRate: 1
-  attackRange: 1.9
+  attackRate: 0.5
+  attackRange: 3
   attackDamage: 3
   roamDist: 14
   roamWaitTime: 1.4
   hasLeftSpawnRoom: 0
-  pushbackForce: 20
-  retreatDistance: 5
-  windUpTime: 0.6
-  chargeSpeed: 12
-  chargeMaxDuration: 0.1
-  hitRange: 1.5
-  recoverTime: 1
+  pushbackForce: 5
 --- !u!33 &977282381851803801
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -301,7 +295,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 13
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5250952585558121734
 GameObject:
