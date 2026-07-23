@@ -116,6 +116,8 @@ public class damage : MonoBehaviour
             Vector3 reflectedVelocity = Vector3.Reflect(rb.linearVelocity, hit.normal);
             audioManager.instance.playSpatialSFX(audioManager.instance.bulletRicochet, transform.position, audioManager.instance.bulletRicochetVol);
 
+            transform.forward = reflectedVelocity.normalized;
+
             // Apply the new velocity
             rb.linearVelocity = reflectedVelocity;
         }

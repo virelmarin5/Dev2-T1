@@ -9,6 +9,8 @@ public class heavyEnemy : EnemyBase
     protected override void attack()
     {
         agent.stoppingDistance = Mathf.Max(0.5f, attackRange - 0.5f);
+        float dist = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
+        if (dist > attackRange) return;
 
         if (attackTimer > attackRate)
         {

@@ -333,8 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2882416504792515310}
   - component: {fileID: 4863825239290623286}
-  - component: {fileID: 2391795316730029753}
-  - component: {fileID: 1800281428877546526}
+  - component: {fileID: 8343291599818358487}
   m_Layer: 8
   m_Name: Shotgun
   m_TagString: Untagged
@@ -376,8 +375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfa744229b8a6b4abdf76f3a04dc336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pickWeapon
-  weapon: {fileID: 11400000, guid: 854a4b67fa14bc845a4c08e058594d32, type: 2}
---- !u!136 &2391795316730029753
+  weapon: {fileID: 11400000, guid: 390a74157b59cac4e8536a3f2d61b51c, type: 2}
+--- !u!136 &8343291599818358487
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -396,27 +395,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.06
-  m_Height: 1.3
+  m_Radius: 0.08
+  m_Height: 1.26
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.21}
---- !u!114 &1800281428877546526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667066249292612647}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af9b8a55ac3ae4744945e92736f00edc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Clip
-  clipLayer:
-    serializedVersion: 2
-    m_Bits: 73
-  checkDist: 3
-  newDir: {x: 0, y: -90, z: 0}
 --- !u!1 &2056705170315943731
 GameObject:
   m_ObjectHideFlags: 0

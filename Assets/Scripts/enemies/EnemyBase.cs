@@ -48,6 +48,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
 
     void Update()
     {
+        if(gameManager.instance != null && gameManager.instance.isPaused) return;
         attackTimer += Time.unscaledDeltaTime;
         if (playerInTrigger && canSeePlayer())
         {

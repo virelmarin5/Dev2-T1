@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 614735227078511410}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Clipper
   m_TagString: Clipper
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ MonoBehaviour:
   playerShield: {fileID: 1163693913067826184}
   maxStamina: 50
   staminaDrainRate: 11
-  staminaRegenRate: 8
+  staminaRegenRate: 6
   sprintForwardOnly: 1
   stepInterval: 0.4
 --- !u!114 &7039411983326474933
@@ -263,7 +263,7 @@ MonoBehaviour:
   maxDistance: 3
   interactLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2304
 --- !u!33 &8426663965172706110
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -378,7 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 703176811178444813}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Weapon Hold Position
   m_TagString: Weapon Holder
   m_Icon: {fileID: 0}

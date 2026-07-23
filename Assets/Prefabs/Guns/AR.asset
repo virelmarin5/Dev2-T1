@@ -21,4 +21,4 @@ MonoBehaviour:
   pelletCount: 2
   spreadAngle: 0.2
   shootSound: {fileID: 8300000, guid: eb14dd355801c574fb7cc4560bd941b7, type: 3}
-  shootSoundVol: 1
+  shootSoundVol: 0.8

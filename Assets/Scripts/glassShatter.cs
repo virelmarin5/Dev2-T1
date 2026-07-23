@@ -39,6 +39,8 @@ public class glassShatter : MonoBehaviour
             {
                 r.AddForce(bulletDirection.normalized * (forceToApply * 0.4f), ForceMode.Impulse);
             }
+
         }
+        Destroy(gameObject, 5f);
     }
 }
