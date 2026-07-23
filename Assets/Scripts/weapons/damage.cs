@@ -26,7 +26,10 @@ public class damage : MonoBehaviour
         {
             rb = gameObject.AddComponent<Rigidbody>();
         }
+    }
 
+    private void FixedUpdate()
+    {
         if (type == damageType.bullet)
         {
             rb.useGravity = false;

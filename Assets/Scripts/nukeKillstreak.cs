@@ -26,7 +26,7 @@ public class nukeKillstreak : killstreakBase
             if (enemy == null)
                 continue;
 
-            //enemy.ForceKill();
+            enemy.ForceKill();
             enemiesKilled++;
         }
 

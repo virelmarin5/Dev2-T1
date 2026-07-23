@@ -143,4 +143,11 @@ public abstract class EnemyBase : MonoBehaviour, IDamage
     }
 
     protected abstract void attack();
+
+    public void ForceKill()
+    {
+        waveManager.instance.enemyKilled();
+        FindAnyObjectByType<killChainManager>()?.RegisterKill();
+        Destroy(gameObject);
+    }
 }

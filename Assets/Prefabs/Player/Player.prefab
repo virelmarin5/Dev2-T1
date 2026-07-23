@@ -215,7 +215,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.5735764, z: 0, w: 0.8191521}
   m_LocalPosition: {x: -15.42, y: 11.026, z: -21.87}
-  m_LocalScale: {x: 1.2, y: 1, z: 1.2}
+  m_LocalScale: {x: 1.2000003, y: 1, z: 1.2000003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7246933532377521434}
@@ -235,14 +235,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerController
   controller: {fileID: 8618862431611356904}
-  anim: {fileID: 0}
   HP: 100
   speed: 3
   sprintMod: 2
   jumpSpeed: 10
   jumpMax: 1
   gravity: 35
-  pushbackForce: 5
   pushbackFriction: 5
   playerShield: {fileID: 1163693913067826184}
   maxStamina: 50
